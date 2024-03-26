@@ -1,0 +1,73 @@
+.button2 {
+  width: 200px;
+  height: 50px;
+  color: #fff;
+  background: #222;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.button2 a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.button2::before {
+  content: "";
+  width: 208px;
+  height: 58px;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  transition: all 0.35s;
+  border-radius: 10px;
+  z-index: -1;
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    purple,
+    red
+  );
+  filter: blur(5px);
+  background-size: 1000%;
+  animation: amSize 40s linear infinite;
+  opacity: 0; /*透明度*/
+}
+
+.button2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  border-radius: 10px;
+  z-index: -1;
+  opacity: 1;
+}
+/*设置伪类*/
+.button2:hover::before {
+  opacity: 1;
+} /*悬停*/
+.button2:active::after {
+  opacity: 0;
+} /*按下激活*/
+
+@keyframes amSize {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000% 0;
+  }
+}

@@ -1,0 +1,395 @@
+.backbutton {
+	display: flex;
+	justify-content: left;
+	align-items: left;
+	max-width: 150px;
+	flex-direction: column;
+	position: absolute;
+}
+
+.dynamic-info {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.dynamic-info .switch-container {
+	display: flex;
+	position: relative;
+	height: 30px;
+	width: 72%;
+	max-width: 500px;
+	border-radius: 21px;
+	background-color: rgb(235, 235, 235); //滑块区域背景颜色
+}
+
+.dynamic-info .slider {
+	background-color: blue; // 背景块的颜色
+	transition: transform 0.3s ease-in-out; // 平滑移动动画
+}
+
+.dynamic-info .switch-button {
+	flex: 1;
+	text-align: center;
+	cursor: pointer;
+	position: relative; // 这允许滑块相对于按钮定位
+	font-size: 17px;
+}
+
+.dynamic-info .button-content {
+	border-radius: 20px;
+	transition: background-color 0.3s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: rgb(0, 0, 0);
+}
+
+.dynamic-info .button-content.active {
+	color: rgb(230, 230, 230); // 活动标签的文本颜色
+}
+
+.comment {
+	width: 90%;
+	max-width: 800px;
+	margin: auto;
+}
+
+.comment .active {
+	display: none;
+}
+
+/* 加载中动画 */
+@keyframes loading {
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.loading {
+	font-family: Arial, sans-serif;
+	display: none;
+	z-index: 9999;
+	font-size: 22px;
+	margin-top: 50px;
+	margin-left: 18%;
+}
+
+.loading span {
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.loading span:nth-child(1) {
+	animation: swing1 1.8s infinite ease-in-out both;
+}
+
+.loading span:nth-child(2) {
+	animation: swing2 1.8s infinite ease-in-out both;
+	animation-delay: 0.15s;
+}
+
+.loading span:nth-child(3) {
+	animation: swing3 1.8s infinite ease-in-out both;
+	animation-delay: 0.35s;
+}
+
+@keyframes swing1 {
+
+	0%,
+	65%,
+	100% {
+		transform: translateY(0);
+	}
+
+	20% {
+		transform: translateY(-9px);
+	}
+
+	45% {
+		transform: translateY(7px);
+	}
+}
+
+@keyframes swing2 {
+
+	0%,
+	73%,
+	100% {
+		transform: translateY(0);
+	}
+
+	20% {
+		transform: translateY(-12px);
+	}
+
+	50% {
+		transform: translateY(10px);
+	}
+}
+
+@keyframes swing3 {
+
+	0%,
+	65%,
+	100% {
+		transform: translateY(0);
+	}
+
+	20% {
+		transform: translateY(-12px);
+	}
+
+	50% {
+		transform: translateY(11px);
+	}
+}
+
+.qr_code {
+	position: absolute;
+	right: 0%;
+	top: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 40%;
+	margin-right: 5px;
+}
+
+.qr_code img {
+	width: 40%;
+	height: auto;
+	max-width: 100px;
+	border-radius: 9%;
+}
+
+.qr_code p {
+	margin-top: 5px;
+	font-size: 17px;
+}
+
+@media screen and (max-width: 768px) {
+	.qr_code p {
+		font-size: 15px;
+		/* 手机端的字体大小 */
+	}
+}
+
+.left_sec {
+	margin-top: 18px;
+	display: flex;
+	flex: 1 1 auto;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.main2 {
+	width: 83%;
+	max-width: 500px;
+	display: flex;
+	flex-direction: column;
+	margin-left: 0%;
+	margin-top: 24px;
+	padding-top: 10px;
+}
+
+.main2 .sons {
+	height: auto;
+	width: 100%;
+	clear: both;
+	background-color: #F0EFE2;
+	overflow: hidden;
+	margin-top: 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	margin-bottom: 3px;
+}
+
+.main2 .sons .cont {
+	height: auto;
+	clear: both;
+	margin-top: 15px;
+	font-size: 14px;
+	margin-left: 10%;
+	margin-right: 15px;
+	line-height: 200%;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+/* 诗句内容 */
+.main2 .sons .cont .contson {
+	width: 94%;
+	clear: both;
+	overflow: hidden;
+	font-size: 17px;
+	/* 电脑端的字体大小 */
+}
+
+@media screen and (max-width: 700px) {
+	.main2 .sons .cont .contson {
+		font-size: 16px;
+		width: 98%;
+		/* 手机端的字体大小 */
+	}
+}
+
+@media screen and (max-width: 390px) {
+	.main2 .sons .cont .contson {
+		font-size: 15px;
+		width: 98%;
+		/* 手机端的字体大小 */
+	}
+}
+
+/* 内容中的超链接 */
+.main2 .sons .cont .contson a {
+	font-size: 17px;
+	color: red;
+	text-decoration: underline;
+	/* 电脑端的字体大小 */
+}
+
+@media screen and (max-width: 700px) {
+	.main2 .sons .cont .contson a {
+		font-size: 16px;
+		/* 手机端的字体大小 */
+	}
+}
+
+.main2 .sons .cont .scene {
+	margin-top: 5px;
+	margin-bottom: 11px;
+	display: flex;
+	align-items: right;
+	line-height: 200%;
+	text-align: center;
+	margin-left: auto;
+	/* 让右边对齐父容器 */
+	flex-direction: column;
+	max-width: 60%;
+	width: 100%;
+	/* 确保 .scene 元素占满父容器宽度 */
+}
+
+/* 时间地点 */
+.main2 .sons .cont .scene p {
+	font-size: 17px;
+	line-height: 1.2;
+	/* 设置行间距，例如 1.5 表示1.5倍行高 */
+	margin: 3px;
+}
+
+@media screen and (max-width: 700px) {
+	.main2 .sons .cont .scene p {
+		font-size: 16px;
+		/* 手机端的字体大小 */
+	}
+}
+
+.main2 .sons .cont p {
+	margin-bottom: 10px;
+	line-height: 200%;
+}
+
+/* 标题 */
+.main2 .sons .cont a {
+	line-height: 200%;
+	font-size: 20px;
+	line-height: 22px;
+	height: 22px;
+	text-align: center;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+	.main2 .sons .cont a {
+		font-size: 19px;
+	}
+}
+
+.main2 .sons .cont span {
+	line-height: 200%;
+}
+
+/*随机跳转*/
+.torandom {
+	margin-top: -13px;
+	margin-bottom: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.torandom .click-section {
+	user-selected: none;
+	display: flex;
+	border: 3px solid black;
+	border-radius: 10px;
+	cursor: pointer;
+	padding: 3px;
+	z-index: 55;
+	transition: border-color 0.3s ease-in-out;
+	/* 添加渐变效果 */
+}
+
+.torandom .click-section:hover {
+	border-color: #FF0000;
+	/* 鼠标悬停时的红色边框 */
+}
+
+.torandom .hand-o-right {
+	position: absolute;
+	margin-right: 15px;
+	font-size: 20px;
+	width: 15vw;
+}
+
+@media screen and (max-width: 700px) {
+	.torandom .hand-o-right {
+		width: 48vw;
+	}
+}
+
+.torandom .click-section .random-text {
+	font-size: 18px;
+	margin-right: 6px;
+}
+
+.torandom .click-section .random-icon {
+	font-size: 20px;
+}
+
+#article-info {
+	display: flex;
+	justify-content: center;
+}
+
+.readcount-sec {
+	width: 78%;
+	max-width: 750px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.readcount-sec .readcount-text {
+	display: flex;
+	align-items: center;
+	color: #777777;
+}

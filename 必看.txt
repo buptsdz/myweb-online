@@ -1,0 +1,60 @@
+.sql是数据库文件。你可以导入MySQL中。
+
+文件夹中有帮助文件文本 表示此文件夹或文件是什么作用的
+
+本示例项目比较简单，未使用完整框架。需要有一定的代码基础以及类概念。方便快速上手开发标准的后端应用程序
+
+composer.json详解：
+{
+    "require": {  //相关依赖
+        "illuminate/database": "^8.83",
+        "illuminate/pagination": "^8.83",
+        "phpmailer/phpmailer": "^6.9",
+        "phroute/phroute": "^2.2"
+    },
+    "autoload": {  //自动加载
+        "psr-4": {
+            "Webdroid\\": "src/"   //定义你的命名空间
+        }
+    }
+}
+
+以下是一个近似标准的PHP简易后端目录结构
+
+:.
+│  .htaccess
+│  composer.json
+│  composer.lock
+│  index.php
+│  nginx.htaccess
+│  PHP Composer Example.zip
+│  php_composer.sql
+│  必看.txt
+│
+├─public 公开文件夹
+│      index.html
+│
+├─src 资源文件夹
+│  │
+│  ├─Config 配置文件夹
+│  │      Config.php
+│  │
+│  ├─Controllers 控制器文件夹
+│  │      User.php
+│  │
+│  ├─Models 模型文件夹
+│  │      Database.php
+│  │      User.php
+│  │
+│  ├─Plugins 插件类文件夹
+│  │      Share.php
+│  │
+│  ├─Routes 路由文件夹
+│  │      Api.php
+│  │      Route.php
+│  │
+│  └─Views 视图文件夹夹
+│          Index.php
+│          User.php
+│
+└─vendor Composer依赖文件夹

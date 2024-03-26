@@ -1,0 +1,148 @@
+.zuolan {
+	display: flex;
+	justify-content: left;
+	align-items: left;
+	flex-direction: column;
+	position: absolute;
+	max-width: 100px;
+}
+
+.zuolan .backbutton1 {
+	display: flex;
+	justify-content: left;
+	align-items: left;
+	max-width: 150px;
+	flex-direction: column;
+}
+
+.jianjie {
+	display: block;
+	margin-top: 5px;
+}
+
+.jianjie a {
+	font-size: 20px;
+	text-decoration: none;
+	color: black;
+}
+
+.jianjie a:hover {
+	color: blue;
+	/* 悬停时的颜色 */
+}
+
+.htitle {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 80%;
+	/* 设置盒子宽度为50%或您想要的宽度 */
+	margin: auto;
+	/* 水平居中，左右外边距为auto */
+}
+
+.htitle h1 {
+	font-size: 40px;
+	margin: 10px;
+	margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+	.htitle h1 {
+	margin-top: 10px;
+	}
+}
+
+.htitle span {
+	font-size: 18px;
+}
+
+.htitle h2 {
+	margin: 0%;
+	font-size: 30px;
+}
+
+.three-columns {
+	display: flex;
+	justify-content: center;
+	/* 等间距排列 */
+	height: 700px;
+	/* 设置容器高度，根据需要调整 */
+	width: 100%;
+}
+
+.three-columns .ul1 {
+	flex: 1;
+	/* 均等分布剩余空间 */
+	text-align: left;
+	/* 可选：居中文本 */
+	padding: 10px;
+	/* 可选：添加内边距 */
+	list-style-type: none;
+	/* 去掉列表符号 */
+	font-size: 17px;
+	margin-left: 7%;
+	display: flex;
+	/* 使用 Flexbox 布局 */
+	align-items: left;
+	flex-direction: column;
+	max-width: 300px;
+	width: 70%;
+}
+
+.three-columns .ul2 {
+	flex: 1;
+	/* 均等分布剩余空间 */
+	text-align: left;
+	/* 可选：居中文本 */
+	padding: 15px;
+	padding-top: 10px;
+	padding-left: 0;
+	padding-right: 7px;
+	/* 可选：添加内边距 */
+	list-style-type: none;
+	/* 去掉列表符号 */
+	font-size: 17px;
+	margin-right: 2%;
+	margin-left: 5%;
+	display: flex;
+	/* 使用 Flexbox 布局 */
+	align-items: left;
+	flex-direction: column;
+	max-width: 270px;
+	width: 70%;
+}
+
+.three-columns .ul1 li {
+	margin-top: 10px;
+	display: flex;
+	/* 使用 Flexbox 布局 */
+	flex-grow: 1;
+}
+
+.three-columns .ul2 li {
+	margin-top: 10px;
+	display: flex;
+	/* 使用 Flexbox 布局 */
+	flex-grow: 1;
+}
+
+.a-nounderline {
+	text-decoration: none;
+	color: black;
+	/* 自定义颜色 */
+}
+
+.poem-number {
+	width: auto;
+	/* 设置序号列的宽度 */
+	text-align: right;
+	/* 右对齐序号 */
+	margin-right: 7px;
+}
+
+.a-nounderline:hover {
+	color: #ff5733;
+	/* 悬停时的颜色 */
+}

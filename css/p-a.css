@@ -1,0 +1,28 @@
+.a-svg {
+  position: relative;
+  --line: black;
+  --line-active: red;
+  color: gray;
+}
+svg {
+  width: 75px;
+  height: 49px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 14px);
+  fill: none;
+  stroke: var(--stroke, var(--line));
+  stroke-linecap: round;
+  stroke-width: 2.5px;
+  stroke-dasharray: var(--offset, 69px) 310px;
+  stroke-dashoffset: 383px;
+  transition: stroke 0.25s ease var(--delay, 0s), stroke-dasharray 0.35s;
+}
+.a-svg:hover {
+  --spacing: 4px;
+  --stroke: var(--line-active);
+  --delay: 0.1s;
+  --offset: 190px;
+  color: blue;
+}

@@ -1,0 +1,19 @@
+.comment {
+	width: 90%;
+	max-width: 800px;
+	margin: auto;
+}
+.toggle-button {
+  cursor: pointer;
+}
+
+.toggle-button .arrow {
+  margin-right: 5px;
+}
+
+.comments-visible .toggle-button .arrow {
+  content: "▲";
+}
+
+
+

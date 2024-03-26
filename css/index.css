@@ -1,0 +1,157 @@
+.main {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: url("https://pic.imgdb.cn/item/65264541c458853aef724a23.jpg");
+	background-size: cover;
+}
+
+.item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 120px;
+	height: 120px;
+	background: url("https://pic.imgdb.cn/item/64aa86e31ddac507cc64c369.jpg");
+	background-size: cover;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.4),
+		0 1px 2px rgba(0, 0, 0, 0.1);
+	transition: all 1s ease-in-out;
+	margin-top: 28px;
+	margin-bottom: 28px;
+}
+
+.info {
+	opacity: 0;
+	transform: scale(0);
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	background: rgba(63, 147, 147, 0.8);
+	border-radius: 50%;
+	text-align: center;
+	transition: all 0.4s ease-in-out;
+}
+
+.info h3 {
+	height: 50px;
+	font-size: 16px;
+	color: #fff;
+	margin: 0 30px;
+	padding-top: 18px;
+	text-transform: uppercase;
+}
+
+.info p {
+	opacity: 0;
+	font-size: 15px;
+	color: #fff;
+	font-style: italic;
+	margin: 0 30;
+	padding-top: 9px;
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	transition: all 0.4s ease-in-out 0.4s;
+}
+
+.info a {
+	display: block;
+	color: #fff;
+	font-style: normal;
+}
+
+.item:hover {
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+		0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.item:hover .info {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.item:hover .info p {
+	opacity: 1;
+}
+
+.info p a:hover {
+	color: yellow;
+}
+
+hr {
+	height: 2px;
+	background-color: rgb(250, 141, 7);
+	border-color: bisque;
+	width: 70%;
+}
+
+/*底部栏*/
+.bottom-sec {
+    background-color: #f1f1f1;
+	padding-top: 25px;
+	padding-bottom: 15px;
+    font-size: 12px;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 75px; /* 你想要的固定高度 */
+}
+/*跳转bilibili*/
+.bottom-sec .tobilibili {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bottom-sec .tobilibili-text {
+	font-size: 20px;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	display: flex;
+	flex-direction: row;
+}
+
+.bottom-sec .tobilibili-href{
+	margin-left: 12px;
+}
+/*查看更新日志*/
+.bottom-sec .updatelog{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content:center;
+	height: 40px;
+}
+.bottom-sec .updatelog .updatelog-text{
+	display: flex;
+	justify-content: flex-end;
+	width:85%;
+	max-width: 700px;
+	font-size: 10px;
+	margin-top: 40px;
+}
+.shine {
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 4px;
+	background: linear-gradient(to right, #4d4d4d 0, #fff 8%, #4d4d4d 16%);
+	background-size: 200%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+	0% {
+		background-position: 30%;
+	}
+    50{
+		background-position: -40%;
+	}
+	100% {
+		background-position: -100%;
+	}
+}
