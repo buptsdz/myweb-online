@@ -1,24 +1,31 @@
-.year{
-	display: flex;
-	flex-direction: column;
+.year {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 25px;
 }
-.year-title{
-	margin-bottom: -7px;
-	margin-top: 7px;
+
+.year-title {
+  margin-bottom: -8px;
+  margin-top: 4px;
+  align-self: center;
 }
-.month-title{
-	margin-bottom: 8px;
-	margin-left: 10px;
-	margin-top: 12px;
+
+.month-title {
+  margin-bottom: 10px;
+  margin-left: 12px;
+  margin-top: 12px;
 }
-.day-ul{
-	font-size: 17px;
-	margin-top: 0;
-	margin-right: 7px;
-	padding-left: 34px;
+
+.day-ul {
+  font-size: 17px;
+  margin-top: 0;
+  padding-left: 34px;
+  margin-right: 12px;
 }
+
 @media screen and (max-width: 700px) {
-	.day-ul{
-		font-size: 16px;
-	}
+  .day-ul {
+    font-size: 16px;
+  }
 }

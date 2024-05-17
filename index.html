@@ -1,68 +1,96 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>昭昭晚安的个人网站</title>
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" type="text/css" href="css/button.css" />
-		<link rel="stylesheet" type="text/css" href="css/p-a.css" />
-		<link rel="stylesheet" type="text/css" href="css/a.css" />
-		<link rel="stylesheet" type="text/css" href="css/img.css" />
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
-	<style>
-		.mysong {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			margin-top: 15px;
-		}
-	</style>
-	<body style="margin:0;padding:0;">
-		<div class="main">
-			<div class="item">
-				<div class="info">
-					<h3>welcome to my world</h3>
-					<p>
-						up主的QQ空间
-						<a href="https://user.qzone.qq.com/508936331/infocenter" target="_blank"
-							title="Click to open QQ space">
-							点此进入</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<!-- 中间区域 -->
-		<div style="
+<head>
+    <meta charset="utf-8"/>
+    <title>昭昭晚安的个人网站</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/button.css"/>
+    <link rel="stylesheet" type="text/css" href="css/p-a.css"/>
+    <link rel="stylesheet" type="text/css" href="css/a.css"/>
+    <link rel="stylesheet" type="text/css" href="css/img.css"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<style lang="scss">
+    body {
+        background-color: #ffffff;
+    }
+
+    .mysong {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .toIntroduction {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        word-break: break-word;
+        margin-left: 10px;
+    }
+    @media screen and (min-width: 1024px) {
+        .list {
+            margin-left: 8%;
+        }
+    }
+</style>
+<body style="margin:0;padding:0">
+<div class="main">
+    <div class="item">
+        <div class="info">
+            <h3>welcome to my world</h3>
+            <p>
+                up主的QQ空间
+                <a href="https://user.qzone.qq.com/508936331/infocenter" target="_blank"
+                   title="Click to open QQ space">
+                    点此进入</a>
+            </p>
+        </div>
+    </div>
+</div>
+<!-- 中间区域 -->
+<div style="
         max-width: 700px;
         height: auto;
         margin: 10px auto;
 		margin-bottom: 13px;
         padding: 5px;
         line-height: 1.7;
+        padding-bottom: 120px;
       ">
-			<p style="text-align: center; font-size: 25px; margin-top: -10px">
-				北京邮电大学/通信工程/大三
-			</p>
-			<p style="text-align: center; font-size: 20px; margin-top: -10px">
-				Hello, friend!
-			</p>
 
-			<div style="text-align: center">
-				<div style="
+    <p style="text-align: center; font-size: 30px;margin: 0">
+        Hello, friend!
+    </p>
+    <p style="text-align: center;font-size: 18px">可下滑</p>
+    <!-- 个人介绍 -->
+    <div class="toIntroduction">
+        <a href="./views/personal-introduction.html"
+           title="Click to see my introduction">
+            点此进入个人简介</a>
+    </div>
+    <!--我写的诗-->
+    <div style="text-align: center;margin-top: 15px">
+        <div style="
             margin: 0 auto;
             text-align: left;
             display: inline-block;
             position: relative;
           ">
-					<button class="button2" style="color: #f1f1f1; font-size: 22px">
-						<div class="shine">我写的诗</div>
-					</button>
-					<a href="./mulu/mulu1.html" class="no-underline" style="
+            <button class="button2" style="color: #f1f1f1; font-size: 22px">
+                <div class="shine">我写的诗</div>
+            </button>
+            <a href="./mulu/mulu1.html" class="no-underline" style="
               position: absolute;
               border-radius: 50%;
               width: 40px;
@@ -71,43 +99,61 @@
 			  margin-left: 7px;
               vertical-align: middle;
             ">
-						<img src="https://pic.imgdb.cn/item/65264427c458853aef70c1aa.png"
-							style="width: 100%; height: 100%; object-fit: cover" alt="Right Arrow" />
-					</a>
-				</div>
-			</div>
-			<div class="mysong">
-				<button style="font-size: 15px;" onclick="window.location.href='./mySong/mulu.html'">我唱的歌</button>
-				<div>（看不见我看不见我）</div>
-			</div>
-			<!-- 狗头 -->
-			<div class="img-container">
-				<img src="https://pic.imgdb.cn/item/6526440dc458853aef709c2c.png" alt="dog"
-					style="width: 200px;margin-top: 14px;" />
-			</div>
-		</div>
-		<!-- 底部区域 -->
-		<div class="bottom-sec">
-			<div class="tobilibili">
-				<div class="tobilibili-text">
-					<div>我的b站主页</div>
-					<div style="margin-left: 5px;"><i class="fa fa-arrow-right"></i></div>
-				</div>
-				<div class="tobilibili-href">
-					<a href="https://space.bilibili.com/512181208/favlist?fid=1518595308&ftype=create" target="_blank"
-						style="font-size: 14px" class="a-svg">
-						友情链接
-						<svg viewBox="0 0 75 50">
-							<path d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8" />
-						</svg>
-					</a>
-				</div>
-			</div>
-			<div class="updatelog">
-				<div class="updatelog-text">
-					<a href="./updatelog.html">更新记录</a>
-				</div>
-			</div>
-		</div>
-	</body>
+                <img src="./assets/images/tubiao/rightArrow.png"
+                     style="width: 100%; height: 100%; object-fit: cover" alt="Right Arrow"/>
+            </a>
+        </div>
+    </div>
+    <!--    我唱的歌-->
+    <div class="mysong">
+        <button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'">我唱的歌</button>
+    </div>
+    <div class="list">
+        <img src="assets/images/logo/GitHub_logo.png" style="height: 35px;width: 35px;margin-right: 10px"/>
+        <p>github地址：<a href="https://github.com/buptsdz" target="_blank">https://github.com/buptsdz</a></p>
+    </div>
+    <div class="list">
+        <img src="./assets/images/logo/yuque-logo.png" style="height: 28px;width:28px;margin-right: 10px;"/>
+        <p>个人文档地址：<a href="https://www.yuque.com/u39067637" target="_blank">https://www.yuque.com/u39067637</a>
+        </p>
+    </div>
+    <div class="list">
+        <img src="assets/images/logo/teamlogo.jpg" style="height: 45px;width: auto;"/>
+        <p>团队公开页：<a href="https://startfire.yuque.com/r/organizations/homepage" target="_blank">https://startfire.yuque.com/r/organizations/homepage</a>
+        </p>
+    </div>
+    <div class="list">
+        <img src="assets/images/logo/Bilibili.png" style="height: 35px;width: 35px;margin-right: 10px"/>
+        <p>b站主页：<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank">https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0</a>
+        </p>
+    </div>
+    <div class="list">
+        <img src="assets/images/logo/qq-email-logo.png" style="height: 25px;width: auto;margin-right: 10px"/>
+        <p>电子邮件：sudezhao2016@qq.com</p>
+    </div>
+</div>
+<!-- 底部区域 -->
+<div class="bottom-sec">
+    <div class="tobilibili">
+        <div class="tobilibili-text">
+            <div>我的b站主页</div>
+            <div style="margin-left: 5px;"><i class="fa fa-arrow-right"></i></div>
+        </div>
+        <div class="tobilibili-href">
+            <a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
+               style="font-size: 14px" class="a-svg">
+                友情链接
+                <svg viewBox="0 0 75 50">
+                    <path d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div class="updatelog">
+        <div class="updatelog-text">
+            <a href="./updatelog.html">更新记录</a>
+        </div>
+    </div>
+</div>
+</body>
 </html>
