@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>凌特杯通信系统设计大赛</title>
+</head>
+<style lang="scss">
+    body {
+        background-color: #E1E0C7;
+    }
+
+    .main {
+        margin-bottom: 45px;
+        .award {
+            .award-img {
+                object-fit: contain;
+                height: 350px;
+            }
+            /* 针对手机端进行样式调整 */
+            @media (max-width: 600px) {  /* 可以根据具体的需求调整断点 */
+                .award-img {
+                    width: 80%;
+                    height: auto;
+                }
+            }
+        }
+        .photos{
+            .photos-img{
+                object-fit: contain;
+                height: 300px;
+            }
+            .photos-img-column{
+                object-fit: contain;
+                height: 300px;
+            }
+        }
+        /* 针对手机端进行样式调整 */
+        @media (max-width: 600px) {  /* 可以根据具体的需求调整断点 */
+            .photos{
+                display: flex;
+                flex-direction: column;
+                .photos-img {
+                    max-width: 70%;
+                    height: auto;
+                    margin-bottom: 7px;
+                }
+                .photos-img-column{
+                    max-width: 50%;
+                    height: auto;
+                    margin-bottom: 7px;
+                }
+            }
+        }
+    }
+</style>
+<body>
+<div class="main">
+    <div class="award">
+        <h2>获奖证书</h2>
+        <p>奖状目前未发</p>
+    </div>
+    <div class="paper">
+        <h2>比赛详情记录</h2>
+        <a href="https://www.yuque.com/u39067637/kpklvv/qx62wn410vzuwcfo#IfouE" target="_blank" style="font-size: 20px">第二届凌特杯通信系统设计大赛</a>
+    </div>
+    <div class="photos">
+        <h2>比赛部分过程</h2>
+        <img src="../assets/images/jingsai-photos/lingtebei/1.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/lingtebei/2.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/lingtebei/3.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/lingtebei/4.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/lingtebei/5.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/lingtebei/6.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/lingtebei/7.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/lingtebei/8.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/lingtebei/9.jpg" class="photos-img">
+    </div>
+</div>
+</body>
+</html>

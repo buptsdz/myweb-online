@@ -4,23 +4,91 @@
     <meta charset="utf-8">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>个人简介</title>
 </head>
 <style lang="scss">
-    body{
+    body {
         background-color: #E1E0C7;
     }
-    .basis-info{
 
+    .main {
+        margin-left: 20px;
+        margin-bottom: 40px;
+
+        .basis-info {
+
+        }
+
+        .competition-experience {
+            .a-nounderline {
+                text-decoration: none;
+                color: black;
+                position: relative;
+                /* 自定义颜色 */
+            }
+
+            .a-nounderline:hover {
+                color: #ff5733;
+                /* 悬停时的颜色 */
+            }
+
+            .a-nounderline::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -2px; /*调整下划线的位置*/
+                width: 0;
+                height: 1px;
+                background-color: gray;
+                transition: width 0.4s ease;
+            }
+
+            .a-nounderline:hover::after {
+                width: 100%;
+            }
+
+        }
     }
+
 </style>
 <body>
-  <h1>基本信息</h1>
-  <div class="basis-info">
-      <p>苏德昭</p>
-      <p>2002年生人</p>
-      <p>本科就读于北京邮电大学</p>
-  </div>
+<div class="main">
+    <h1>基本信息</h1>
+    <div class="basis-info">
+        <p>姓名：苏德昭</p>
+        <p>出生年月：2002.7</p>
+        <p>籍贯：浙江省温州市</p>
+        <p>现居于：北京</p>
+        <p>电话：+86-173-1571-8923</p>
+    </div>
+    <h1>教育背景</h1>
+    <div class="education-bg">
+        <p>2021-至今 &nbsp&nbsp&nbsp 北京邮电大学 &nbsp&nbsp&nbsp 通信工程英才班 &nbsp&nbsp&nbsp 本科</p>
+        <p>GPA：3.81/4.00</p>
+        <p>保研排名：17/481</p>
+        <p>CET4：603</p>
+        <p>CET6：517</p>
+    </div>
+    <div style="display: flex;flex-direction: row;align-items: flex-end;margin-bottom: -15px;">
+        <h1>竞赛经历</h1>
+        <p style="color: #666666;font-size: 22px">（点击可查看详情）</p>
+    </div>
+    <div class="competition-experience">
+        <p>2024.04: <a class="a-nounderline"
+                       href="../jingsai/lingtebei.html"
+        >凌特杯通信系统设计大赛省一等奖（主持）</a>
+        </p>
+        <p>2024.04: <a class="a-nounderline"
+                       href="../jingsai/datangbei.html">大唐杯新一代信息通信技术大赛省一等奖</a>
+        </p>
+        <p>2024.03: <a class="a-nounderline"
+                       href="../jingsai/baidulingjing.html">百度文心智能体平台开发者认证（个人）</a></p>
+        <p>2023.11: <a class="a-nounderline" href="../jingsai/yataibei.html">亚太杯数学建模竞赛S奖（主持）</a></p>
+        <p>2023.09: <a class="a-nounderline" href="../jingsai/shenzhengbei.html">深圳杯数学建模竞赛（主持）</a></p>
+        <p>2023.08: <a class="a-nounderline" href="../jingsai/diansai.html">全国大学生电子设计竞赛省二等奖（主持）</a></p>
+        <p>2023.09: <a class="a-nounderline" href="../jingsai/shuxuejingsai.html">全国大学生数学竞赛初赛三等奖</a></p>
+    </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>全国大学生电子设计竞赛</title>
+</head>
+<style lang="scss">
+    body {
+        background-color: #E1E0C7;
+    }
+
+    .main {
+        margin-bottom: 50px;
+        .blibli{
+            display: flex;
+            flex-direction: column;
+            a{
+                margin-bottom: 12px;
+            }
+        }
+        .award {
+            .award-img {
+                object-fit: contain;
+                height: 350px;
+            }
+            /* 针对手机端进行样式调整 */
+            @media (max-width: 600px) {  /* 可以根据具体的需求调整断点 */
+                .award-img {
+                    width: 60%;
+                    height: auto;
+                }
+            }
+        }
+        .photos{
+            .photos-img{
+                object-fit: contain;
+                height: 300px;
+            }
+            .photos-img-column{
+                object-fit: contain;
+                height: 300px;
+            }
+        }
+        /* 针对手机端进行样式调整 */
+        @media (max-width: 600px) {  /* 可以根据具体的需求调整断点 */
+            .photos{
+                display: flex;
+                flex-direction: column;
+                .photos-img {
+                    max-width: 70%;
+                    height: auto;
+                    margin-bottom: 7px;
+                }
+                .photos-img-column{
+                    max-width: 50%;
+                    height: auto;
+                    margin-bottom: 7px;
+                }
+            }
+        }
+    }
+</style>
+<body>
+<div class="main">
+    <div class="award">
+        <h2>获奖证书</h2>
+        <img src="../assets/images/awards/电赛.jpg" alt="获奖证书" class="award-img">
+    </div>
+    <div class="paper">
+        <h2>提交报告</h2>
+        <a href="../assets/files/2023电赛技术报告E题.pdf" target="_blank" style="font-size: 20px">2023电子设计大赛提交技术报告</a>
+    </div>
+    <div class="blibli">
+        <h2>视频记录</h2>
+        <a href="https://www.bilibili.com/video/BV1jh4y1k7BF" target="_blank" style="font-size: 18px">2023.8.4：电赛，成功参与奖</a>
+        <a href="https://www.bilibili.com/video/BV1tu4y117fB" target="_blank" style="font-size: 18px">2023.8.5：电赛第三天结束，才完成电赛E题基础第三问，买票买票</a>
+        <a href="https://www.bilibili.com/video/BV1kh4y1F74J" target="_blank" style="font-size: 18px">2023.8.7：电赛测评完啦，E题做了前三问，第四问爆了，提高也没做，问题不大，省二，明年再战</a>
+        <a href="https://www.bilibili.com/video/BV1jh4y1k7BF" target="_blank" style="font-size: 18px">2023.8.10：电赛E题视觉部分个人想法讲解（k210bit板 ov5642）</a>
+    </div>
+    <div class="photos">
+        <h2>比赛部分过程</h2>
+        <img src="../assets/images/jingsai-photos/diansai/1.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/diansai/2.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/diansai/3.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/diansai/4.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/diansai/5.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/diansai/6.jpg" class="photos-img-column">
+        <img src="../assets/images/jingsai-photos/diansai/7.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/diansai/8.jpg" class="photos-img">
+        <img src="../assets/images/jingsai-photos/diansai/9.jpg" class="photos-img">
+    </div>
+</div>
+</body>
+</html>
