@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>浙江省气象局区块链部署</title>
+</head>
+<style lang="scss">
+    body {
+        background-color: #E1E0C7;
+    }
+
+    .main {
+        .discribe{
+            width: 65%;
+        }
+        /* 针对手机端进行样式调整 */
+        @media (max-width: 700px) {
+            /* 可以根据具体的需求调整断点 */
+            .discribe {
+                width: 90%;
+            }
+        }
+        .award {
+            .award-img {
+                object-fit: contain;
+                height: 350px;
+            }
+
+            /* 针对手机端进行样式调整 */
+            @media (max-width: 600px) {
+                /* 可以根据具体的需求调整断点 */
+                .award-img {
+                    width: 80%;
+                    height: auto;
+                }
+            }
+        }
+
+    }
+</style>
+<body>
+<div class="main">
+    <div class="discribe">
+        <h2>what did i do</h2>
+        <div style="margin-left: 22px">
+            <p>
+                大三上学期，我有幸加入北京邮电大学网络与交换国家重点实验室，作为核心成员参与了浙江省气象局监测预报系统的区块链链码的开发和部署。在项目进展期间，我承担了区块链的实验室内的部署、实地多机部署、接口设计以及技术文档的撰写工作。</p>
+            <p>在实验室老师的指导下，我阅读十余篇相关资料和文献，系统学习了区块链中的共识算法和智能合约，并自学了linux操作系统，docker容器技术和Hyperledger
+                Fabric联盟网络链等关键知识。</p>
+            <p>
+                在气象局实地部署和学习过程中，我遇到和解决了一系列难题，其中大部分是传输层和容器上出的问题。包括但不限于Go后端在gin-debug环境下遇到的接口404问题、config.yaml格式错误导致的配置初始化失败、服务器PeerServer与客户端进行TLS握手时的传输层失败问题、以及测试环境与实地环境的网络配置差异等。目前，我负责该区块链的后期运维，近期针对磁盘不够用和服务挂掉的问题，我迅速反应并找到并解决了问题。此外，在团队协作中，我与队友们共同发现、探讨并解决问题，并对部署流程、遇到的问题及其解决方法进行了详细的记录。
+            </p>
+            <p>
+                这次区块链部署的项目经历中，我较为深入地学习了区块链的运行机制和概念，积累了linux，docker，Fabric区块链的操作、部署知识，加深了我对tcp/ip中网络层的理解。在阅读和撰写技术文档的时候，提升了我文献阅读能力和学术写作技巧。同时，这次经历也让我更加理解到本地环境（测试环境）和实际运行环境中的不同，在解决这些问题的过程中我也积累了很多工程和测试经验。
+            </p>
+        </div>
+    </div>
+    <div class="paper">
+        <h2>部分学习文档</h2>
+        <li><a href="https://www.yuque.com/u39067637/kf2l8e/vybr9zfqvllni58d" target="_blank">区块链概述</a></li>
+        <li><a href="https://www.yuque.com/u39067637/kf2l8e/gaopgvkdrkbdup5w" target="_blank">Hyperledger Fabric</a></li>
+        <li> <a href="https://www.yuque.com/u39067637/kf2l8e/md338u5uxfw1c2ip" target="_blank">浙江省气象局区块链项目</a></li>
+        <li> <a href="https://www.yuque.com/u39067637/kf2l8e/sq5xf8w762s9gid5" target="_blank">解决docker磁盘满了的问题</a></li>
+    </div>
+</div>
+</body>
+</html>

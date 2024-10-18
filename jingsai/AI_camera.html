@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AI相机</title>
+</head>
+<style lang="scss">
+    body {
+        background-color: #E1E0C7;
+    }
+
+    .main {
+        .award {
+            .award-img {
+                object-fit: contain;
+                height: 600px;
+            }
+            /* 针对手机端进行样式调整 */
+            @media (max-width: 700px) {  /* 可以根据具体的需求调整断点 */
+                .award-img {
+                    width: 80%;
+                    height: auto;
+                }
+            }
+        }
+
+    }
+</style>
+<body>
+<div class="main">
+    <div class="award">
+        <h2>软著</h2>
+        <img src="../assets/images/awards/AI相机软著证书.jpg" alt="软著证书" class="award-img">
+		<h2>发明专利</h2>
+		<img src="../assets/images/awards/发明专利证书.jpg" alt="专利证书" class="award-img">
+    </div>
+</div>
+</body>
+</html>

@@ -129,7 +129,7 @@ hr {
 	display: flex;
 	justify-content: flex-end;
 	width:85%;
-	max-width: 700px;
+	max-width: 900px;
 	font-size: 10px;
 	margin-top: 40px;
 }
@@ -137,7 +137,7 @@ hr {
 	color: #fff;
 	font-weight: bold;
 	letter-spacing: 4px;
-	background: linear-gradient(to right, #4d4d4d 0, #fff 8%, #4d4d4d 16%);
+	background: linear-gradient(to right, #4d4d4d 0, #fff 10%, #4d4d4d 16%);
 	background-size: 200%;
 	background-clip: text;
 	-webkit-background-clip: text;

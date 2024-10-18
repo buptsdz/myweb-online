@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>四足机器狗</title>
+</head>
+<style lang="scss">
+    body {
+        background-color: #E1E0C7;
+    }
+
+    .main {
+        .discribe {
+            width: 65%;
+        }
+
+        /* 针对手机端进行样式调整 */
+        @media (max-width: 700px) {
+            /* 可以根据具体的需求调整断点 */
+            .discribe {
+                width: 90%;
+            }
+        }
+
+        .award {
+            .award-img {
+                object-fit: contain;
+                height: 350px;
+            }
+
+            /* 针对手机端进行样式调整 */
+            @media (max-width: 600px) {
+                /* 可以根据具体的需求调整断点 */
+                .award-img {
+                    width: 80%;
+                    height: auto;
+                }
+            }
+        }
+
+    }
+</style>
+<body>
+<div class="main">
+    <div class="discribe">
+        <h2>what did i do</h2>
+        <div style="margin-left: 22px">
+            <p>
+                大三上学期，我作为负责人主持了“基于ROS系统的四足机器狗智能追踪与环境感知研究”项目，在带领团队进行约三十余篇相关文献、资料、开源项目的研究和讨论后，我们决定采用八相步态的开源四足机器狗Spot
+                Micro Quadruped Project项目作为基石代码，进行增量开发。</p>
+            <p>
+                在原有系统的基础上，我们进行了语音唤醒系统、视觉跟随系统、表情显示模块、手柄控制系统的开发，最后整个系统成功运行，并且具有较高的稳定性。</p>
+            <p>
+                在本项目中，我先绘制了各节点的通信拓扑，后面负责机械运动的实现和语音模块的开发。我遇到的问题和难点主要在于树莓派的ubuntu镜像烧录和ROS环境配置、舵机控制、语音模块的接入上。</p>
+            <p>
+                这次项目实践经历中，我系统学习了机器人控制的ROS系统。通过配合虚拟机，逐步从一个个小的demo实践，实现节点间的通讯，并实践控制舵机的小工程，验证所学内容。还学习并掌握了许多工具，如Putty、Finalshell、FileZilla、Snowboy、百度语音
+                API等，最重要的是它锻炼了我解决工程实际问题的能力。</p>
+        </div>
+    </div>
+    <div class="paper">
+        <h2>学习和开发文档</h2>
+        <li><a href="https://www.yuque.com/u39067637/kf2l8e/fv82g7rqcb22y38h" target="_blank">总结报告文档</a></li>
+        <li><a href="https://www.bilibili.com/video/BV1S84y1d7Dp" target="_blank">视频记录</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 .button2 {
-  width: 200px;
-  height: 50px;
+  width: 120px;
+  height: 30px;
   color: #fff;
   background: #222;
   position: relative;
@@ -18,8 +18,8 @@
 
 .button2::before {
   content: "";
-  width: 208px;
-  height: 58px;
+  width: 125px;
+  height: 34px;
   position: absolute;
   top: -4px;
   left: -4px;
