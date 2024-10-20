@@ -1,0 +1,61 @@
+#modal {
+	border: none;
+	border-radius: 8px;
+	margin: 0 auto;
+	padding: 20px;
+	position: fixed;
+	top: 35px;
+	/* Adjusted top position */
+	margin-left: auto;
+	animation: slideIn 0.3s forwards;
+	width: 65%;
+	/* Set width to 90% for better mobile compatibility */
+	max-width: 300px;
+	/* Set a max-width for larger screens */
+}
+
+@keyframes slideIn {
+	from {
+		top: -100%;
+	}
+
+	to {
+		top: 35px;
+		/* End position at the adjusted top */
+	}
+}
+
+#modal .modal-header {
+	padding: 10px 0;
+	display: flex;
+	border-bottom: 1px solid #eee;
+}
+
+#modal .modal-header .modal-title {
+	flex: 1;
+	font-size: 16px;
+	color: black;
+}
+
+#modal .modal-content {
+	border-bottom: 1px solid #eee;
+	padding: 20px 0;
+	font-size: 15px;
+}
+
+#modal .modal-header .modal-close {
+	width: 50px;
+	font-size: 19px;
+	text-align: right;
+	cursor: pointer;
+}
+
+#modal::backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.5);
+	/* Increased backdrop opacity for better visibility */
+}

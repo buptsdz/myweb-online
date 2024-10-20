@@ -1,186 +1,218 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
-    <title>昭昭晚安的个人网站</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="css/index.css"/>
-    <link rel="stylesheet" type="text/css" href="css/button.css"/>
-    <link rel="stylesheet" type="text/css" href="css/p-a.css"/>
-    <link rel="stylesheet" type="text/css" href="css/a.css"/>
-    <link rel="stylesheet" type="text/css" href="css/img.css"/>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-	<script src="js/dianzanxiaoguo.js" defer></script>
-</head>
-<style lang="scss">
-    body {
-        background-color: #ffffff;
-    }
+	<head>
+		<meta charset="utf-8" />
+		<title>昭昭晚安的个人网站</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/button.css" />
+		<link rel="stylesheet" type="text/css" href="css/p-a.css" />
+		<link rel="stylesheet" type="text/css" href="css/a.css" />
+		<link rel="stylesheet" type="text/css" href="css/img.css" />
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/modal.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+		<script src="js/dianzan/dianzan_ajax.js" defer></script>
+		<script src="js/dianzan/dianzanxiaoguo.js" defer></script>
+	</head>
+	<style lang="scss">
+		body {
+			background-color: #ffffff;
+		}
 
-    .mysong {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-top: 15px;
-    }
+		.mysong {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin-top: 15px;
+		}
 
-    .toIntroduction {
-        text-align: center;
-        font-size: 20px;
-        font-weight: bold;
-    }
+		.toIntroduction {
+			text-align: center;
+			font-size: 20px;
+			font-weight: bold;
+		}
 
-	/* List container styling for two-column layout on larger screens */
-	.list-container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		margin-left: 11%;
-		margin-right: 5px;
-	}
-
-	/* Individual list item styling */
-	.list {
-		display: flex;
-		align-items: center;
-		word-break: break-word;
-		width: 48%;
-		margin-bottom: 15px;
-	}
-
-	/* One-column layout on smaller screens */
-	@media screen and (max-width: 767px) {
+		/* List container styling for two-column layout on larger screens */
 		.list-container {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			margin-left: 13px;
+			margin-left: 11%;
+			margin-right: 5px;
 		}
+
+		/* Individual list item styling */
 		.list {
-			width: 100%;
+			display: flex;
+			align-items: center;
+			word-break: break-word;
+			width: 48%;
+			margin-bottom: 15px;
 		}
-	}
-</style>
-<body style="margin:0;padding:0">
-<div class="main">
-    <div class="item">
-        <div class="info">
-            <h3>welcome to my world</h3>
-            <p>
-                <a href="./mulu/jianjie.html" target="_blank"
-                   title="this is a colorful egg">
-                    这是一个彩蛋</a>
-            </p>
-        </div>
-    </div>
-</div>
-<!-- 中间区域 -->
-<div style="
+
+		/* One-column layout on smaller screens */
+		@media screen and (max-width: 767px) {
+			.list-container {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				margin-left: 13px;
+			}
+
+			.list {
+				width: 100%;
+			}
+		}
+	</style>
+	<body style="margin:0;padding:0">
+		<!-- 弹窗预置样式 -->
+		<dialog id="modal">
+			<div class="modal-body">
+				<div class="modal-header">
+					<div class="modal-title"></div>
+					<div class="modal-close" onclick="closeModal()">&times;</div>
+				</div>
+				<div class="modal-content"></div>
+			</div>
+		</dialog>
+		<!-- 控制弹窗的js -->
+		<script src="js/modal/modal.js" defer></script> 
+		<div class="main">
+			<div class="item">
+				<div class="info">
+					<h3>welcome to my world</h3>
+					<p>
+						<a href="./mulu/jianjie.html" target="_blank" title="this is a colorful egg">
+							这是一个彩蛋</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- 中间区域 -->
+		<div style="
         max-width: 1200px;
         height: auto;
         margin: 10px auto;
-		margin-bottom: 13px;
+		margin-bottom: 25px;
         padding: 5px;
         line-height: 1.7;
         padding-bottom: 25px;
       ">
 
-    <p style="text-align: center; font-size: 30px;margin: 0">
-        ଘ(੭ˊ꒳​ˋ)੭ ​​​ Hello, friend!
-    </p>
-    <p style="text-align: center;font-size: 18px">可下滑 ◕‿◕</p>
-    <!-- 个人介绍 -->
-    <div class="toIntroduction">
-        <a href="./views/personal-introduction.html"
-           title="Click to see my introduction">
-           <b>→</b> 点此进入个人简介 <b>←</b></a>
-    </div>
-    <!--我写的诗-->
-    <div style="text-align: center;margin-top: 15px">
-        <div style="
+			<p style="text-align: center; font-size: 30px;margin: 0">
+				ଘ(੭ˊ꒳​ˋ)੭ ​​​ Hello, friend!
+			</p>
+			<p style="text-align: center;font-size: 18px">可下滑 ◕‿◕</p>
+			<!-- 个人介绍 -->
+			<div class="toIntroduction">
+				<a href="./views/personal-introduction.html" title="Click to see my introduction">
+					<b>→</b> 点此进入个人简介 <b>←</b></a>
+			</div>
+			<!--我写的诗-->
+			<div style="text-align: center;margin-top: 15px">
+				<div style="
             margin: 0 auto;
             text-align: left;
             display: inline-block;
             position: relative;
           ">
-            <button class="button2" style="color: #f1f1f1; font-size: 16px" onclick="window.location.href='./mulu/mulu1.html'">
-                <div class="shine">我写的诗</div>
-            </button>
-        </div>
-    </div>
-    <!--    我唱的歌-->
-    <div class="mysong">
-        <button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'">我唱的歌</button>
-    </div>
-	<div class="list-container">
-		<div class="list">
-			<img src="./assets/images/logo/yuque-logo.png" style="height: 28px;width:28px;margin-right: 10px;"/>
-			<p>个人文档地址：<a href="https://www.yuque.com/u39067637" target="_blank">肥肥胖胖是太阳，鼓鼓囊囊是山岗</a>
-			</p>
+					<button class="button2" style="color: #f1f1f1; font-size: 16px"
+						onclick="window.location.href='./mulu/mulu1.html'">
+						<div class="shine">我写的诗</div>
+					</button>
+				</div>
+			</div>
+			<!--    我唱的歌-->
+			<div class="mysong">
+				<button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'">我唱的歌</button>
+			</div>
+			<div class="list-container">
+				<div class="list">
+					<img src="./assets/images/logo/yuque-logo.png"
+						style="height: 28px;width:28px;margin-right: 10px;" />
+					<p>个人文档地址：<a href="https://www.yuque.com/u39067637" target="_blank">肥肥胖胖是太阳，鼓鼓囊囊是山岗</a>
+					</p>
+				</div>
+				<div class="list">
+					<img src="assets/images/logo/teamlogo.jpg" style="height: 38px;width: auto;" />
+					<p>团队公开页：<a href="https://startfire.yuque.com/r/organizations/homepage"
+							target="_blank">新一代智慧数据标注平台「星火智标」，做AI时代的“火箭推进剂”。</a>
+					</p>
+				</div>
+				<div class="list">
+					<img src="assets/images/logo/GitHub_logo.png" style="height: 35px;width: 35px;margin-right: 10px" />
+					<p>github地址：<a href="https://github.com/buptsdz" target="_blank">https://github.com/buptsdz</a></p>
+				</div>
+				<div class="list">
+					<img src="assets/images/logo/Bilibili.png" style="height: 35px;width: 35px;margin-right: 10px" />
+					<p>b站主页：<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0"
+							target="_blank">什么都会一点的邮砖生</a>
+					</p>
+				</div>
+				<div class="list">
+					<img src="assets/images/logo/qq-email-logo.png"
+						style="height: 28px;width: auto;margin-right: 10px" />
+					<p>QQ邮箱：sudezhao2016@qq.com</p>
+				</div>
+				<div class="list">
+					<img src="assets/images/logo/beiyou.png" style="height: 37px;width:37px;margin-right: 10px" />
+					<p>北邮邮箱：sdz2016714@bupt.edu.cn</p>
+				</div>
+				<div class="list">
+					<img src="assets/images/logo/飞书.png" style="height: 37px;width:37px;margin-right: 10px" />
+					<p>byrby社区：<a
+							href="https://hmtxowkxal.feishu.cn/wiki/JoNmwoVM0ivxBbk70xJco1SqnWc?from=from_copylink"
+							target="_blank">byrby（建设中）</a>
+					</p>
+				</div>
+				<div class="list">
+					<img src="assets/images/logo/xiaohongshu.png" style="height: 37px;width:37px;margin-right: 10px" />
+					<p>小红书：<a href="https://www.xiaohongshu.com/user/profile/624e74200000000010005b95"
+							target="_blank">小红书号：sdz2016714</a>
+					</p>
+				</div>
+			</div>
+			<div style="display: flex; align-items: center; justify-content: center; flex-direction: column;margin-top: 10px;">
+				<img id="like-icon" 
+				     src="assets/images/tubiao/like.png" 
+					 style="cursor: pointer; width: 45px; height: 45px;" 
+					 onclick="toggleLike('homepage', 'like-icon', 'total-likes')"
+					 >
+				<p style="margin-top: 0;margin-bottom: 20px;"><span id="total-likes"></span></p>
+			</div>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+					// 在页面加载时获取点赞状态和总点赞数
+					fetchLikeStatus('homepage', 'like-icon', 'total-likes');//第一个参数是item_id
+				});
+			</script>
 		</div>
-		<div class="list">
-			<img src="assets/images/logo/teamlogo.jpg" style="height: 38px;width: auto;"/>
-			<p>团队公开页：<a href="https://startfire.yuque.com/r/organizations/homepage" target="_blank">新一代智慧数据标注平台「星火智标」，做AI时代的“火箭推进剂”。</a>
-			</p>
+		<!-- 底部区域 -->
+		<div class="bottom-sec">
+			<div class="tobilibili">
+				<div class="tobilibili-text">
+					<div>我的b站主页</div>
+					<div style="margin-left: 5px;"><i class="fa fa-arrow-right"></i></div>
+				</div>
+				<div class="tobilibili-href">
+					<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
+						style="font-size: 14px" class="a-svg">
+						友情链接
+						<svg viewBox="0 0 75 50">
+							<path d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8" />
+						</svg>
+					</a>
+				</div>
+			</div>
+			<div class="updatelog">
+				<div class="updatelog-text">
+					<a href="./updatelog.html">更新记录</a>
+				</div>
+			</div>
 		</div>
-		<div class="list">
-			<img src="assets/images/logo/GitHub_logo.png" style="height: 35px;width: 35px;margin-right: 10px"/>
-			<p>github地址：<a href="https://github.com/buptsdz" target="_blank">https://github.com/buptsdz</a></p>
-		</div>
-		<div class="list">
-			<img src="assets/images/logo/Bilibili.png" style="height: 35px;width: 35px;margin-right: 10px"/>
-			<p>b站主页：<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank">什么都会一点的邮砖生</a>
-			</p>
-		</div>
-		<div class="list">
-			<img src="assets/images/logo/qq-email-logo.png" style="height: 28px;width: auto;margin-right: 10px"/>
-			<p>QQ邮箱：sudezhao2016@qq.com</p>
-		</div>
-		<div class="list">
-			<img src="assets/images/logo/beiyou.png" style="height: 37px;width:37px;margin-right: 10px"/>
-			<p>北邮邮箱：sdz2016714@bupt.edu.cn</p>
-		</div>
-		<div class="list">
-			<img src="assets/images/logo/飞书.png" style="height: 37px;width:37px;margin-right: 10px"/>
-			<p>byrby社区：<a href="https://hmtxowkxal.feishu.cn/wiki/JoNmwoVM0ivxBbk70xJco1SqnWc?from=from_copylink" target="_blank">byrby（建设中）</a>
-			</p>
-		</div>
-		<div class="list">
-			<img src="assets/images/logo/xiaohongshu.png" style="height: 37px;width:37px;margin-right: 10px"/>
-			<p>小红书：<a href="https://www.xiaohongshu.com/user/profile/624e74200000000010005b95" target="_blank">小红书号：sdz2016714</a>
-			</p>
-		</div>
-	</div>
-	<div style="display: flex; align-items:center; justify-content:center">
-		<button id="like-button">点赞测试</button>
-	</div>
-</div>
-<!-- 底部区域 -->
-<div class="bottom-sec">
-    <div class="tobilibili">
-        <div class="tobilibili-text">
-            <div>我的b站主页</div>
-            <div style="margin-left: 5px;"><i class="fa fa-arrow-right"></i></div>
-        </div>
-        <div class="tobilibili-href">
-            <a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
-               style="font-size: 14px" class="a-svg">
-                友情链接
-                <svg viewBox="0 0 75 50">
-                    <path d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-    <div class="updatelog">
-        <div class="updatelog-text">
-            <a href="./updatelog.html">更新记录</a>
-        </div>
-    </div>
-</div>
-</body>
+	</body>
 </html>

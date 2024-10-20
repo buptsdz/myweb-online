@@ -179,7 +179,11 @@ function createConfettiGun(x, y) {
     confettiGun = new ParticleSystem(100, createVector(x, y));
 }
 
-document.getElementById('like-button').addEventListener('click', function() {
-    console.log("点赞动画执行中...");
-    createConfettiGun(mouseX, mouseY); // 使用当前鼠标位置创建粒子系统
+document.getElementById('like-icon').addEventListener('click', function() {
+	const likeIcon = document.getElementById('like-icon');
+	// 检查当前图片的src属性来判断状态
+	if (likeIcon.src.includes('like.png')) { // 当前状态为未点赞
+		console.log("点赞动画执行中...");
+		createConfettiGun(mouseX, mouseY); // 使用当前鼠标位置创建粒子系统
+	}
 });
