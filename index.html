@@ -16,6 +16,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 		<script src="js/dianzan/dianzan_ajax.js" defer></script>
 		<script src="js/dianzan/dianzanxiaoguo.js" defer></script>
+		<script src="js/utils/homepage_time_update.js"></script>
 	</head>
 	<style lang="scss">
 		body {
@@ -67,6 +68,65 @@
 				width: 100%;
 			}
 		}
+		
+		.tooltip1,
+		.tooltip2{
+			display: flex; /* 使用 flexbox 来横向排列 */
+			align-items: center; /* 垂直居中对齐 */
+			position: relative;
+			width: fit-content;
+			padding-bottom: 10px;
+		}
+
+		.tooltip1 .responsive-img,
+		.tooltip2 .responsive-img{
+			height: 22px;
+			width: 22px;
+			margin-right: 5px; /* 在图片和文字之间添加一些间距 */
+		}
+
+		.tooltip1 .tooltiptext1, 
+		.tooltip2 .tooltiptext2 {
+			visibility: hidden;
+			width: fit-content;
+			white-space: nowrap;
+			background-color: #474747;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 3px 8px;
+			position: absolute;
+			z-index: 1;
+			bottom: 100%;
+			
+			/* 淡入 - 1秒内从 0% 到 100% 显示: */
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.tooltip1:hover .tooltiptext1,
+		.tooltip2:hover .tooltiptext2{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		@media (max-width: 500px) { /* 手机端样式 */
+			.tooltip1{
+				margin-left: 15px;
+			}
+			.tooltip1{
+				margin-left: 25px; 
+			}
+		}
+
+		@media (min-width: 501px) { /* 电脑端样式 */
+			.tooltip1{
+				margin-left: 15%;
+			}
+			.tooltip2{
+				margin-left: 5%;
+			}
+		}
 	</style>
 	<body style="margin:0;padding:0">
 		<!-- 弹窗预置样式 -->
@@ -97,10 +157,10 @@
         max-width: 1200px;
         height: auto;
         margin: 10px auto;
-		margin-bottom: 25px;
+		margin-bottom: 10px;
         padding: 5px;
         line-height: 1.7;
-        padding-bottom: 25px;
+        padding-bottom: 15px;
       ">
 
 			<p style="text-align: center; font-size: 30px;margin: 0">
@@ -190,6 +250,71 @@
 					fetchLikeStatus('homepage', 'like-icon', 'total-likes');//第一个参数是item_id
 				});
 			</script>
+			<div style="display: flex;flex-direction: row;">
+				<div class="tooltip1">
+					<img src="assets/images/tubiao/time.png" class="responsive-img">
+					<p id="bottom-time" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
+					<span class="tooltiptext1"></span>		
+					<script>
+						// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
+						const updateDate = "2024-10-21 1:48"; // 这里替换为你想要的日期
+						const updateDateObj = new Date(updateDate);
+						
+						// 获取当前日期
+						const currentDate = new Date();
+						
+						// 比较日期
+						if (currentDate.toDateString() === updateDateObj.toDateString()) {
+							// 如果是今天，显示“今天”加上更新日期
+							document.getElementById("bottom-time").innerText = `今天 ${updateDateObj.getHours()}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
+						} else {
+							// 如果不是今天，显示“MM-DD HH:mm”格式
+							const formattedDate = `${String(updateDateObj.getMonth() + 1).padStart(2, '0')}-${String(updateDateObj.getDate()).padStart(2, '0')} ${String(updateDateObj.getHours()).padStart(2, '0')}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
+							document.getElementById("bottom-time").innerText = formattedDate;
+						}
+						
+						// 更新tooltip显示的时间
+						const tooltipText = document.querySelector(".tooltiptext1");
+						tooltipText.innerText = `更新于 ${updateDate}`;
+					</script>
+				</div>
+				<div class="tooltip2">
+					<img src="assets/images/tubiao/view_count.png" class="responsive-img" style="height: 20px;width: 20px;">
+					<p id="view_count" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
+					<span class="tooltiptext2"></span>
+				</div>
+				<script>
+				    // 获取浏览量的函数
+				    async function fetchViewCount() {
+				        try {
+				            // 假设当前页面名称为 'current_page'，你可以根据实际情况替换
+				            const pageName = 'homepage'; // 替换为实际的页面名称
+				            const response = await fetch(`http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`);
+				
+				            if (!response.ok) {
+				                throw new Error('网络错误，无法获取数据');
+				            }
+				
+				            const data = await response.json();
+				            
+				            // 假设返回的数据格式为 { name: string, view_count: number }
+				            const viewCount = data.view_count;
+				
+				            // 更新浏览量显示
+				            document.getElementById("view_count").innerText = viewCount;
+				
+				            // 更新tooltip显示的时间
+				            const tooltipText = document.querySelector(".tooltiptext2");
+				            tooltipText.innerText = `网页浏览次数: ${viewCount}`;
+				        } catch (error) {
+				            console.error('获取浏览量时出错:', error);
+				            document.getElementById("view_count").innerText = '获取失败';
+				        }
+				    }
+				    // 在页面加载时调用获取浏览量的函数
+				    window.onload = fetchViewCount;
+				</script>
+			</div>
 		</div>
 		<!-- 底部区域 -->
 		<div class="bottom-sec">

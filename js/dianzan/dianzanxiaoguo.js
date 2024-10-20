@@ -160,7 +160,7 @@ function setup() {
     canvas.style('top', '0'); // 设置顶部为0
     canvas.style('left', '0'); // 设置左侧为0
     canvas.style('pointer-events', 'none'); // 使画布不响应鼠标事件
-    canvas.style('z-index', '9999'); // 设置z-index为最高
+    canvas.style('z-index', '9'); // 设置z-index为最高
     colorMode(HSB, 100); // 设置颜色模式为HSB
     noStroke(); // 不绘制边框
 }
