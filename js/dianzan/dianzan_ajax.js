@@ -11,7 +11,7 @@ function fetchLikeStatus(itemId, likeIconId, totalLikesId) {
             return response.json();
         })
         .then(data => handleResponse(data, likeIconId, totalLikesId))
-        .catch(error => showModal("请求失败：", error.message));
+        .catch(error => showModal("点赞状态请求失败：", error.message));
 }
 
 // 使用 fetch 处理用户点赞
@@ -39,7 +39,7 @@ function toggleLike(itemId, likeIconId, totalLikesId) {
         return response.json();
     })
     .then(data => handleResponse(data, likeIconId, totalLikesId))
-    .catch(error => showModal("请求失败：", error.message));
+    .catch(error => showModal("点赞失败：", error.message));
 }
 
 // 处理响应
