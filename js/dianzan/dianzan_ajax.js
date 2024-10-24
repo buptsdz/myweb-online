@@ -1,5 +1,5 @@
 let lastLikeTime = 0; // 记录上一次点赞的时间戳
-const LIKE_COOLDOWN = 1000; // 冷却时间，单位为毫秒，这里设为2秒
+const LIKE_COOLDOWN = 1500; // 冷却时间，单位为毫秒，这里设为2秒
 
 // 使用 fetch 获取点赞状态
 function fetchLikeStatus(itemId, likeIconId, totalLikesId) {
