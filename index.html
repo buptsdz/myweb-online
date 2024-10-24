@@ -242,6 +242,7 @@
 					</p>
 				</div>
 			</div>
+			<!-- 点赞和取消点赞 -->
 			<div style="display: flex; align-items: center; justify-content: center; flex-direction: column;margin-top: 10px;">
 				<img id="like-icon" 
 				     src="assets/images/tubiao/like.png" 
@@ -257,40 +258,43 @@
 				});
 			</script>
 			<div style="display: flex;flex-direction: row;">
+				<!-- 获取更新时间 -->
 				<div class="tooltip1">
 					<img src="assets/images/tubiao/time.png" class="responsive-img">
 					<p id="bottom-time" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
-					<span class="tooltiptext1"></span>		
-					<script>
-						// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
-						const updateDate = "2024-10-24 16:09:33"; // 这里替换为你想要的日期
-						const updateDateObj = new Date(updateDate);
-						
-						// 获取当前日期
-						const currentDate = new Date();
-						
-						// 比较日期
-						if (currentDate.toDateString() === updateDateObj.toDateString()) {
-							// 如果是今天，显示“今天”加上更新日期
-							document.getElementById("bottom-time").innerText = `今天 ${updateDateObj.getHours()}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
-						} else {
-							// 如果不是今天，显示“MM-DD HH:mm”格式
-							const formattedDate = `${String(updateDateObj.getMonth() + 1).padStart(2, '0')}-${String(updateDateObj.getDate()).padStart(2, '0')} ${String(updateDateObj.getHours()).padStart(2, '0')}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
-							document.getElementById("bottom-time").innerText = formattedDate;
-						}
-						
-						// 更新tooltip显示的时间
-						const tooltipText = document.querySelector(".tooltiptext1");
-						tooltipText.innerText = `更新于 ${updateDate}`;
-					</script>
+					<span class="tooltiptext1"></span>	
 				</div>
+				<!-- 更新时间的函数 -->
+				<script>
+					// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
+					const updateDate = "2024-10-24 17:10:43"; // 这里替换为你想要的日期
+					const updateDateObj = new Date(updateDate);
+					
+					// 获取当前日期
+					const currentDate = new Date();
+					
+					// 比较日期
+					if (currentDate.toDateString() === updateDateObj.toDateString()) {
+						// 如果是今天，显示“今天”加上更新日期
+						document.getElementById("bottom-time").innerText = `今天 ${updateDateObj.getHours()}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
+					} else {
+						// 如果不是今天，显示“MM-DD HH:mm”格式
+						const formattedDate = `${String(updateDateObj.getMonth() + 1).padStart(2, '0')}-${String(updateDateObj.getDate()).padStart(2, '0')} ${String(updateDateObj.getHours()).padStart(2, '0')}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
+						document.getElementById("bottom-time").innerText = formattedDate;
+					}
+					
+					// 更新tooltip显示的时间
+					const tooltipText = document.querySelector(".tooltiptext1");
+					tooltipText.innerText = `更新于 ${updateDate}`;
+				</script>
+				<!-- 显示浏览量 -->
 				<div class="tooltip2">
 					<img src="assets/images/tubiao/view_count.png" class="responsive-img" style="height: 20px;width: 20px;">
 					<p id="view_count" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
 					<span class="tooltiptext2"></span>
 				</div>
 				<script>
-				    // 获取浏览量的函数
+					// 获取浏览量的函数
 				    async function fetchViewCount() {
 				        try {
 				            // 假设当前页面名称为 'current_page'，你可以根据实际情况替换

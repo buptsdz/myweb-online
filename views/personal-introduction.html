@@ -56,6 +56,55 @@
         }
     }
 
+	.tooltip2{
+		display: flex; /* 使用 flexbox 来横向排列 */
+		align-items: center; /* 垂直居中对齐 */
+		position: relative;
+		width: fit-content;
+		margin-right: 25px;
+	}
+	
+	.tooltip2 .responsive-img{
+		height: 22px;
+		width: 22px;
+		margin-right: 5px; /* 在图片和文字之间添加一些间距 */
+	}
+	
+	.tooltip2 .tooltiptext2 {
+		visibility: hidden;
+		width: fit-content;
+		white-space: nowrap;
+		background-color: #444444;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 4px 8px;
+		position: absolute;
+		z-index: 1;
+		bottom: 105%;
+		
+		/* 淡入 - 1秒内从 0% 到 100% 显示: */
+		opacity: 0;
+		transition: opacity 1.2s;
+	}
+	
+	.tooltip2:hover .tooltiptext2{
+		visibility: visible;
+		opacity: 1;
+	}
+	
+	@media (max-width: 500px) { /* 手机端样式 */
+		.tooltip2{
+			margin-left: 25px; 
+		}
+	}
+	
+	@media (min-width: 501px) { /* 电脑端样式 */
+		.tooltip2{
+			margin-left: 5%;
+		}
+	}
+
 </style>
 <body>
 <div class="main">
@@ -70,7 +119,7 @@
     <h1>教育背景</h1>
     <div class="education-bg">
 		<p>(未来)2025-2030: &nbsp&nbsp&nbsp 复旦大学 &nbsp&nbsp&nbsp 电子信息 &nbsp&nbsp&nbsp 直博</p>
-        <p>2021-至今: &nbsp&nbsp&nbsp 北京邮电大学 &nbsp&nbsp&nbsp 通信工程英才班 &nbsp&nbsp&nbsp 本科</p>
+        <p>2021-至今: &nbsp&nbsp北京邮电大学 &nbsp&nbsp通信工程英才班 &nbsp&nbsp 本科</p>
         <p>GPA：3.81/4.00</p>
         <p>保研排名：12/513</p>
         <p>CET4：603</p>
@@ -99,15 +148,54 @@
                        href="../jingsai/diansai.html">电赛：运动目标控制与自动追踪系统(主持)</a></p>
         <p>2023.09: <a class="a-nounderline" href="../jingsai/shuxuejingsai.html">全国大学生数学竞赛三等奖(个人)</a></p>
     </div>
-	<div style="display:flex; font-size:20px; justify-content:center;">
-		<p style="
-			background: linear-gradient(90deg, orange, yellow,red, green, blue, indigo, violet);
-			-webkit-background-clip: text;
-			color: transparent;
-			font-weight: 700;
-		">
-			更新于2024.10.18
-		</p>
+	<div style="display: flex;align-items: center;justify-content: center;">
+		<!-- 显示浏览量 -->
+		<div class="tooltip2">
+			<img src="../assets/images/tubiao/view_count.png" class="responsive-img" style="height: 20px;width: 20px;">
+			<p id="view_count" style="color: #a2a1a1; margin:0; font-size: 16px;"></p>
+			<span class="tooltiptext2"></span>
+		</div>
+		<script>
+		    // 获取浏览量的函数
+		    async function fetchViewCount() {
+		        try {
+		            // 假设当前页面名称为 'current_page'，你可以根据实际情况替换
+		            const pageName = 'personal_profile'; // 替换为实际的页面名称
+		            const response = await fetch(`http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`);
+		
+		            if (!response.ok) {
+		                throw new Error('网络错误，无法获取数据');
+		            }
+		
+		            const data = await response.json();
+		            
+		            // 假设返回的数据格式为 { name: string, view_count: number }
+		            const viewCount = data.view_count;
+		
+		            // 更新浏览量显示
+		            document.getElementById("view_count").innerText = viewCount;
+		
+		            // 更新tooltip显示的时间
+		            const tooltipText = document.querySelector(".tooltiptext2");
+		            tooltipText.innerText = `页面浏览次数: ${viewCount}`;
+		        } catch (error) {
+		            console.error('获取浏览量时出错:', error);
+		            document.getElementById("view_count").innerText = '获取失败';
+		        }
+		    }
+		    // 在页面加载时调用获取浏览量的函数
+		    window.onload = fetchViewCount;
+		</script>
+		<div style="display:flex; font-size:20px; justify-content:center;">
+			<p style="
+				background: linear-gradient(90deg, orange, yellow,red, green, blue, indigo, violet);
+				-webkit-background-clip: text;
+				color: transparent;
+				font-weight: 700;
+			">
+				更新于2024.10.18
+			</p>
+		</div>
 	</div>
 </div>
 </body>
