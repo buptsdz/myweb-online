@@ -1,202 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="preload" href="../assets/images/awards/电赛.jpg" as="image">
-    <link rel="preload" href="../assets/images/awards/数学竞赛.jpg" as="image">
-    <link rel="preload" href="../assets/images/awards/大唐杯省二.jpg" as="image">
-    <link rel="preload" href="../assets/images/awards/yataibei.jpg" as="image">
-    <link rel="preload" href="../assets/images/awards/百度灵境开发者认证.jpg" as="image">
-    <title>个人简介</title>
-</head>
-<style lang="scss">
-    body {
-        background-color: #E1E0C7;
-    }
-
-    .main {
-        margin-left: 20px;
-        margin-bottom: 40px;
-
-        .basis-info {
-
-        }
-
-        .competition-experience {
-            .a-nounderline {
-                text-decoration: none;
-                color: black;
-                position: relative;
-                /* 自定义颜色 */
-            }
-
-            .a-nounderline:hover {
-                color: #ff5733;
-                /* 悬停时的颜色 */
-            }
-
-            .a-nounderline::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                bottom: -2px; /*调整下划线的位置*/
-                width: 0;
-                height: 1px;
-                background-color: gray;
-                transition: width 0.4s ease;
-            }
-
-            .a-nounderline:hover::after {
-                width: 100%;
-            }
-
-        }
-    }
-
-	.tooltip2{
-		display: flex; /* 使用 flexbox 来横向排列 */
-		align-items: center; /* 垂直居中对齐 */
-		position: relative;
-		width: fit-content;
-		margin-right: 25px;
-	}
-	
-	.tooltip2 .responsive-img{
-		height: 22px;
-		width: 22px;
-		margin-right: 5px; /* 在图片和文字之间添加一些间距 */
-	}
-	
-	.tooltip2 .tooltiptext2 {
-		visibility: hidden;
-		width: fit-content;
-		white-space: nowrap;
-		background-color: #444444;
-		color: #fff;
-		text-align: center;
-		border-radius: 6px;
-		padding: 4px 8px;
-		position: absolute;
-		z-index: 1;
-		bottom: 105%;
-		
-		/* 淡入 - 1秒内从 0% 到 100% 显示: */
-		opacity: 0;
-		transition: opacity 1.2s;
-	}
-	
-	.tooltip2:hover .tooltiptext2{
-		visibility: visible;
-		opacity: 1;
-	}
-	
-	@media (max-width: 500px) { /* 手机端样式 */
-		.tooltip2{
-			margin-left: 25px; 
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="../favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preload" href="../assets/images/awards/电赛.jpg" as="image">
+		<link rel="preload" href="../assets/images/awards/数学竞赛.jpg" as="image">
+		<link rel="preload" href="../assets/images/awards/大唐杯省二.jpg" as="image">
+		<link rel="preload" href="../assets/images/awards/yataibei.jpg" as="image">
+		<link rel="preload" href="../assets/images/awards/百度灵境开发者认证.jpg" as="image">
+		<title>个人简介</title>
+	</head>
+	<style lang="scss">
+		body {
+			background-color: #E1E0C7;
 		}
-	}
-	
-	@media (min-width: 501px) { /* 电脑端样式 */
-		.tooltip2{
-			margin-left: 5%;
+		.custom-list li{
+			margin: 0;
+			margin-bottom: 10px;
 		}
-	}
+		
+		.basis-info {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			
+			
+		}
+		
+		.basis-info p {
+			margin-top: 10px;
+			margin-bottom: 5px;
+		}
+		
+		.main {
+			margin-left: 20px;
+			margin-bottom: 40px;
 
-</style>
-<body>
-<div class="main">
-    <h1>基本信息</h1>
-    <div class="basis-info">
-        <p>姓名：苏德昭</p>
-        <p>出生年月：2002.7</p>
-        <p>籍贯：浙江省温州市</p>
-        <p>现居于：北京海淀</p>
-        <p>电话：+86-173-1571-8923</p>
-    </div>
-    <h1>教育背景</h1>
-    <div class="education-bg">
-		<p>(未来)2025-2030: &nbsp&nbsp&nbsp 复旦大学 &nbsp&nbsp&nbsp 电子信息 &nbsp&nbsp&nbsp 直博</p>
-        <p>2021-至今: &nbsp&nbsp北京邮电大学 &nbsp&nbsp通信工程英才班 &nbsp&nbsp 本科</p>
-        <p>GPA：3.81/4.00</p>
-        <p>保研排名：12/513</p>
-        <p>CET4：603</p>
-        <p>CET6：517</p>
-    </div>
-    <div style="display: flex;flex-direction: column;margin-bottom: -15px;">
-        <h1 style="margin-bottom: 0;margin-top: 10px;">竞赛和项目经历</h1>
-        <p style="color: #666666;font-size: 22px;margin-top: 0;margin-bottom: 15px;">（点击可查看详情）</p>
-    </div>
-    <div class="competition-experience">
-		<p>2024.06-至今: <a class="a-nounderline">上海人工智能实验室AI4science科研实习</a></p>
-		<p>2024.01-至今: <a class="a-nounderline" href="https://startfire.yuque.com/mos6nw/bxxn1m/lipd4ww46s7vuomk#u08dc7c93">人工智能导向的数据标注创业尝试(开发总监)</a></p>
-        <p>2023.10-2024.06: <a class="a-nounderline" href="../jingsai/AI_camera.html">大创：基于Stable diffusion模型的AI相机</a></p>
-		<p>2023.11-2024.05: <a class="a-nounderline" href="../jingsai/qukuailian.html">浙江省气象局区块链支撑分系统开发(核心成员)</a></p>
-        <p>2024.02-2024.05: <a class="a-nounderline"
-                               href="../jingsai/lingtebei.html">凌特杯通信系统设计大赛省一等奖(主持)</a></p>
-        <p>2024.02-2024.05: <a class="a-nounderline"
-                               href="../jingsai/datangbei.html">大唐杯新一代信息通信技术大赛国家三等奖，省一等奖</a></p>
-        <p>2024.03-2024.05: <a class="a-nounderline"
-                               href="../jingsai/baidulingjing.html">百度文心智能体平台开发者认证(个人)</a></p>
-        <p>2023.10-2024.01: <a class="a-nounderline"
-                               href="../jingsai/sizujiqigou.html">基于ROS系统的四足机器狗智能追踪与环境感知研究(主持)</a></p>
-        <p>2023.11: <a class="a-nounderline" href="../jingsai/yataibei.html">亚太杯数学建模竞赛S奖(主持)</a></p>
-        <p>2023.09: <a class="a-nounderline" href="../jingsai/shenzhengbei.html">深圳杯数学建模竞赛(主持)</a></p>
-        <p>2023.08: <a class="a-nounderline"
-                       href="../jingsai/diansai.html">电赛：运动目标控制与自动追踪系统(主持)</a></p>
-        <p>2023.09: <a class="a-nounderline" href="../jingsai/shuxuejingsai.html">全国大学生数学竞赛三等奖(个人)</a></p>
-    </div>
-	<div style="display: flex;align-items: center;justify-content: center;">
-		<!-- 显示浏览量 -->
-		<div class="tooltip2">
-			<img src="../assets/images/tubiao/view_count.png" class="responsive-img" style="height: 20px;width: 20px;">
-			<p id="view_count" style="color: #a2a1a1; margin:0; font-size: 16px;"></p>
-			<span class="tooltiptext2"></span>
-		</div>
-		<script>
-		    // 获取浏览量的函数
-		    async function fetchViewCount() {
-		        try {
-		            // 假设当前页面名称为 'current_page'，你可以根据实际情况替换
-		            const pageName = 'personal_profile'; // 替换为实际的页面名称
-		            const response = await fetch(`http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`);
-		
-		            if (!response.ok) {
-		                throw new Error('网络错误，无法获取数据');
-		            }
-		
-		            const data = await response.json();
-		            
-		            // 假设返回的数据格式为 { name: string, view_count: number }
-		            const viewCount = data.view_count;
-		
-		            // 更新浏览量显示
-		            document.getElementById("view_count").innerText = viewCount;
-		
-		            // 更新tooltip显示的时间
-		            const tooltipText = document.querySelector(".tooltiptext2");
-		            tooltipText.innerText = `页面浏览次数: ${viewCount}`;
-		        } catch (error) {
-		            console.error('获取浏览量时出错:', error);
-		            document.getElementById("view_count").innerText = '获取失败';
-		        }
-		    }
-		    // 在页面加载时调用获取浏览量的函数
-		    window.onload = fetchViewCount;
-		</script>
-		<div style="display:flex; font-size:20px; justify-content:center;">
-			<p style="
+			.competition-experience {
+				.a-nounderline {
+					text-decoration: none;
+					color: black;
+					position: relative;
+					/* 自定义颜色 */
+				}
+
+				.a-nounderline:hover {
+					color: #ff5733;
+					/* 悬停时的颜色 */
+				}
+
+				.a-nounderline::after {
+					content: '';
+					position: absolute;
+					left: 0;
+					bottom: -2px;
+					/*调整下划线的位置*/
+					width: 0;
+					height: 1px;
+					background-color: gray;
+					transition: width 0.4s ease;
+				}
+
+				.a-nounderline:hover::after {
+					width: 100%;
+				}
+
+			}
+		}
+
+		.tooltip2 {
+			display: flex;
+			/* 使用 flexbox 来横向排列 */
+			align-items: center;
+			/* 垂直居中对齐 */
+			position: relative;
+			width: fit-content;
+			margin-right: 25px;
+		}
+
+		.tooltip2 .responsive-img {
+			height: 22px;
+			width: 22px;
+			margin-right: 5px;
+			/* 在图片和文字之间添加一些间距 */
+		}
+
+		.tooltip2 .tooltiptext2 {
+			visibility: hidden;
+			width: fit-content;
+			white-space: nowrap;
+			background-color: #444444;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 4px 8px;
+			position: absolute;
+			z-index: 1;
+			bottom: 105%;
+
+			/* 淡入 - 1秒内从 0% 到 100% 显示: */
+			opacity: 0;
+			transition: opacity 1.2s;
+		}
+
+		.tooltip2:hover .tooltiptext2 {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		@media (max-width: 500px) {
+
+			/* 手机端样式 */
+			.tooltip2 {
+				margin-left: 25px;
+			}
+		}
+
+		@media (min-width: 501px) {
+
+			/* 电脑端样式 */
+			.tooltip2 {
+				margin-left: 5%;
+			}
+		}
+	</style>
+	<body>
+		<div class="main">
+			<div>
+				<b class="basis-info">
+					<p>Hi!我是<pp style="font-size: 18px;">Sue✨</pp>。</p>
+					<p>把「自己产品化」，打造个人品牌是一个有趣的尝试，我写下了自己的说明书。</p>
+					<p>在这里大家可以快速了解我和我做过的事情。</p>
+					<p>很高兴认识你，你今天真好看^_^</p>
+					<p>这一刻起，我们的故事即将开始~</p>
+				</b>
+			</div>
+			<h1>👀关于Sue</h1>
+			<div>
+				<ul class="custom-list">
+					<li>我是Sue，其有太阳的含义，因为我是一个e人</li>
+					<li>来自浙江温州，就是那个"江南皮革厂倒闭"的地方</li>
+					<li>🦀巨蟹座，entp，非常的p</li>
+					<li>半个科班码农，本科在北邮就读通信工程，研究生马上要去复旦读人工智能</li>
+				</ul>
+			</div>
+			<div style="display: flex;flex-direction: column;margin-bottom: -15px;">
+				<h1 style="margin-bottom: 0;margin-top: 10px;">竞赛和项目经历</h1>
+				<p style="color: #666666;font-size: 22px;margin-top: 0;margin-bottom: 15px;">（点击可查看详情）</p>
+			</div>
+			<div class="competition-experience">
+				<p>2024.06-至今: <a class="a-nounderline">上海人工智能实验室AI4science科研实习</a></p>
+				<p>2024.01-至今: <a class="a-nounderline"
+						href="https://startfire.yuque.com/mos6nw/bxxn1m/lipd4ww46s7vuomk#u08dc7c93">人工智能导向的数据标注创业尝试(开发总监)</a>
+				</p>
+				<p>2023.10-2024.06: <a class="a-nounderline" href="../jingsai/AI_camera.html">大创：基于Stable
+						diffusion模型的AI相机</a></p>
+				<p>2023.11-2024.05: <a class="a-nounderline"
+						href="../jingsai/qukuailian.html">浙江省气象局区块链支撑分系统开发(核心成员)</a></p>
+				<p>2024.02-2024.05: <a class="a-nounderline" href="../jingsai/lingtebei.html">凌特杯通信系统设计大赛省一等奖(主持)</a>
+				</p>
+				<p>2024.02-2024.05: <a class="a-nounderline"
+						href="../jingsai/datangbei.html">大唐杯新一代信息通信技术大赛国家三等奖，省一等奖</a></p>
+				<p>2024.03-2024.05: <a class="a-nounderline" href="../jingsai/baidulingjing.html">百度文心智能体平台开发者认证(个人)</a>
+				</p>
+				<p>2023.10-2024.01: <a class="a-nounderline"
+						href="../jingsai/sizujiqigou.html">基于ROS系统的四足机器狗智能追踪与环境感知研究(主持)</a></p>
+				<p>2023.11: <a class="a-nounderline" href="../jingsai/yataibei.html">亚太杯数学建模竞赛S奖(主持)</a></p>
+				<p>2023.09: <a class="a-nounderline" href="../jingsai/shenzhengbei.html">深圳杯数学建模竞赛(主持)</a></p>
+				<p>2023.08: <a class="a-nounderline" href="../jingsai/diansai.html">电赛：运动目标控制与自动追踪系统(主持)</a></p>
+				<p>2023.09: <a class="a-nounderline" href="../jingsai/shuxuejingsai.html">全国大学生数学竞赛三等奖(个人)</a></p>
+			</div>
+			<div style="display: flex;align-items: center;justify-content: center;">
+				<!-- 显示浏览量 -->
+				<div class="tooltip2">
+					<img src="../assets/images/tubiao/view_count.png" class="responsive-img"
+						style="height: 20px;width: 20px;">
+					<p id="view_count" style="color: #a2a1a1; margin:0; font-size: 16px;"></p>
+					<span class="tooltiptext2"></span>
+				</div>
+				<script>
+					// 获取浏览量的函数
+					async function fetchViewCount() {
+						try {
+							// 假设当前页面名称为 'current_page'，你可以根据实际情况替换
+							const pageName = 'personal_profile'; // 替换为实际的页面名称
+							const response = await fetch(
+								`http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`
+								);
+
+							if (!response.ok) {
+								throw new Error('网络错误，无法获取数据');
+							}
+
+							const data = await response.json();
+
+							// 假设返回的数据格式为 { name: string, view_count: number }
+							const viewCount = data.view_count;
+
+							// 更新浏览量显示
+							document.getElementById("view_count").innerText = viewCount;
+
+							// 更新tooltip显示的时间
+							const tooltipText = document.querySelector(".tooltiptext2");
+							tooltipText.innerText = `页面浏览次数: ${viewCount}`;
+						} catch (error) {
+							console.error('获取浏览量时出错:', error);
+							document.getElementById("view_count").innerText = '获取失败';
+						}
+					}
+					// 在页面加载时调用获取浏览量的函数
+					window.onload = fetchViewCount;
+				</script>
+				<div style="display:flex; font-size:20px; justify-content:center;">
+					<p style="
 				background: linear-gradient(90deg, orange, yellow,red, green, blue, indigo, violet);
 				-webkit-background-clip: text;
 				color: transparent;
 				font-weight: 700;
 			">
-				更新于2024.10.18
-			</p>
+						更新于2024.10.18
+					</p>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</body>
+	</body>
 </html>
