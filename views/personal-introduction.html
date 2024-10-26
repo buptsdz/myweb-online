@@ -14,11 +14,15 @@
 	</head>
 	<style lang="scss">
 		body {
-			background-color: #E1E0C7;
+			background-color: rgb(250,250,250);
 		}
 		.custom-list li{
 			margin: 0;
 			margin-bottom: 10px;
+		}
+		
+		.custom-list li::marker {
+		    color: rgb(20, 86, 240); /* 设置点的颜色为红色 */
 		}
 		
 		.basis-info {
@@ -26,8 +30,7 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			
-			
+			margin-top: 15px;
 		}
 		
 		.basis-info p {
@@ -111,21 +114,6 @@
 			opacity: 1;
 		}
 
-		@media (max-width: 500px) {
-
-			/* 手机端样式 */
-			.tooltip2 {
-				margin-left: 25px;
-			}
-		}
-
-		@media (min-width: 501px) {
-
-			/* 电脑端样式 */
-			.tooltip2 {
-				margin-left: 5%;
-			}
-		}
 	</style>
 	<body>
 		<div class="main">
@@ -141,19 +129,31 @@
 			<h1>👀关于Sue</h1>
 			<div>
 				<ul class="custom-list">
-					<li>我是Sue，其有太阳的含义，因为我是一个e人</li>
-					<li>来自浙江温州，就是那个"江南皮革厂倒闭"的地方</li>
-					<li>🦀巨蟹座，entp，非常的p</li>
-					<li>半个科班码农，本科在北邮就读通信工程，研究生马上要去复旦读人工智能</li>
+					<li>我是Sue，有太阳的含义，因为我是一个想要很阳光的e人</li>
+					<li>来自浙江温州，就是那个"江南皮革厂倒闭了"的地方</li>
+					<li>🦀巨蟹座，entp，t比f多，非常的p</li>
+					<li>半个科班码农，本科在北邮就读通信工程，保研将要去复旦读人工智能</li>
+					<li>目前base北京海淀（后面大概率还会回北京）</li>
+					<li>24年初尝试和朋友创业和运营团队，目前还在做，还要边学边做：
+					<b><a href="http://www.sparkflare.cn" target="_blank">Sparkflare</a></b></li>
+					<li>创业主要方向在AI、大模型、自动化数据标注、数据合成领域，欢迎与我交流这些领域的话题</li>
+					<li>正在构建一个叫<b><a href="https://hmtxowkxal.feishu.cn/wiki/space/7425866470279675906?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home" target="_blank">
+					「✨byrby」</a></b>的飞书社区，目前是在QQ群里运营，月活1000+</li>
 				</ul>
 			</div>
+			<h1>🔋正在做的事</h1>
+			<div style="margin-left: 3%;">
+				<p style="font-size: 18px;">
+					Study，Intership，We-Meida，Part-time and <a target="_blank" href="https://www.yuque.com/u39067637/atgf16">Collect ancient coins</a>
+				</p>
+			</div>
 			<div style="display: flex;flex-direction: column;margin-bottom: -15px;">
-				<h1 style="margin-bottom: 0;margin-top: 10px;">竞赛和项目经历</h1>
-				<p style="color: #666666;font-size: 22px;margin-top: 0;margin-bottom: 15px;">（点击可查看详情）</p>
+				<h1 style="margin-bottom: 0;margin-top: 10px;">😁我的一些经历</h1>
+				<p style="color: #666666;font-size: 18px; margin-top: 0;margin-bottom: 15px;">（点击可查看详情）</p>
 			</div>
 			<div class="competition-experience">
 				<p>2024.06-至今: <a class="a-nounderline">上海人工智能实验室AI4science科研实习</a></p>
-				<p>2024.01-至今: <a class="a-nounderline"
+				<p>2024.01-至今: <a class="a-nounderline" target="_blank"
 						href="https://startfire.yuque.com/mos6nw/bxxn1m/lipd4ww46s7vuomk#u08dc7c93">人工智能导向的数据标注创业尝试(开发总监)</a>
 				</p>
 				<p>2023.10-2024.06: <a class="a-nounderline" href="../jingsai/AI_camera.html">大创：基于Stable
@@ -173,7 +173,7 @@
 				<p>2023.08: <a class="a-nounderline" href="../jingsai/diansai.html">电赛：运动目标控制与自动追踪系统(主持)</a></p>
 				<p>2023.09: <a class="a-nounderline" href="../jingsai/shuxuejingsai.html">全国大学生数学竞赛三等奖(个人)</a></p>
 			</div>
-			<div style="display: flex;align-items: center;justify-content: center;">
+			<div style="display: flex; align-items: center; justify-content: center;">
 				<!-- 显示浏览量 -->
 				<div class="tooltip2">
 					<img src="../assets/images/tubiao/view_count.png" class="responsive-img"
@@ -214,15 +214,14 @@
 					// 在页面加载时调用获取浏览量的函数
 					window.onload = fetchViewCount;
 				</script>
-				<div style="display:flex; font-size:20px; justify-content:center;">
+				<div style="display:flex; font-size:20px;">
 					<p style="
 				background: linear-gradient(90deg, orange, yellow,red, green, blue, indigo, violet);
 				-webkit-background-clip: text;
 				color: transparent;
 				font-weight: 700;
 			">
-						更新于2024.10.18
-					</p>
+						更新于2024.10.26</p>
 				</div>
 			</div>
 		</div>
