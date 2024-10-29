@@ -16,7 +16,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 		<script src="js/dianzan/dianzan_ajax.js" defer></script>
 		<script src="js/dianzan/dianzanxiaoguo.js" defer></script>
-		<script src="js/utils/homepage_time_update.js"></script>
 	</head>
 	<style lang="scss">
 		body {
@@ -121,12 +120,35 @@
 
 		@media (min-width: 501px) { /* 电脑端样式 */
 			.tooltip1{
-				margin-left: 15%;
+				margin-left: 13%;
 			}
 			.tooltip2{
 				margin-left: 5%;
 			}
 		}
+		
+		.news{
+			margin-left: 11%;
+			width: 80%;
+			margin-bottom: 25px;
+		}
+		
+		.news-title{
+			font-size: 22px;
+			font-weight: 800;
+		}
+		
+		.news-list li {
+		    margin-bottom: 12px;  /* 设置下边距 */
+		}
+		
+		@media (max-width: 500px) { /* 手机端样式 */
+			.news{
+				margin-left: 3%;
+				width: 92%;
+			}
+		}
+		
 	</style>
 	<body style="margin:0;padding:0">
 		<!-- 弹窗预置样式 -->
@@ -170,7 +192,7 @@
 			<!-- 个人介绍 -->
 			<div class="toIntroduction">
 				<a href="./views/personal-introduction.html" title="Click to see my introduction">
-					<b>→</b> Sue的个人说明书 <b>←</b></a>
+					<b>→</b>🎉Sue的个人说明书 <b>←</b></a>
 			</div>
 			<!--我写的诗-->
 			<div style="text-align: center;margin-top: 15px">
@@ -186,10 +208,11 @@
 					</button>
 				</div>
 			</div>
-			<!--    我唱的歌-->
+			<!-- 我唱的歌 -->
 			<div class="mysong">
 				<button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'">我唱的歌</button>
 			</div>
+			<!-- 各种外链以及邮箱 -->
 			<div class="list-container">
 				<div class="list">
 					<img src="./assets/images/logo/yuque-logo.png"
@@ -242,6 +265,23 @@
 					<p>北邮邮箱：sdz2016714@bupt.edu.cn</p>
 				</div>
 			</div>
+			<!-- 最新资讯 -->
+			<div class="news">
+				<div>
+					<p class="news-title">📰 最新资讯</p>
+				</div>
+				<div>
+					<ul class="news-list">
+						<li>
+							<b>2024.10.29</b>：10月25日，团队代表北京大学参加<b>中国国际数字经济博览会</b>，多家企业和金融机构表示认可和合作意向，并得到360创始人周鸿祎先生的格外关注和好评。
+							<a target="_blank" href="https://hbxw.hebnews.cn/news.html?id=485458&timestamp=1730198883883">🔗报导链接</a>
+						</li>
+						<li>
+							<b>2024.10.15</b>：团队通过资格审查，在北京邮电大学西土城校区<b>成功入驻win基地</b>的创业空间，为5名同学开通了权限。
+						</li>
+					</ul>
+				</div>
+			</div>
 			<!-- 点赞和取消点赞 -->
 			<div style="display: flex; align-items: center; justify-content: center; flex-direction: column;margin-top: 10px;">
 				<img id="like-icon" 
@@ -257,7 +297,8 @@
 					fetchLikeStatus('homepage', 'like-icon', 'total-likes');//第一个参数是item_id
 				});
 			</script>
-			<div style="display: flex;flex-direction: row;">
+			<!-- 浏览量和更新时间 -->
+			<div style="display: flex;flex-direction: row;margin-bottom: 6px;">
 				<!-- 获取更新时间 -->
 				<div class="tooltip1">
 					<img src="assets/images/tubiao/time.png" class="responsive-img">
@@ -267,7 +308,7 @@
 				<!-- 更新时间的函数 -->
 				<script>
 					// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
-					const updateDate = "2024-10-26 23:36:19"; // 这里替换为你想要的日期
+					const updateDate = "2024-10-29 20:56:24"; // 这里替换为你想要的日期
 					const updateDateObj = new Date(updateDate);
 					
 					// 获取当前日期
