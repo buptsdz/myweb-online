@@ -14,17 +14,27 @@
 	</head>
 	<style lang="scss">
 		body {
-			background-color: rgb(250,250,250);
+			background-color: rgb(250, 250, 250);
 		}
-		.custom-list li{
+
+		.custom-list li {
 			margin: 0;
 			margin-bottom: 10px;
+			margin-left: 10px;
+		}
+		
+		@media (max-width: 500px) {
+			/* 手机端样式 */
+			.custom-list li {
+				margin-left: -5px;
+			}
 		}
 		
 		.custom-list li::marker {
-		    color: rgb(20, 86, 240); /* 设置点的颜色为红色 */
+			color: rgb(20, 86, 240);
+			/* 设置点的颜色为红色 */
 		}
-		
+
 		.basis-info {
 			display: flex;
 			flex-direction: column;
@@ -32,48 +42,58 @@
 			align-items: center;
 			margin-top: 15px;
 		}
-		
+
 		.basis-info p {
 			margin-top: 10px;
 			margin-bottom: 5px;
 		}
-		
+
 		.main {
 			margin-left: 20px;
 			margin-bottom: 40px;
-
-			.competition-experience {
-				.a-nounderline {
-					text-decoration: none;
-					color: black;
-					position: relative;
-					/* 自定义颜色 */
-				}
-
-				.a-nounderline:hover {
-					color: #ff5733;
-					/* 悬停时的颜色 */
-				}
-
-				.a-nounderline::after {
-					content: '';
-					position: absolute;
-					left: 0;
-					bottom: -2px;
-					/*调整下划线的位置*/
-					width: 0;
-					height: 1px;
-					background-color: gray;
-					transition: width 0.4s ease;
-				}
-
-				.a-nounderline:hover::after {
-					width: 100%;
-				}
-
+		}
+		
+		@media (max-width: 500px) {
+			/* 手机端样式 */
+			.main {
+				margin-left: 5px;
+			}
+			.main h1{
+				margin-left: -5px;
 			}
 		}
 
+		.main .competition-experience {
+			margin-left: 2%;
+			.a-nounderline {
+				text-decoration: none;
+				color: black;
+				position: relative;
+				/* 自定义颜色 */
+			}
+
+			.a-nounderline:hover {
+				color: #ff5733;
+				/* 悬停时的颜色 */
+			}
+
+			.a-nounderline::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -2px;
+				/*调整下划线的位置*/
+				width: 0;
+				height: 1px;
+				background-color: gray;
+				transition: width 0.4s ease;
+			}
+
+			.a-nounderline:hover::after {
+				width: 100%;
+			}
+		}
+		
 		.tooltip2 {
 			display: flex;
 			/* 使用 flexbox 来横向排列 */
@@ -113,20 +133,27 @@
 			visibility: visible;
 			opacity: 1;
 		}
-		
-		.wx_qrcode{
+
+		.wx_qrcode {
 			height: 550px;
 			width: 404px;
 			align-self: center;
 		}
-		
-		@media (max-width: 500px) { /* 手机端样式 */
-			.wx_qrcode{
+
+		@media (max-width: 500px) {
+			/* 手机端样式 */
+			.wx_qrcode {
 				width: 90%;
 				height: auto;
 			}
+			.connection p{
+				margin-left: 10px;
+			}
 		}
-
+		.connection p{
+			margin-left: 2%;
+		}
+	}	
 	</style>
 	<body>
 		<div class="main">
@@ -142,22 +169,26 @@
 			<h1>👀关于Sue</h1>
 			<div>
 				<ul class="custom-list">
-					<li>我是Sue，有太阳的含义，因为我是一个想要很阳光的e人</li>
+					<li>我是Sue，这个词有太阳的含义，因为我是一个比较阳光的人</li>
 					<li>来自浙江温州，就是那个"江南皮革厂倒闭了"的地方</li>
 					<li>🦀巨蟹座，entp，t比f多，非常的p</li>
 					<li>半个科班码农，本科在北邮就读通信工程，保研将要去复旦读人工智能</li>
 					<li>目前base北京海淀（后面大概率还会回北京）</li>
 					<li>24年初尝试和朋友创业和运营团队，目前在做技术部分，还要边学边做：
-					<b><a href="http://www.sparkflare.cn" target="_blank">Sparkflare</a></b></li>
+						<b><a href="http://www.sparkflare.cn" target="_blank">Sparkflare</a></b>
+					</li>
 					<li>创业主要方向在AI、大模型、自动化数据标注、数据合成领域，欢迎与我交流这些领域的话题</li>
-					<li>正在构建一个叫<b><a href="https://hmtxowkxal.feishu.cn/wiki/space/7425866470279675906?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home" target="_blank">
-					「✨byrby」</a></b>的飞书社区，目前是在QQ群里运营，月活1000+</li>
+					<li>正在构建一个叫<b><a
+								href="https://hmtxowkxal.feishu.cn/wiki/space/7425866470279675906?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home"
+								target="_blank">
+								「✨byrby」</a></b>的飞书社区，目前是在QQ群里运营，月活1000+</li>
 				</ul>
 			</div>
 			<h1>🔋正在做的事</h1>
 			<div style="margin-left: 3%;">
 				<p style="font-size: 18px;">
-					Study，Intership，We-Meida，Part-time and <a target="_blank" href="https://www.yuque.com/u39067637/atgf16">Collect ancient coins</a>
+					Study，Intership，We-Meida，Part-time and <a target="_blank"
+						href="https://www.yuque.com/u39067637/atgf16">Collect ancient coins</a>
 				</p>
 			</div>
 			<div style="display: flex;flex-direction: column;margin-bottom: -15px;">
@@ -186,11 +217,11 @@
 				<p>2023.08: <a class="a-nounderline" href="../jingsai/diansai.html">电赛：运动目标控制与自动追踪系统(主持)</a></p>
 				<p>2023.09: <a class="a-nounderline" href="../jingsai/shuxuejingsai.html">全国大学生数学竞赛三等奖(个人)</a></p>
 			</div>
-			<h1>🔗与我产生连接</h1>
-			<div style="display: flex;flex-direction: column;margin-bottom: 15px;">
-				<p>🔎位置：目前常驻<b>北京邮电大学海淀校区</b>学十楼，欢迎与我线下链接</p>
-				<p>🗨️微信：sdz2016714️</p>
-				<img class="wx_qrcode" src="../assets/images/profilePicture/weixinerweima.jpg" alt="微信二维码"/>
+			<h1 style="margin-bottom: 8px;margin-top: 20px;">🔗与我产生连接</h1>
+			<div class="connection" style="display: flex;flex-direction: column;margin-bottom: 15px;">
+				<p style="margin-top: 12px;margin-bottom: 0;">🔎位置：目前常驻<b>北京邮电大学海淀校区</b>，欢迎与我线下链接</p>
+				<p style="margin-top: 10px">🗨️微信：sdz2016714️</p>
+				<img class="wx_qrcode" src="../assets/images/profilePicture/weixinerweima.jpg" alt="微信二维码" />
 			</div>
 			<!-- 显示浏览量 -->
 			<div style="display: flex; align-items: center; justify-content: center;">
@@ -208,7 +239,7 @@
 							const pageName = 'personal_profile'; // 替换为实际的页面名称
 							const response = await fetch(
 								`http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`
-								);
+							);
 
 							if (!response.ok) {
 								throw new Error('网络错误，无法获取数据');
@@ -240,7 +271,7 @@
 				color: transparent;
 				font-weight: 700;
 			">
-						更新于2024.10.29</p>
+						更新于2024.10.30</p>
 				</div>
 			</div>
 		</div>
