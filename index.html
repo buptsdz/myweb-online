@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-		<script src="js/dianzan/dianzan_ajax.js" defer></script>
+		<script src="js/fetch.js" defer></script>
 		<script src="js/dianzan/dianzanxiaoguo.js" defer></script>
 	</head>
 	<style lang="scss">
@@ -100,7 +100,7 @@
 			
 			/* 淡入 - 1秒内从 0% 到 100% 显示: */
 			opacity: 0;
-			transition: opacity 1s;
+			transition: opacity 0.5s;
 		}
 
 		.tooltip1:hover .tooltiptext1,
@@ -191,7 +191,7 @@
 			<p style="text-align: center;font-size: 18px">可下滑 ◕‿◕</p>
 			<!-- 个人介绍 -->
 			<div class="toIntroduction">
-				<a href="./views/personal-introduction.html" title="Click to see my introduction">
+				<a href="./views/personal-introduction.html" title="Click to see my introduction" onclick="trackClick('sue的个人说明书')">
 					<b>→</b>🎉Sue的个人说明书 <b>←</b></a>
 			</div>
 			<!--我写的诗-->
@@ -204,55 +204,55 @@
           ">
 					<button class="button2" style="color: #f1f1f1; font-size: 16px"
 						onclick="window.location.href='./mulu/mulu1.html'">
-						<div class="shine">我写的诗</div>
+						<div class="shine" onclick="trackClick('我写的诗')">我写的诗</div>
 					</button>
 				</div>
 			</div>
 			<!-- 我唱的歌 -->
 			<div class="mysong">
-				<button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'">我唱的歌</button>
+				<button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'"><div onclick="trackClick('我唱的歌')">我唱的歌</div></button>
 			</div>
 			<!-- 各种外链以及邮箱 -->
 			<div class="list-container">
 				<div class="list">
 					<img src="./assets/images/logo/yuque-logo.png"
 						style="height: 32px;width:32px;margin-right: 10px;" />
-					<p><b style="color: rgb(49, 204, 121);">语雀文档地址</b>：<a href="https://www.yuque.com/u39067637" target="_blank">肥肥胖胖是太阳，鼓鼓囊囊是山岗</a>
+					<p><b style="color: rgb(49, 204, 121);">语雀文档地址</b>：<a href="https://www.yuque.com/u39067637" target="_blank" onclick="trackClick('yuque')">肥肥胖胖是太阳，鼓鼓囊囊是山岗</a>
 					</p>
 				</div>
 				<div class="list">
 					<img src="assets/images/logo/GitHub_logo.png" style="height: 37px;width: 37px;margin-right: 10px" />
-					<p><b>github地址</b>：<a href="https://github.com/buptsdz" target="_blank">https://github.com/buptsdz</a></p>
+					<p><b>github地址</b>：<a href="https://github.com/buptsdz" target="_blank" onclick="trackClick('github')">https://github.com/buptsdz</a></p>
 				</div>
 				<div class="list">
 					<img src="assets/images/logo/xiaohongshu.png" style="height: 37px;width:37px;margin-right: 10px" />
 					<p><b style="color: rgb(255, 36, 66);">小红书号</b>：<a href="https://www.xiaohongshu.com/user/profile/624e74200000000010005b95"
-							target="_blank">sdz2016714（同微信号）</a>
+							target="_blank" onclick="trackClick('xiaohongshu')">sdz2016714（同微信号）</a>
 					</p>
 				</div>
 				<div class="list">
 					<img src="assets/images/logo/Bilibili.png" style="height: 37px;width: 37px;margin-right: 10px" />
 					<p><b style="color: rgb(255, 80, 155);">b站主页</b>：<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0"
-							target="_blank">什么都会一点的邮砖生</a>
+							target="_blank" onclick="trackClick('bilibili')">什么都会一点的邮砖生</a>
 					</p>
 				</div>
 				<div class="list">
 					<img src="assets/images/logo/飞书.png" style="height: 37px;width:37px;margin-right: 10px" />
 					<p><b style="color: rgb(0, 127, 255);">byrby社区</b>：<a
 							href="https://hmtxowkxal.feishu.cn/wiki/space/7425866470279675906?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home"
-							target="_blank">byrby（建设中，欢迎来看）</a>
+							target="_blank" onclick="trackClick('feishu-byrby')">byrby（建设中，欢迎来看）</a>
 					</p>
 				</div>
 				<div class="list">
 					<img src="assets/images/logo/tingquan.png" style="height: 41px;width:41px;margin-right: 10px" />
 					<p><b style="color: rgb(100, 100, 98);">我的爱好</b>：<a href="https://www.yuque.com/u39067637/atgf16"
-							target="_blank">听泉（古钱币）</a>
+							target="_blank" onclick="trackClick('yuque-tingquan')">听泉（古钱币）</a>
 					</p>
 				</div>
 				<div class="list">
 					<img src="assets/images/logo/teamlogo.jpg" style="height: 40px;width: auto;" />
 					<p><b style="color: rgb(227, 52, 43);">sparkflare团队</b>：<a href="http://www.sparkflare.cn"
-							target="_blank">新一代智慧数据标注平台「星火智标」，做AI时代的“火箭推进剂”。</a>
+							target="_blank" onclick="trackClick('sparkflare-homepage')">新一代智慧数据标注平台「星火智标」，做AI时代的“火箭推进剂”。</a>
 					</p>
 				</div>
 				<div class="list">
@@ -274,11 +274,11 @@
 					<ul class="news-list">
 						<li>
 							<b>2024.11.7</b>：11月4日，团队收到了来自<b>中国国际数字经济博览会</b>组委会的感谢信。
-							<a target="_blank" href="https://www.yuque.com/u39067637/gwicud/odpsq00k1lr3oxqz?singleDoc">🔗文章链接</a>
+							<a target="_blank" href="https://www.yuque.com/u39067637/gwicud/odpsq00k1lr3oxqz?singleDoc" onclick="trackClick('数字博览会感谢信')">🔗文章链接</a>
 						</li>
 						<li>
 							<b>2024.10.29</b>：10月25日，团队代表<b>北京大学</b>参加<b>中国国际数字经济博览会</b>，多家企业和金融机构表示认可和合作意向，并得到360创始人<b>周鸿祎</b>先生的格外关注和好评。
-							<a target="_blank" href="https://hbxw.hebnews.cn/news.html?id=485458&timestamp=1730198883883">🔗报导链接</a>
+							<a target="_blank" href="https://hbxw.hebnews.cn/news.html?id=485458&timestamp=1730198883883" onclick="trackClick('数字博览会报导链接')">🔗报导链接</a>
 						</li>
 						<li>
 							<b>2024.10.22</b>：团队项目"数据先锋"在大学生互联网加创新创业大赛<b>国赛中获得铜奖</b>。
@@ -315,7 +315,7 @@
 				<!-- 更新时间的函数 -->
 				<script>
 					// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
-					const updateDate = "2024-11-7 01:12:46"; // 这里替换为你想要的日期
+					const updateDate = "2024-11-9 03:47:33"; // 这里替换为你想要的日期
 					const updateDateObj = new Date(updateDate);
 					
 					// 获取当前日期
@@ -383,7 +383,7 @@
 				</div>
 				<div class="tobilibili-href">
 					<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
-						style="font-size: 14px" class="a-svg">
+						style="font-size: 14px" class="a-svg" onclick="trackClick('bilibili')">
 						友情链接
 						<svg viewBox="0 0 75 50">
 							<path d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8" />
@@ -393,7 +393,7 @@
 			</div>
 			<div class="updatelog">
 				<div class="updatelog-text">
-					<a href="./updatelog.html">更新记录</a>
+					<a href="./updatelog.html" onclick="trackClick('更新记录')">更新记录</a>
 				</div>
 			</div>
 		</div>
