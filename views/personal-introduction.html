@@ -10,6 +10,7 @@
 		<link rel="preload" href="../assets/images/awards/大唐杯省二.jpg" as="image">
 		<link rel="preload" href="../assets/images/awards/yataibei.jpg" as="image">
 		<link rel="preload" href="../assets/images/awards/百度灵境开发者认证.jpg" as="image">
+		<script src="../js/button/button-3D.js" defer></script>
 		<title>个人简介</title>
 	</head>
 	<style lang="scss">
@@ -22,14 +23,15 @@
 			margin-bottom: 10px;
 			margin-left: 10px;
 		}
-		
+
 		@media (max-width: 500px) {
+
 			/* 手机端样式 */
 			.custom-list li {
 				margin-left: -5px;
 			}
 		}
-		
+
 		.custom-list li::marker {
 			color: rgb(20, 86, 240);
 			/* 设置点的颜色为红色 */
@@ -52,19 +54,22 @@
 			margin-left: 20px;
 			margin-bottom: 40px;
 		}
-		
+
 		@media (max-width: 500px) {
+
 			/* 手机端样式 */
 			.main {
 				margin-left: 5px;
 			}
-			.main h1{
+
+			.main h1 {
 				margin-left: -5px;
 			}
 		}
 
 		.main .competition-experience {
 			margin-left: 2%;
+
 			.a-nounderline {
 				text-decoration: none;
 				color: black;
@@ -93,7 +98,7 @@
 				width: 100%;
 			}
 		}
-		
+
 		.tooltip2 {
 			display: flex;
 			/* 使用 flexbox 来横向排列 */
@@ -141,19 +146,64 @@
 		}
 
 		@media (max-width: 500px) {
+
 			/* 手机端样式 */
 			.wx_qrcode {
 				width: 90%;
 				height: auto;
 			}
-			.connection p{
+
+			.connection p {
 				margin-left: 10px;
 			}
 		}
-		.connection p{
+
+		.connection p {
 			margin-left: 2%;
 		}
-	}	
+
+		.button-3d {
+			position: relative;
+			display: inline-block;
+			padding: 1.2em 2em;
+			text-decoration: none;
+			text-align: center;
+			cursor: pointer;
+			user-select: none;
+			color: white;
+		}
+
+		.button-3d::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background: linear-gradient(135deg, #6e8efb, #a777e3);
+			border-radius: 10px;
+			transition: box-shadow .5s ease, transform .2s ease;
+			will-change: transform;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+			transform:
+				translateY(var(--ty, 0)) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) translateZ(var(--tz, -12px));
+		}
+
+		.button-3d:hover::before {
+			box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+		}
+
+		.button-3d::after {
+			position: relative;
+			display: inline-block;
+			content: attr(data-title);
+			transition: transform .2s ease;
+			font-weight: bold;
+			letter-spacing: .01em;
+			will-change: transform;
+			transform:
+				translateY(var(--ty, 0)) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+		}
 	</style>
 	<body>
 		<div class="main">
@@ -165,6 +215,9 @@
 					<p>很高兴认识你，你今天真好看^_^</p>
 					<p>这一刻起，我们的故事即将开始~</p>
 				</b>
+			</div>
+			<div style="display: flex;align-items: center;justify-content:center;margin-top: 15px;">
+				<a href="../index.html" class="button-3d" data-title="️去Sue的主页↗️↗️"></a>
 			</div>
 			<h1>👀关于Sue</h1>
 			<div>
@@ -271,7 +324,7 @@
 				color: transparent;
 				font-weight: 700;
 			">
-						更新于2024.10.30</p>
+						更新于2024.11.17</p>
 				</div>
 			</div>
 		</div>

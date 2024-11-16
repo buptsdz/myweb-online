@@ -1,181 +1,194 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Sue的个人网站</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" type="text/css" href="css/button.css" />
-		<link rel="stylesheet" type="text/css" href="css/p-a.css" />
-		<link rel="stylesheet" type="text/css" href="css/a.css" />
-		<link rel="stylesheet" type="text/css" href="css/img.css" />
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="css/modal.css" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-		<script src="js/fetch.js" defer></script>
-		<script src="js/dianzan/dianzanxiaoguo.js" defer></script>
-	</head>
-	<style lang="scss">
-		body {
-			background-color: #ffffff;
-		}
 
-		.mysong {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-			margin-top: 15px;
-		}
+<head>
+	<meta charset="utf-8" />
+	<title>Sue的个人网站</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/button.css" />
+	<link rel="stylesheet" type="text/css" href="css/p-a.css" />
+	<link rel="stylesheet" type="text/css" href="css/a.css" />
+	<link rel="stylesheet" type="text/css" href="css/img.css" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/modal.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+	<script src="js/fetch.js" defer></script>
+	<script src="js/dianzan/dianzanxiaoguo.js" defer></script>
+</head>
+<style lang="scss">
+	body {
+		background-color: #ffffff;
+	}
 
-		.toIntroduction {
-			text-align: center;
-			font-size: 22px;
-			font-weight: bold;
-		}
+	.mysong {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-top: 15px;
+	}
 
-		/* List container styling for two-column layout on larger screens */
+	.toIntroduction {
+		text-align: center;
+		font-size: 22px;
+		font-weight: bold;
+	}
+
+	/* List container styling for two-column layout on larger screens */
+	.list-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-left: 11%;
+		margin-right: 5px;
+	}
+
+	/* Individual list item styling */
+	.list {
+		display: flex;
+		align-items: center;
+		word-break: break-word;
+		width: 48%;
+		margin-bottom: 15px;
+	}
+
+	/* One-column layout on smaller screens */
+	@media screen and (max-width: 767px) {
 		.list-container {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			margin-left: 11%;
-			margin-right: 5px;
+			margin-left: 13px;
 		}
 
-		/* Individual list item styling */
 		.list {
-			display: flex;
-			align-items: center;
-			word-break: break-word;
-			width: 48%;
-			margin-bottom: 15px;
+			width: 100%;
+		}
+	}
+
+	.tooltip1,
+	.tooltip2 {
+		display: flex;
+		/* 使用 flexbox 来横向排列 */
+		align-items: center;
+		/* 垂直居中对齐 */
+		position: relative;
+		width: fit-content;
+		padding-bottom: 10px;
+	}
+
+	.tooltip1 .responsive-img,
+	.tooltip2 .responsive-img {
+		height: 22px;
+		width: 22px;
+		margin-right: 5px;
+		/* 在图片和文字之间添加一些间距 */
+	}
+
+	.tooltip1 .tooltiptext1,
+	.tooltip2 .tooltiptext2 {
+		visibility: hidden;
+		width: fit-content;
+		white-space: nowrap;
+		background-color: #474747;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 3px 8px;
+		position: absolute;
+		z-index: 1;
+		bottom: 100%;
+
+		/* 淡入 - 1秒内从 0% 到 100% 显示: */
+		opacity: 0;
+		transition: opacity 0.5s;
+	}
+
+	.tooltip1:hover .tooltiptext1,
+	.tooltip2:hover .tooltiptext2 {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	@media (max-width: 500px) {
+
+		/* 手机端样式 */
+		.tooltip1 {
+			margin-left: 15px;
 		}
 
-		/* One-column layout on smaller screens */
-		@media screen and (max-width: 767px) {
-			.list-container {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				margin-left: 13px;
-			}
-
-			.list {
-				width: 100%;
-			}
+		.tooltip2 {
+			margin-left: 25px;
 		}
-		
-		.tooltip1,
-		.tooltip2{
-			display: flex; /* 使用 flexbox 来横向排列 */
-			align-items: center; /* 垂直居中对齐 */
-			position: relative;
-			width: fit-content;
-			padding-bottom: 10px;
+	}
+
+	@media (min-width: 501px) {
+
+		/* 电脑端样式 */
+		.tooltip1 {
+			margin-left: 13%;
 		}
 
-		.tooltip1 .responsive-img,
-		.tooltip2 .responsive-img{
-			height: 22px;
-			width: 22px;
-			margin-right: 5px; /* 在图片和文字之间添加一些间距 */
+		.tooltip2 {
+			margin-left: 5%;
 		}
+	}
 
-		.tooltip1 .tooltiptext1, 
-		.tooltip2 .tooltiptext2 {
-			visibility: hidden;
-			width: fit-content;
-			white-space: nowrap;
-			background-color: #474747;
-			color: #fff;
-			text-align: center;
-			border-radius: 6px;
-			padding: 3px 8px;
-			position: absolute;
-			z-index: 1;
-			bottom: 100%;
-			
-			/* 淡入 - 1秒内从 0% 到 100% 显示: */
-			opacity: 0;
-			transition: opacity 0.5s;
-		}
+	.news {
+		margin-left: 11%;
+		width: 80%;
+		margin-bottom: 25px;
+	}
 
-		.tooltip1:hover .tooltiptext1,
-		.tooltip2:hover .tooltiptext2{
-			visibility: visible;
-			opacity: 1;
-		}
+	.news-title {
+		font-size: 22px;
+		font-weight: 800;
+	}
 
-		@media (max-width: 500px) { /* 手机端样式 */
-			.tooltip1{
-				margin-left: 15px;
-			}
-			.tooltip2{
-				margin-left: 25px; 
-			}
-		}
+	.news-list li {
+		margin-bottom: 12px;
+		/* 设置下边距 */
+	}
 
-		@media (min-width: 501px) { /* 电脑端样式 */
-			.tooltip1{
-				margin-left: 13%;
-			}
-			.tooltip2{
-				margin-left: 5%;
-			}
+	@media (max-width: 500px) {
+
+		/* 手机端样式 */
+		.news {
+			margin-left: 3%;
+			width: 92%;
 		}
-		
-		.news{
-			margin-left: 11%;
-			width: 80%;
-			margin-bottom: 25px;
-		}
-		
-		.news-title{
-			font-size: 22px;
-			font-weight: 800;
-		}
-		
-		.news-list li {
-		    margin-bottom: 12px;  /* 设置下边距 */
-		}
-		
-		@media (max-width: 500px) { /* 手机端样式 */
-			.news{
-				margin-left: 3%;
-				width: 92%;
-			}
-		}
-		
-	</style>
-	<body style="margin:0;padding:0">
-		<!-- 弹窗预置样式 -->
-		<dialog id="modal">
-			<div class="modal-body">
-				<div class="modal-header">
-					<div class="modal-title"></div>
-					<div class="modal-close" onclick="closeModal()">&times;</div>
-				</div>
-				<div class="modal-content"></div>
+	}
+</style>
+
+<body style="margin:0;padding:0">
+	<!-- 弹窗预置样式 -->
+	<dialog id="modal">
+		<div class="modal-body">
+			<div class="modal-header">
+				<div class="modal-title"></div>
+				<div class="modal-close" onclick="closeModal()">&times;</div>
 			</div>
-		</dialog>
-		<!-- 控制弹窗的js -->
-		<script src="js/modal/modal.js" defer></script> 
-		<div class="main">
-			<div class="item">
-				<div class="info">
-					<h3>welcome to my world</h3>
-					<p>
-						<a href="./mulu/jianjie.html" target="_blank" title="this is a colorful egg">
-							这是一个彩蛋</a>
-					</p>
-				</div>
+			<div class="modal-content"></div>
+		</div>
+	</dialog>
+	<!-- 控制弹窗的js -->
+	<script src="js/modal/modal.js" defer></script>
+	<div class="main">
+		<div class="item">
+			<div class="info">
+				<h3>welcome to my world</h3>
+				<p>
+					<a href="./mulu/jianjie.html" target="_blank" title="this is a colorful egg">
+						这是一个彩蛋</a>
+				</p>
 			</div>
 		</div>
-		<!-- 中间区域 -->
-		<div style="
+	</div>
+	<!-- 中间区域 -->
+	<div style="
         max-width: 1200px;
         height: auto;
         margin: 10px auto;
@@ -185,217 +198,223 @@
         padding-bottom: 15px;
       ">
 
-			<p style="text-align: center; font-size: 30px;margin: 0">
-				ଘ(੭ˊ꒳​ˋ)੭ ​​​ Hello, friend!
-			</p>
-			<p style="text-align: center;font-size: 18px">可下滑 ◕‿◕</p>
-			<!-- 个人介绍 -->
-			<div class="toIntroduction">
-				<a href="./views/personal-introduction.html" title="Click to see my introduction" onclick="trackClick('sue的个人说明书')">
-					<b>→</b>🎉Sue的个人说明书 <b>←</b></a>
-			</div>
-			<!--我写的诗-->
-			<div style="text-align: center;margin-top: 15px">
-				<div style="
+		<p style="text-align: center; font-size: 30px;margin: 0">
+			ଘ(੭ˊ꒳​ˋ)੭ ​​​ Hello, friend!
+		</p>
+		<p style="text-align: center;font-size: 18px">可下滑 ◕‿◕</p>
+		<!-- 个人介绍 -->
+		<div class="toIntroduction">
+			<a href="./views/personal-introduction.html" title="Click to see my introduction"
+				onclick="trackClick('sue的个人说明书')">
+				<b>→</b>🎉Sue的个人说明书 <b>←</b></a>
+		</div>
+		<!--我写的诗-->
+		<div style="text-align: center;margin-top: 15px">
+			<div style="
             margin: 0 auto;
             text-align: left;
             display: inline-block;
             position: relative;
           ">
-					<button class="button2" style="color: #f1f1f1; font-size: 16px"
-						onclick="window.location.href='./mulu/mulu1.html'">
-						<div class="shine" onclick="trackClick('我写的诗')">我写的诗</div>
-					</button>
-				</div>
+				<button class="button2" style="color: #f1f1f1; font-size: 16px"
+					onclick="window.location.href='./mulu/mulu1.html'">
+					<div class="shine" onclick="trackClick('我写的诗')">我写的诗</div>
+				</button>
 			</div>
-			<!-- 我唱的歌 -->
-			<div class="mysong">
-				<button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'"><div onclick="trackClick('我唱的歌')">我唱的歌</div></button>
+		</div>
+		<!-- 我唱的歌 -->
+		<div class="mysong">
+			<button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'">
+				<div onclick="trackClick('我唱的歌')">我唱的歌</div>
+			</button>
+		</div>
+		<!-- 各种外链以及邮箱 -->
+		<div class="list-container">
+			<div class="list">
+				<img src="./assets/images/logo/yuque-logo.png" style="height: 32px;width:32px;margin-right: 10px;" />
+				<p><b style="color: rgb(49, 204, 121);">语雀文档地址</b>：<a href="https://www.yuque.com/u39067637"
+						target="_blank" onclick="trackClick('yuque')">肥肥胖胖是太阳，鼓鼓囊囊是山岗</a>
+				</p>
 			</div>
-			<!-- 各种外链以及邮箱 -->
-			<div class="list-container">
-				<div class="list">
-					<img src="./assets/images/logo/yuque-logo.png"
-						style="height: 32px;width:32px;margin-right: 10px;" />
-					<p><b style="color: rgb(49, 204, 121);">语雀文档地址</b>：<a href="https://www.yuque.com/u39067637" target="_blank" onclick="trackClick('yuque')">肥肥胖胖是太阳，鼓鼓囊囊是山岗</a>
-					</p>
-				</div>
-				<div class="list">
-					<img src="assets/images/logo/GitHub_logo.png" style="height: 37px;width: 37px;margin-right: 10px" />
-					<p><b>github地址</b>：<a href="https://github.com/buptsdz" target="_blank" onclick="trackClick('github')">https://github.com/buptsdz</a></p>
-				</div>
-				<div class="list">
-					<img src="assets/images/logo/xiaohongshu.png" style="height: 37px;width:37px;margin-right: 10px" />
-					<p><b style="color: rgb(255, 36, 66);">小红书号</b>：<a href="https://www.xiaohongshu.com/user/profile/624e74200000000010005b95"
-							target="_blank" onclick="trackClick('xiaohongshu')">sdz2016714（同微信号）</a>
-					</p>
-				</div>
-				<div class="list">
-					<img src="assets/images/logo/Bilibili.png" style="height: 37px;width: 37px;margin-right: 10px" />
-					<p><b style="color: rgb(255, 80, 155);">b站主页</b>：<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0"
-							target="_blank" onclick="trackClick('bilibili')">什么都会一点的邮砖生</a>
-					</p>
-				</div>
-				<div class="list">
-					<img src="assets/images/logo/飞书.png" style="height: 37px;width:37px;margin-right: 10px" />
-					<p><b style="color: rgb(0, 127, 255);">byrby社区</b>：<a
-							href="https://hmtxowkxal.feishu.cn/wiki/space/7425866470279675906?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home"
-							target="_blank" onclick="trackClick('feishu-byrby')">byrby（建设中，欢迎来看）</a>
-					</p>
-				</div>
-				<div class="list">
-					<img src="assets/images/logo/tingquan.png" style="height: 41px;width:41px;margin-right: 10px" />
-					<p><b style="color: rgb(100, 100, 98);">我的爱好</b>：<a href="https://www.yuque.com/u39067637/atgf16"
-							target="_blank" onclick="trackClick('yuque-tingquan')">听泉（古钱币）</a>
-					</p>
-				</div>
-				<div class="list">
-					<img src="assets/images/logo/teamlogo.jpg" style="height: 40px;width: auto;" />
-					<p><b style="color: rgb(227, 52, 43);">sparkflare团队</b>：<a href="http://www.sparkflare.cn"
-							target="_blank" onclick="trackClick('sparkflare-homepage')">新一代智慧数据标注平台「星火智标」，做AI时代的“火箭推进剂”。</a>
-					</p>
-				</div>
-				<div class="list">
-					<img src="assets/images/logo/qq-email-logo.png"
-						style="height: 30px;width: auto;margin-right: 10px" />
-					<p>QQ邮箱：sudezhao2016@qq.com</p>
-				</div>
-				<div class="list">
-					<img src="assets/images/logo/beiyou.png" style="height: 40px;width:40px;margin-right: 10px" />
-					<p>北邮邮箱：sdz2016714@bupt.edu.cn</p>
-				</div>
+			<div class="list">
+				<img src="assets/images/logo/GitHub_logo.png" style="height: 37px;width: 37px;margin-right: 10px" />
+				<p><b>github地址</b>：<a href="https://github.com/buptsdz" target="_blank"
+						onclick="trackClick('github')">https://github.com/buptsdz</a></p>
 			</div>
-			<!-- 最新资讯 -->
-			<div class="news">
-				<div>
-					<p class="news-title">📰 最新资讯</p>
-				</div>
-				<div>
-					<ul class="news-list">
-						<li>
-							<b>2024.11.7</b>：11月4日，团队收到了来自<b>中国国际数字经济博览会</b>组委会的感谢信。
-							<a target="_blank" href="https://www.yuque.com/u39067637/gwicud/odpsq00k1lr3oxqz?singleDoc" onclick="trackClick('数字博览会感谢信')">🔗文章链接</a>
-						</li>
-						<li>
-							<b>2024.10.29</b>：10月25日，团队代表<b>北京大学</b>参加<b>中国国际数字经济博览会</b>，多家企业和金融机构表示认可和合作意向，并得到360创始人<b>周鸿祎</b>先生的格外关注和好评。
-							<a target="_blank" href="https://hbxw.hebnews.cn/news.html?id=485458&timestamp=1730198883883" onclick="trackClick('数字博览会报导链接')">🔗报导链接</a>
-						</li>
-						<li>
-							<b>2024.10.22</b>：团队项目"数据先锋"在大学生互联网加创新创业大赛<b>国赛中获得铜奖</b>。
-						</li>
-						<li>
-							<b>2024.10.15</b>：团队通过资格审查，在北京邮电大学西土城校区<b>成功入驻win基地</b>的创业空间。
-						</li>
-					</ul>
-				</div>
+			<div class="list">
+				<img src="assets/images/logo/xiaohongshu.png" style="height: 37px;width:37px;margin-right: 10px" />
+				<p><b style="color: rgb(255, 36, 66);">小红书号</b>：<a
+						href="https://www.xiaohongshu.com/user/profile/624e74200000000010005b95" target="_blank"
+						onclick="trackClick('xiaohongshu')">sdz2016714（同微信号）</a>
+				</p>
 			</div>
-			<!-- 点赞和取消点赞 -->
-			<div style="display: flex; align-items: center; justify-content: center; flex-direction: column;margin-top: 10px;">
-				<img id="like-icon" 
-				     src="assets/images/tubiao/like.png" 
-					 style="cursor: pointer; width: 45px; height: 45px;" 
-					 onclick="toggleLike('homepage', 'like-icon', 'total-likes')"
-					 >
-				<p style="margin-top: 0;margin-bottom: 20px;"><span id="total-likes"></span></p>
+			<div class="list">
+				<img src="assets/images/logo/Bilibili.png" style="height: 37px;width: 37px;margin-right: 10px" />
+				<p><b style="color: rgb(255, 80, 155);">b站主页</b>：<a
+						href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
+						onclick="trackClick('bilibili')">什么都会一点的邮砖生</a>
+				</p>
+			</div>
+			<div class="list">
+				<img src="assets/images/logo/飞书.png" style="height: 37px;width:37px;margin-right: 10px" />
+				<p><b style="color: rgb(0, 127, 255);">byrby社区</b>：<a
+						href="https://hmtxowkxal.feishu.cn/wiki/space/7425866470279675906?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home"
+						target="_blank" onclick="trackClick('feishu-byrby')">byrby（建设中，欢迎来看）</a>
+				</p>
+			</div>
+			<div class="list">
+				<img src="assets/images/logo/tingquan.png" style="height: 41px;width:41px;margin-right: 10px" />
+				<p><b style="color: rgb(100, 100, 98);">我的爱好</b>：<a href="https://www.yuque.com/u39067637/atgf16"
+						target="_blank" onclick="trackClick('yuque-tingquan')">听泉（古钱币）</a>
+				</p>
+			</div>
+			<div class="list">
+				<img src="assets/images/logo/teamlogo.jpg" style="height: 40px;width: auto;" />
+				<p><b style="color: rgb(227, 52, 43);">sparkflare团队</b>：<a href="http://www.sparkflare.cn"
+						target="_blank" onclick="trackClick('sparkflare-homepage')">新一代智慧数据标注平台「星火智标」，做AI时代的“火箭推进剂”。</a>
+				</p>
+			</div>
+			<div class="list">
+				<img src="assets/images/logo/qq-email-logo.png" style="height: 30px;width: auto;margin-right: 10px" />
+				<p>QQ邮箱：sudezhao2016@qq.com</p>
+			</div>
+			<div class="list">
+				<img src="assets/images/logo/beiyou.png" style="height: 40px;width:40px;margin-right: 10px" />
+				<p>北邮邮箱：sdz2016714@bupt.edu.cn</p>
+			</div>
+		</div>
+		<!-- 最新资讯 -->
+		<div class="news">
+			<div>
+				<p class="news-title">📰 最新资讯</p>
+			</div>
+			<div>
+				<ul class="news-list">
+					<li>
+						<b>2024.11.7</b>：11月4日，团队收到了来自<b>中国国际数字经济博览会</b>组委会的感谢信。
+						<a target="_blank" href="https://www.yuque.com/u39067637/gwicud/odpsq00k1lr3oxqz?singleDoc"
+							onclick="trackClick('数字博览会感谢信')">🔗文章链接</a>
+					</li>
+					<li>
+						<b>2024.10.29</b>：10月25日，团队代表<b>北京大学</b>参加<b>中国国际数字经济博览会</b>，多家企业和金融机构表示认可和合作意向，并得到360创始人<b>周鸿祎</b>先生的格外关注和好评。
+						<a target="_blank" href="https://hbxw.hebnews.cn/news.html?id=485458&timestamp=1730198883883"
+							onclick="trackClick('数字博览会报导链接')">🔗报导链接</a>
+					</li>
+					<li>
+						<b>2024.10.22</b>：团队项目"数据先锋"在大学生互联网加创新创业大赛<b>国赛中获得铜奖</b>。
+					</li>
+					<li>
+						<b>2024.10.15</b>：团队通过资格审查，在北京邮电大学西土城校区<b>成功入驻win基地</b>的创业空间。
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 点赞和取消点赞 -->
+		<div
+			style="display: flex; align-items: center; justify-content: center; flex-direction: column;margin-top: 10px;">
+			<img id="like-icon" src="assets/images/tubiao/like.png" style="cursor: pointer; width: 45px; height: 45px;"
+				onclick="toggleLike('homepage', 'like-icon', 'total-likes')">
+			<p style="margin-top: 0;margin-bottom: 20px;"><span id="total-likes"></span></p>
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// 在页面加载时获取点赞状态和总点赞数
+				fetchLikeStatus('homepage', 'like-icon', 'total-likes');//第一个参数是item_id
+			});
+		</script>
+		<!-- 浏览量和更新时间 -->
+		<div style="display: flex;flex-direction: row;margin-bottom: 6px;">
+			<!-- 获取更新时间 -->
+			<div class="tooltip1">
+				<img src="assets/images/tubiao/time.png" class="responsive-img">
+				<p id="bottom-time" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
+				<span class="tooltiptext1"></span>
+			</div>
+			<!-- 更新时间的函数 -->
+			<script>
+				// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
+				const updateDate = "2024-11-17 02:46:33"; // 这里替换为你想要的日期
+				const updateDateObj = new Date(updateDate);
+
+				// 获取当前日期
+				const currentDate = new Date();
+
+				// 比较日期
+				if (currentDate.toDateString() === updateDateObj.toDateString()) {
+					// 如果是今天，显示“今天”加上更新日期
+					document.getElementById("bottom-time").innerText = `今天 ${updateDateObj.getHours()}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
+				} else {
+					// 如果不是今天，显示“MM-DD HH:mm”格式
+					const formattedDate = `${String(updateDateObj.getMonth() + 1).padStart(2, '0')}-${String(updateDateObj.getDate()).padStart(2, '0')} ${String(updateDateObj.getHours()).padStart(2, '0')}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
+					document.getElementById("bottom-time").innerText = formattedDate;
+				}
+
+				// 更新tooltip显示的时间
+				const tooltipText = document.querySelector(".tooltiptext1");
+				tooltipText.innerText = `更新于 ${updateDate}`;
+			</script>
+			<!-- 显示浏览量 -->
+			<div class="tooltip2">
+				<img src="assets/images/tubiao/view_count.png" class="responsive-img" style="height: 20px;width: 20px;">
+				<p id="view_count" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
+				<span class="tooltiptext2"></span>
 			</div>
 			<script>
-				document.addEventListener("DOMContentLoaded", function() {
-					// 在页面加载时获取点赞状态和总点赞数
-					fetchLikeStatus('homepage', 'like-icon', 'total-likes');//第一个参数是item_id
-				});
-			</script>
-			<!-- 浏览量和更新时间 -->
-			<div style="display: flex;flex-direction: row;margin-bottom: 6px;">
-				<!-- 获取更新时间 -->
-				<div class="tooltip1">
-					<img src="assets/images/tubiao/time.png" class="responsive-img">
-					<p id="bottom-time" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
-					<span class="tooltiptext1"></span>	
-				</div>
-				<!-- 更新时间的函数 -->
-				<script>
-					// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
-					const updateDate = "2024-11-10 14:26:33"; // 这里替换为你想要的日期
-					const updateDateObj = new Date(updateDate);
-					
-					// 获取当前日期
-					const currentDate = new Date();
-					
-					// 比较日期
-					if (currentDate.toDateString() === updateDateObj.toDateString()) {
-						// 如果是今天，显示“今天”加上更新日期
-						document.getElementById("bottom-time").innerText = `今天 ${updateDateObj.getHours()}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
-					} else {
-						// 如果不是今天，显示“MM-DD HH:mm”格式
-						const formattedDate = `${String(updateDateObj.getMonth() + 1).padStart(2, '0')}-${String(updateDateObj.getDate()).padStart(2, '0')} ${String(updateDateObj.getHours()).padStart(2, '0')}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
-						document.getElementById("bottom-time").innerText = formattedDate;
+				// 获取浏览量的函数
+				async function fetchViewCount() {
+					try {
+						// 假设当前页面名称为 'current_page'，你可以根据实际情况替换
+						const pageName = 'homepage'; // 替换为实际的页面名称
+						const response = await fetch(`http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`);
+
+						if (!response.ok) {
+							throw new Error('网络错误，无法获取数据');
+						}
+
+						const data = await response.json();
+
+						// 假设返回的数据格式为 { name: string, view_count: number }
+						const viewCount = data.view_count;
+
+						// 更新浏览量显示
+						document.getElementById("view_count").innerText = viewCount;
+
+						// 更新tooltip显示的时间
+						const tooltipText = document.querySelector(".tooltiptext2");
+						tooltipText.innerText = `网页浏览次数: ${viewCount}`;
+					} catch (error) {
+						console.error('获取浏览量时出错:', error);
+						document.getElementById("view_count").innerText = '获取失败';
 					}
-					
-					// 更新tooltip显示的时间
-					const tooltipText = document.querySelector(".tooltiptext1");
-					tooltipText.innerText = `更新于 ${updateDate}`;
-				</script>
-				<!-- 显示浏览量 -->
-				<div class="tooltip2">
-					<img src="assets/images/tubiao/view_count.png" class="responsive-img" style="height: 20px;width: 20px;">
-					<p id="view_count" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
-					<span class="tooltiptext2"></span>
-				</div>
-				<script>
-					// 获取浏览量的函数
-				    async function fetchViewCount() {
-				        try {
-				            // 假设当前页面名称为 'current_page'，你可以根据实际情况替换
-				            const pageName = 'homepage'; // 替换为实际的页面名称
-				            const response = await fetch(`http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`);
-				
-				            if (!response.ok) {
-				                throw new Error('网络错误，无法获取数据');
-				            }
-				
-				            const data = await response.json();
-				            
-				            // 假设返回的数据格式为 { name: string, view_count: number }
-				            const viewCount = data.view_count;
-				
-				            // 更新浏览量显示
-				            document.getElementById("view_count").innerText = viewCount;
-				
-				            // 更新tooltip显示的时间
-				            const tooltipText = document.querySelector(".tooltiptext2");
-				            tooltipText.innerText = `网页浏览次数: ${viewCount}`;
-				        } catch (error) {
-				            console.error('获取浏览量时出错:', error);
-				            document.getElementById("view_count").innerText = '获取失败';
-				        }
-				    }
-				    // 在页面加载时调用获取浏览量的函数
-				    window.onload = fetchViewCount;
-				</script>
+				}
+				// 在页面加载时调用获取浏览量的函数
+				window.onload = fetchViewCount;
+			</script>
+		</div>
+	</div>
+	<!-- 底部区域 -->
+	<div class="bottom-sec">
+		<div class="tobilibili">
+			<div class="tobilibili-text">
+				<div>我的b站主页</div>
+				<div style="margin-left: 5px;"><i class="fa fa-arrow-right"></i></div>
+			</div>
+			<div class="tobilibili-href">
+				<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
+					style="font-size: 14px" class="a-svg" onclick="trackClick('bilibili')">
+					友情链接
+					<svg viewBox="0 0 75 50">
+						<path d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8" />
+					</svg>
+				</a>
 			</div>
 		</div>
-		<!-- 底部区域 -->
-		<div class="bottom-sec">
-			<div class="tobilibili">
-				<div class="tobilibili-text">
-					<div>我的b站主页</div>
-					<div style="margin-left: 5px;"><i class="fa fa-arrow-right"></i></div>
-				</div>
-				<div class="tobilibili-href">
-					<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
-						style="font-size: 14px" class="a-svg" onclick="trackClick('bilibili')">
-						友情链接
-						<svg viewBox="0 0 75 50">
-							<path d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8" />
-						</svg>
-					</a>
-				</div>
-			</div>
-			<div class="updatelog">
-				<div class="updatelog-text">
-					<a href="./updatelog.html" onclick="trackClick('更新记录')">更新记录</a>
-				</div>
+		<div class="updatelog">
+			<div class="updatelog-text">
+				<a href="./updatelog.html" onclick="trackClick('更新记录')">更新记录</a>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>
