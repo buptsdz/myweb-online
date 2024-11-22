@@ -145,7 +145,7 @@
 	}
 
 	.news-title {
-		font-size: 22px;
+		font-size: 23px;
 		font-weight: 800;
 	}
 
@@ -161,7 +161,48 @@
 			margin-left: 3%;
 			width: 92%;
 		}
+		.news-list{
+			margin-left: -13px;
+		}
 	}
+	
+	/* 打字效果 */
+	.typing-text {
+		color: #000;
+		margin: auto;
+		font: bold 200% Consolas, Monaco, monospace;
+		font-size: 27px;
+		border-right: 0.1em solid;
+		width: 37ch;
+		white-space: nowrap;
+		overflow: hidden;
+		animation: typing 4.5s steps(37, end), cursor-blink 0.3s step-end infinite alternate;
+	}
+	
+	@media (max-width: 500px) {
+	
+		/* 手机端样式 */
+		.typing-text {
+			font-size: 17px;
+			width: 37ch;
+			white-space: nowrap;
+			overflow: hidden;
+			animation: typing 4.5s steps(37, end), cursor-blink 0.3s step-end infinite alternate;
+		}
+	}
+	
+	@keyframes typing {
+	    from {
+	        width: 0;
+	    }
+	}
+	
+	@keyframes cursor-blink {
+	    50% {
+	        border-color: transparent;
+	    }
+	}
+	
 </style>
 
 <body style="margin:0;padding:0">
@@ -199,8 +240,8 @@
         padding-bottom: 15px;
       ">
 
-		<p style="text-align: center; font-size: 30px;margin: 0">
-			ଘ(੭ˊ꒳​ˋ)੭ ​​​ Hello, friend!
+		<p class="typing-text">
+			ଘ(੭ˊ꒳​ˋ)੭ ​​​Hello friend, welcome here!
 		</p>
 		<!-- <p style="text-align: center;font-size: 18px">可下滑 ◕‿◕</p> -->
 		<!-- 个人介绍 -->
@@ -340,7 +381,7 @@
 			<!-- 更新时间的函数 -->
 			<script>
 				// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
-				const updateDate = "2024-11-22 22:29:17"; // 这里替换为你想要的日期
+				const updateDate = "2024-11-22 23:25:17"; // 这里替换为你想要的日期
 				const updateDateObj = new Date(updateDate);
 
 				// 获取当前日期
