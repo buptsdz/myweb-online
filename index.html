@@ -381,7 +381,7 @@
 			<!-- 更新时间的函数 -->
 			<script>
 				// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
-				const updateDate = "2024-11-22 23:25:17"; // 这里替换为你想要的日期
+				const updateDate = "2024-11-23 17:33:17"; // 这里替换为你想要的日期
 				const updateDateObj = new Date(updateDate);
 
 				// 获取当前日期
@@ -422,7 +422,7 @@
 						const data = await response.json();
 
 						// 假设返回的数据格式为 { name: string, view_count: number }
-						const viewCount = data.view_count;
+						const viewCount = data.data.view_count;
 
 						// 更新浏览量显示
 						document.getElementById("view_count").innerText = viewCount;
