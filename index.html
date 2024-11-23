@@ -407,36 +407,12 @@
 				<p id="view_count" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
 				<span class="tooltiptext2"></span>
 			</div>
+			<script src="js/page_view/get_page_view.js"></script>
+						
 			<script>
-				// 获取浏览量的函数
-				async function fetchViewCount() {
-					try {
-						// 假设当前页面名称为 'current_page'，你可以根据实际情况替换
-						const pageName = 'homepage'; // 替换为实际的页面名称
-						const response = await fetch(`http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`);
-
-						if (!response.ok) {
-							throw new Error('网络错误，无法获取数据');
-						}
-
-						const data = await response.json();
-
-						// 假设返回的数据格式为 { name: string, view_count: number }
-						const viewCount = data.data.view_count;
-
-						// 更新浏览量显示
-						document.getElementById("view_count").innerText = viewCount;
-
-						// 更新tooltip显示的时间
-						const tooltipText = document.querySelector(".tooltiptext2");
-						tooltipText.innerText = `网页浏览次数: ${viewCount}`;
-					} catch (error) {
-						console.error('获取浏览量时出错:', error);
-						document.getElementById("view_count").innerText = '获取失败';
-					}
-				}
-				// 在页面加载时调用获取浏览量的函数
-				window.onload = fetchViewCount;
+				// 调用 fetchViewCount 函数，并传入当前页面的名称
+				const pageName = "homepage"; // 根据实际页面设置
+				window.onload = () => fetchViewCount(pageName);
 			</script>
 		</div>
 	</div>
