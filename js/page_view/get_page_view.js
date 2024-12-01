@@ -3,7 +3,7 @@
 window.fetchViewCount = async function (pageName) {
     try {
         const response = await fetch(
-            `http://test.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`
+            `http://sue.sparkflare.cn/sdz_web/record_page_view/?page_name=${encodeURIComponent(pageName)}`
         );
 
         if (!response.ok) {
