@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>古泉灵触产品摆摊用户反馈 - Sue的个人网站</title>
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <link rel="stylesheet" type="text/css" href="../css/p-a.css" />
+    <link rel="stylesheet" type="text/css" href="../css/a.css" />
+    <link rel="stylesheet" type="text/css" href="../css/img.css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <style>
+      .stall-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 40px 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 20px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin: 0 0 10px 0;
+        font-weight: 800;
+      }
+
+      .header p {
+        font-size: 1.2rem;
+        margin: 0;
+        opacity: 0.9;
+      }
+
+      .info-section {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .info-section h2 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+      }
+
+      .stall-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .info-card {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 15px;
+        border-left: 4px solid #667eea;
+      }
+
+      .info-card h3 {
+        color: #667eea;
+        margin: 0 0 10px 0;
+        font-size: 1.2rem;
+      }
+
+      .info-card p {
+        margin: 0;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .photo-item {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .photo-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .photo-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .photo-item img:hover {
+        transform: scale(1.05);
+      }
+
+      .photo-caption {
+        padding: 15px;
+        color: #666;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      .feedback-list {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 25px;
+      }
+
+      .feedback-item {
+        background: white;
+        margin-bottom: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid #4facfe;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .feedback-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .feedback-category {
+        background: #4facfe;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      .feedback-content {
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .back-btn {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 30px;
+      }
+
+      .back-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        color: white;
+      }
+
+      /* 全屏图片模态框样式 */
+      .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        animation: fadeIn 0.3s ease;
+      }
+
+      .image-modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        animation: scaleIn 0.3s ease;
+      }
+
+      .modal-image {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        transition: background 0.3s ease;
+      }
+
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .modal-caption {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 1rem;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+      }
+
+      .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 3rem;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.5);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background 0.3s ease;
+        user-select: none;
+      }
+
+      .modal-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .modal-prev {
+        left: -70px;
+      }
+
+      .modal-next {
+        right: -70px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .stall-container {
+          padding: 15px;
+        }
+
+        .header h1 {
+          font-size: 2rem;
+        }
+
+        .header p {
+          font-size: 1rem;
+        }
+
+        .info-section {
+          padding: 20px;
+        }
+
+        .photos-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-close {
+          top: 10px;
+          right: 10px;
+          font-size: 1.5rem;
+          width: 35px;
+          height: 35px;
+        }
+
+        .modal-caption {
+          bottom: 10px;
+          left: 10px;
+          right: 10px;
+          font-size: 0.9rem;
+        }
+
+        .modal-nav {
+          font-size: 2rem;
+          width: 40px;
+          height: 40px;
+        }
+
+        .modal-prev {
+          left: 10px;
+        }
+
+        .modal-next {
+          right: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stall-container">
+      <div class="header">
+        <h1>🏪 古泉灵触产品摆摊推广</h1>
+        <p>产品走进现实，倾听用户声音</p>
+      </div>
+
+      <div class="info-section">
+        <h2>📍 摆摊信息</h2>
+        <div class="stall-info">
+          <div class="info-card">
+            <h3>🗓️ 活动时间</h3>
+            <p>2025年5月25日<br />16:30 - 21:30</p>
+          </div>
+          <div class="info-card">
+            <h3>📍 活动地点</h3>
+            <p>北京什刹海<br />后海酒吧街对面</p>
+          </div>
+          <div class="info-card">
+            <h3>👥 参与人员</h3>
+            <p>主包及团队成员<br />共5人参与</p>
+          </div>
+          <div class="info-card">
+            <h3>📊 收集数据</h3>
+            <p>有效问卷：12份<br />深度访谈：4人</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>📸 现场照片</h2>
+        <div class="photos-grid" id="photos-container">
+          <!-- 图片将通过JS动态加载 -->
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>💬 用户反馈精选</h2>
+        <div class="feedback-list">
+          <div class="feedback-item">
+            <div class="feedback-category">产品创意</div>
+            <p class="feedback-content">
+              "这个想法挺好，赛博古钱币，赛博六爻，挺好玩的小东西，我觉得这个产品是个很好的想法。"
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-category">硬件改进</div>
+            <p class="feedback-content">
+              "NFC功能有时候总是碰不出来，应该弄成更灵敏一些的。"
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-category">用户体验</div>
+            <p class="feedback-content">
+              "进去之后感觉没有用户指引，对于我这种笨比来说还是有点不知所措该做什么，该点哪里，或者弄个主页网站之类，有个指引。"
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-category">真品疑问</div>
+            <p class="feedback-content">
+              "你们这个钱币是真的钱币吗，不会是墓里挖出来的吧？（澄清：古代人往坟墓里扔钱犹如几十年前土葬扔钢镚进去，几乎很少。是流通货币，一般是窖藏或传世，例如唐朝的开元通宝宋朝还在用。）"
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-category">价格期望</div>
+            <p class="feedback-content">
+              "价格合理的话可能会考虑购买，应该推出不同档次的套装，满足不同人群的需求，比如有些人只占卜，有些人就像这种漂亮的我会买来当礼物送人，感觉会好一点。"
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-category">技术优化</div>
+            <p class="feedback-content">
+              "你们这个就是调用的那个api吧，然后自己做了个网站，挺好挺好（扶眼镜），做的挺好的，很有博物馆风格，后面可以考虑优化一下模型。"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>📈 活动总结</h2>
+        <p style="line-height: 1.8; color: #333; font-size: 1.1rem">
+          通过这次在北京什刹海后海的摆摊推广活动，我们深入了解了用户对古泉灵触产品的真实想法。
+          虽然收集到的问卷数量不多（12份有效问卷，4人深度访谈），但每一份反馈都非常珍贵。
+          用户对"赛博古钱币"、"赛博六爻"的创意表示很感兴趣，认为这是一个很好玩的想法。
+        </p>
+        <p
+          style="
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 20px;
+          "
+        >
+          同时，用户也提出了很多实用的改进建议：NFC功能需要更加灵敏，用户界面需要增加操作指引，
+          以及对产品真实性的关切等。这些反馈让我们意识到，在技术实现、用户体验和产品定位方面还有很大的优化空间。
+          特别是有用户建议推出不同档次的套装来满足不同人群需求，这为我们的产品规划提供了新的思路。
+        </p>
+        <p
+          style="
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 20px;
+          "
+        >
+          接下来，我们将重点优化NFC硬件的灵敏度，完善网页的用户引导功能，并考虑推出面向不同用户群体的产品套装。
+          感谢每一位愿意停下脚步了解我们产品的朋友，你们的每一个建议都是我们前进路上的宝贵财富！
+        </p>
+      </div>
+
+      <a href="../index.html" class="back-btn">← 返回首页</a>
+    </div>
+
+    <!-- 全屏图片模态框 -->
+    <div id="imageModal" class="image-modal">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <span class="modal-nav modal-prev" onclick="prevImage()">‹</span>
+        <span class="modal-nav modal-next" onclick="nextImage()">›</span>
+        <img id="modalImage" class="modal-image" src="" alt="" />
+        <div id="modalCaption" class="modal-caption"></div>
+      </div>
+    </div>
+
+    <script>
+      // 简单的图片管理
+      const defaultImage =
+        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuWbvueJh+WKoOi9veS4rTwvdGV4dD48L3N2Zz4=";
+
+      // 图片数据
+      const stallImages = [
+        {
+          url: "https://sue-blog.tos-cn-beijing.volces.com/%E5%8F%A4%E6%B3%89%E7%81%B5%E8%A7%A6/5.25%E6%91%86%E6%91%8A%E5%9B%BE/1",
+          alt: "摆摊现场布置",
+          caption: "摆摊现场布置，产品展示区域整洁有序",
+        },
+        {
+          url: "https://sue-blog.tos-cn-beijing.volces.com/%E5%8F%A4%E6%B3%89%E7%81%B5%E8%A7%A6/5.25%E6%91%86%E6%91%8A%E5%9B%BE/4",
+          alt: "用户互动",
+          caption: "与用户深度交流，了解需求和建议",
+        },
+        {
+          url: "https://sue-blog.tos-cn-beijing.volces.com/%E5%8F%A4%E6%B3%89%E7%81%B5%E8%A7%A6/5.25%E6%91%86%E6%91%8A%E5%9B%BE/7",
+          alt: "产品演示",
+          caption: "现场演示古泉灵触NFC功能",
+        },
+        {
+          url: "https://sue-blog.tos-cn-beijing.volces.com/%E5%8F%A4%E6%B3%89%E7%81%B5%E8%A7%A6/5.25%E6%91%86%E6%91%8A%E5%9B%BE/hezhao",
+          alt: "团队合影",
+          caption: "团队成员活动结束后合影留念",
+        },
+      ];
+
+      // 图片模态框相关变量
+      let currentImageIndex = 0;
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalCaption = document.getElementById("modalCaption");
+
+      // 打开图片模态框
+      function openImageModal(index) {
+        currentImageIndex = index;
+        showCurrentImage();
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden"; // 防止背景滚动
+      }
+
+      // 关闭图片模态框
+      function closeImageModal() {
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
+
+      // 显示当前图片
+      function showCurrentImage() {
+        const imageData = stallImages[currentImageIndex];
+        modalImage.src = imageData.url;
+        modalImage.alt = imageData.alt;
+        modalCaption.textContent = imageData.caption;
+      }
+
+      // 上一张图片
+      function prevImage() {
+        currentImageIndex =
+          (currentImageIndex - 1 + stallImages.length) % stallImages.length;
+        showCurrentImage();
+      }
+
+      // 下一张图片
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % stallImages.length;
+        showCurrentImage();
+      }
+
+      // 页面加载完成后渲染图片
+      document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("photos-container");
+
+        stallImages.forEach((imageData, index) => {
+          // 创建图片项容器
+          const photoItem = document.createElement("div");
+          photoItem.className = "photo-item";
+
+          // 创建图片元素
+          const img = document.createElement("img");
+          img.src = imageData.url;
+          img.alt = imageData.alt;
+          img.loading = "lazy";
+
+          // 添加点击事件打开全屏
+          img.onclick = () => openImageModal(index);
+
+          // 图片加载失败时使用占位图
+          img.onerror = function () {
+            this.src = defaultImage;
+          };
+
+          // 创建说明文字
+          const caption = document.createElement("div");
+          caption.className = "photo-caption";
+          caption.textContent = imageData.caption;
+
+          // 组装元素
+          photoItem.appendChild(img);
+          photoItem.appendChild(caption);
+          container.appendChild(photoItem);
+        });
+
+        // 键盘事件监听
+        document.addEventListener("keydown", function (e) {
+          if (!modal.classList.contains("show")) return;
+
+          switch (e.key) {
+            case "Escape":
+              closeImageModal();
+              break;
+            case "ArrowLeft":
+              prevImage();
+              break;
+            case "ArrowRight":
+              nextImage();
+              break;
+          }
+        });
+
+        // 点击模态框背景关闭
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            closeImageModal();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
