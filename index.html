@@ -1,486 +1,601 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sue的个人网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/button.css" />
+    <link rel="stylesheet" type="text/css" href="css/p-a.css" />
+    <link rel="stylesheet" type="text/css" href="css/a.css" />
+    <link rel="stylesheet" type="text/css" href="css/img.css" />
+    <link rel="stylesheet" type="text/css" href="css/index-news.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/font-awesome/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/modal.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="js/fetch.js" defer></script>
+    <script src="js/dianzan/dianzanxiaoguo.js" defer></script>
+  </head>
+  <style lang="scss">
+    body {
+      background-color: #ffffff;
+    }
 
-<head>
-	<meta charset="utf-8" />
-	<title>Sue的个人网站</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
-	<link rel="stylesheet" type="text/css" href="css/button.css" />
-	<link rel="stylesheet" type="text/css" href="css/p-a.css" />
-	<link rel="stylesheet" type="text/css" href="css/a.css" />
-	<link rel="stylesheet" type="text/css" href="css/img.css" />
-	<link rel="stylesheet" type="text/css" href="css/index-news.css" />
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/modal.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-	<script src="js/fetch.js" defer></script>
-	<script src="js/dianzan/dianzanxiaoguo.js" defer></script>
-</head>
-<style lang="scss">
-	body {
-		background-color: #ffffff;
-	}
+    .mysong {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+    }
 
-	.mysong {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		margin-top: 15px;
-	}
+    .toIntroduction {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
 
-	.toIntroduction {
-		text-align: center;
-		font-size: 22px;
-		font-weight: bold;
-		margin-top: 15px;
-	}
+    /* List container styling for two-column layout on larger screens */
+    .list-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-left: 11%;
+      margin-right: 5px;
+    }
 
-	/* List container styling for two-column layout on larger screens */
-	.list-container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		margin-left: 11%;
-		margin-right: 5px;
-	}
+    /* Individual list item styling */
+    .list {
+      display: flex;
+      align-items: center;
+      word-break: break-word;
+      width: 48%;
+      margin-bottom: 15px;
+    }
 
-	/* Individual list item styling */
-	.list {
-		display: flex;
-		align-items: center;
-		word-break: break-word;
-		width: 48%;
-		margin-bottom: 15px;
-	}
+    /* One-column layout on smaller screens */
+    @media screen and (max-width: 767px) {
+      .list-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: 13px;
+      }
 
-	/* One-column layout on smaller screens */
-	@media screen and (max-width: 767px) {
-		.list-container {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			margin-left: 13px;
-		}
+      .list {
+        width: 100%;
+      }
+    }
 
-		.list {
-			width: 100%;
-		}
-	}
+    .tooltip1,
+    .tooltip2 {
+      display: flex;
+      /* 使用 flexbox 来横向排列 */
+      align-items: center;
+      /* 垂直居中对齐 */
+      position: relative;
+      width: fit-content;
+      padding-bottom: 10px;
+    }
 
-	.tooltip1,
-	.tooltip2 {
-		display: flex;
-		/* 使用 flexbox 来横向排列 */
-		align-items: center;
-		/* 垂直居中对齐 */
-		position: relative;
-		width: fit-content;
-		padding-bottom: 10px;
-	}
+    .tooltip1 .responsive-img,
+    .tooltip2 .responsive-img {
+      height: 22px;
+      width: 22px;
+      margin-right: 5px;
+      /* 在图片和文字之间添加一些间距 */
+    }
 
-	.tooltip1 .responsive-img,
-	.tooltip2 .responsive-img {
-		height: 22px;
-		width: 22px;
-		margin-right: 5px;
-		/* 在图片和文字之间添加一些间距 */
-	}
+    .tooltip1 .tooltiptext1,
+    .tooltip2 .tooltiptext2 {
+      visibility: hidden;
+      width: fit-content;
+      white-space: nowrap;
+      background-color: #474747;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 3px 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 100%;
 
-	.tooltip1 .tooltiptext1,
-	.tooltip2 .tooltiptext2 {
-		visibility: hidden;
-		width: fit-content;
-		white-space: nowrap;
-		background-color: #474747;
-		color: #fff;
-		text-align: center;
-		border-radius: 6px;
-		padding: 3px 8px;
-		position: absolute;
-		z-index: 1;
-		bottom: 100%;
+      /* 淡入 - 1秒内从 0% 到 100% 显示: */
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
 
-		/* 淡入 - 1秒内从 0% 到 100% 显示: */
-		opacity: 0;
-		transition: opacity 0.5s;
-	}
+    .tooltip1:hover .tooltiptext1,
+    .tooltip2:hover .tooltiptext2 {
+      visibility: visible;
+      opacity: 1;
+    }
 
-	.tooltip1:hover .tooltiptext1,
-	.tooltip2:hover .tooltiptext2 {
-		visibility: visible;
-		opacity: 1;
-	}
+    @media (max-width: 500px) {
+      /* 手机端样式 */
+      .tooltip1 {
+        margin-left: 15px;
+      }
 
-	@media (max-width: 500px) {
+      .tooltip2 {
+        margin-left: 25px;
+      }
+    }
 
-		/* 手机端样式 */
-		.tooltip1 {
-			margin-left: 15px;
-		}
+    @media (min-width: 501px) {
+      /* 电脑端样式 */
+      .tooltip1 {
+        margin-left: 13%;
+      }
 
-		.tooltip2 {
-			margin-left: 25px;
-		}
-	}
+      .tooltip2 {
+        margin-left: 5%;
+      }
+    }
 
-	@media (min-width: 501px) {
+    .news {
+      margin-left: 11%;
+      width: 80%;
+      margin-bottom: 25px;
+    }
 
-		/* 电脑端样式 */
-		.tooltip1 {
-			margin-left: 13%;
-		}
+    .news-title {
+      font-size: 23px;
+      font-weight: 800;
+    }
 
-		.tooltip2 {
-			margin-left: 5%;
-		}
-	}
+    .news-list li {
+      margin-bottom: 14px;
+      /* 设置下边距 */
+    }
 
-	.news {
-		margin-left: 11%;
-		width: 80%;
-		margin-bottom: 25px;
-	}
+    @media (max-width: 500px) {
+      /* 手机端样式 */
+      .news {
+        margin-left: 3%;
+        width: 92%;
+      }
 
-	.news-title {
-		font-size: 23px;
-		font-weight: 800;
-	}
+      .news-list {
+        margin-left: -13px;
+      }
+    }
 
-	.news-list li {
-		margin-bottom: 14px;
-		/* 设置下边距 */
-	}
+    /* 打字效果 */
+    .typing-text {
+      color: #000;
+      margin: auto;
+      font: bold 200% Consolas, Monaco, monospace;
+      font-size: 27px;
+      border-right: 0.1em solid;
+      width: 37ch;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4.5s steps(37, end),
+        cursor-blink 0.3s step-end infinite alternate;
+    }
 
-	@media (max-width: 500px) {
+    @media (max-width: 500px) {
+      /* 手机端样式 */
+      .typing-text {
+        font-size: 17px;
+        width: 37ch;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 4.5s steps(37, end),
+          cursor-blink 0.3s step-end infinite alternate;
+      }
+    }
 
-		/* 手机端样式 */
-		.news {
-			margin-left: 3%;
-			width: 92%;
-		}
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+    }
 
-		.news-list {
-			margin-left: -13px;
-		}
-	}
+    @keyframes cursor-blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+  </style>
 
-	/* 打字效果 */
-	.typing-text {
-		color: #000;
-		margin: auto;
-		font: bold 200% Consolas, Monaco, monospace;
-		font-size: 27px;
-		border-right: 0.1em solid;
-		width: 37ch;
-		white-space: nowrap;
-		overflow: hidden;
-		animation: typing 4.5s steps(37, end), cursor-blink 0.3s step-end infinite alternate;
-	}
-
-	@media (max-width: 500px) {
-
-		/* 手机端样式 */
-		.typing-text {
-			font-size: 17px;
-			width: 37ch;
-			white-space: nowrap;
-			overflow: hidden;
-			animation: typing 4.5s steps(37, end), cursor-blink 0.3s step-end infinite alternate;
-		}
-	}
-
-	@keyframes typing {
-		from {
-			width: 0;
-		}
-	}
-
-	@keyframes cursor-blink {
-		50% {
-			border-color: transparent;
-		}
-	}
-</style>
-
-<body style="margin:0;padding:0">
-	<!-- 弹窗预置样式 -->
-	<dialog id="modal">
-		<div class="modal-body">
-			<div class="modal-header">
-				<div class="modal-title"></div>
-				<div class="modal-close" onclick="closeModal()">&times;</div>
-			</div>
-			<div class="modal-content"></div>
-		</div>
-	</dialog>
-	<!-- 控制弹窗的js -->
-	<script src="js/modal/modal.js" defer></script>
-	<div class="main">
-		<div class="item">
-			<div class="info">
-				<h3>welcome to my world</h3>
-				<p>
-					<a href="./mulu/jianjie.html" target="_blank" title="this is a colorful egg">
-						这是一个彩蛋</a>
-				</p>
-			</div>
-		</div>
-	</div>
-	<!-- 中间区域 -->
-	<div style="
+  <body style="margin: 0; padding: 0">
+    <!-- 弹窗预置样式 -->
+    <dialog id="modal">
+      <div class="modal-body">
+        <div class="modal-header">
+          <div class="modal-title"></div>
+          <div class="modal-close" onclick="closeModal()">&times;</div>
+        </div>
+        <div class="modal-content"></div>
+      </div>
+    </dialog>
+    <!-- 控制弹窗的js -->
+    <script src="js/modal/modal.js" defer></script>
+    <div class="main">
+      <div class="item">
+        <div class="info">
+          <h3>welcome to my world</h3>
+          <p>
+            <a
+              href="./mulu/jianjie.html"
+              target="_blank"
+              title="this is a colorful egg"
+            >
+              这是一个彩蛋</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- 中间区域 -->
+    <div
+      style="
         max-width: 1200px;
         height: auto;
         margin: 10px auto;
-		margin-bottom: 15px;
+        margin-bottom: 15px;
         padding: 5px;
         line-height: 1.7;
         padding-bottom: 15px;
-      ">
-
-		<p class="typing-text">
-			ଘ(੭ˊ꒳​ˋ)੭ ​​​Hello friend, welcome here!
-		</p>
-		<!-- <p style="text-align: center;font-size: 18px">可下滑 ◕‿◕</p> -->
-		<!-- 个人介绍 -->
-		<div class="toIntroduction">
-			<a href="./views/personal-introduction.html" title="Click to see my introduction"
-				onclick="trackClick('sue的个人说明书')">
-				<b>→</b>🎉Sue的个人说明书 <b>←</b></a>
-		</div>
-		<!--我写的诗-->
-		<div style="text-align: center;margin-top: 15px">
-			<div style="
+      "
+    >
+      <p class="typing-text">ଘ(੭ˊ꒳​ˋ)੭ ​​​Hello friend, welcome here!</p>
+      <!-- <p style="text-align: center;font-size: 18px">可下滑 ◕‿◕</p> -->
+      <!-- 个人介绍 -->
+      <div class="toIntroduction">
+        <a
+          href="./views/personal-introduction.html"
+          title="Click to see my introduction"
+          onclick="trackClick('我的个人说明书')"
+        >
+          <b>→</b>🎉我的个人说明书 <b>←</b></a
+        >
+      </div>
+      <!--我写的诗-->
+      <div style="text-align: center; margin-top: 15px">
+        <div
+          style="
             margin: 0 auto;
             text-align: left;
             display: inline-block;
             position: relative;
-          ">
-				<button class="button2" style="color: #f1f1f1; font-size: 16px"
-					onclick="window.location.href='./mulu/mulu1.html'">
-					<div class="shine" onclick="trackClick('我写的诗')">我写的诗</div>
-				</button>
-			</div>
-		</div>
-		<!-- 我唱的歌 -->
-		<div class="mysong">
-			<button style="font-size: 15px" onclick="window.location.href='./mySong/mulu.html'">
-				<div onclick="trackClick('我唱的歌')">我唱的歌</div>
-			</button>
-			（还挺好听
-		</div>
-		<!-- 各种外链以及邮箱 -->
-		<div class="list-container">
-			<div class="list">
-				<img src="./assets/images/logo/yuque-logo.png" style="height: 32px;width:32px;margin-right: 10px;" />
-				<p><b style="color: rgb(49, 204, 121);">语雀文档地址</b>：<a href="https://www.yuque.com/u39067637"
-						target="_blank" onclick="trackClick('yuque')">肥肥胖胖是太阳，鼓鼓囊囊是山岗</a>
-				</p>
-			</div>
-			<div class="list">
-				<img src="assets/images/logo/GitHub_logo.png" style="height: 37px;width: 37px;margin-right: 10px" />
-				<p><b>github</b>：<a href="https://github.com/buptsdz" target="_blank"
-						onclick="trackClick('github')">We're making the world a better place.</a></p>
-			</div>
-			<div class="list">
-				<img src="assets/images/logo/xiaohongshu.png" style="height: 37px;width:37px;margin-right: 10px" />
-				<p><b style="color: rgb(255, 36, 66);">小红书号</b>：<a
-						href="https://www.xiaohongshu.com/user/profile/624e74200000000010005b95" target="_blank"
-						onclick="trackClick('xiaohongshu')">sdz2016714（同微信号）</a>
-				</p>
-			</div>
-			<div class="list">
-				<img src="assets/images/logo/Bilibili.png" style="height: 37px;width: 37px;margin-right: 10px" />
-				<p><b style="color: rgb(255, 80, 155);">b站主页</b>：<a
-						href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
-						onclick="trackClick('bilibili')">什么都会一点的邮砖生</a>
-				</p>
-			</div>
-			<!-- <div class="list">
+          "
+        >
+          <button
+            class="button2"
+            style="color: #f1f1f1; font-size: 16px"
+            onclick="window.location.href='./mulu/mulu1.html'"
+          >
+            <div class="shine" onclick="trackClick('我写的诗')">我写的诗</div>
+          </button>
+        </div>
+      </div>
+      <!-- 我唱的歌 -->
+      <div class="mysong">
+        <button
+          style="font-size: 15px"
+          onclick="window.location.href='./mySong/mulu.html'"
+        >
+          <div onclick="trackClick('我唱的歌')">我唱的歌</div>
+        </button>
+        （还挺好听
+      </div>
+      <!-- 各种外链以及邮箱 -->
+      <div class="list-container">
+        <div class="list">
+          <img
+            src="./assets/images/logo/yuque-logo.png"
+            style="height: 32px; width: 32px; margin-right: 10px"
+          />
+          <p>
+            <b style="color: rgb(49, 204, 121)">语雀文档地址</b>：<a
+              href="https://www.yuque.com/u39067637"
+              target="_blank"
+              onclick="trackClick('yuque')"
+              >肥肥胖胖是太阳，鼓鼓囊囊是山岗</a
+            >
+          </p>
+        </div>
+        <div class="list">
+          <img
+            src="assets/images/logo/GitHub_logo.png"
+            style="height: 37px; width: 37px; margin-right: 10px"
+          />
+          <p>
+            <b>github</b>：<a
+              href="https://github.com/buptsdz"
+              target="_blank"
+              onclick="trackClick('github')"
+              >We're making the world a better place.</a
+            >
+          </p>
+        </div>
+        <div class="list">
+          <img
+            src="assets/images/logo/xiaohongshu.png"
+            style="height: 37px; width: 37px; margin-right: 10px"
+          />
+          <p>
+            <b style="color: rgb(255, 36, 66)">小红书号</b>：<a
+              href="https://www.xiaohongshu.com/user/profile/624e74200000000010005b95"
+              target="_blank"
+              onclick="trackClick('xiaohongshu')"
+              >云川古物（sdz2016714，1k粉啦）</a
+            >
+          </p>
+        </div>
+        <div class="list">
+          <img
+            src="assets/images/logo/Bilibili.png"
+            style="height: 37px; width: 37px; margin-right: 10px"
+          />
+          <p>
+            <b style="color: rgb(255, 80, 155)">b站主页</b>：<a
+              href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0"
+              target="_blank"
+              onclick="trackClick('bilibili')"
+              >什么都会一点的邮砖生</a
+            >
+          </p>
+        </div>
+        <!-- <div class="list">
 				<img src="assets/images/logo/飞书.png" style="height: 37px;width:37px;margin-right: 10px" />
 				<p><b style="color: rgb(0, 127, 255);">byrby社区</b>：<a
 						href="https://hmtxowkxal.feishu.cn/wiki/space/7425866470279675906?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home"
 						target="_blank" onclick="trackClick('feishu-byrby')">byrby（建设中，欢迎来看）</a>
 				</p>
 			</div> -->
-			<div class="list">
-				<img src="assets/images/logo/tingquan.png" style="height: 41px;width:41px;margin-right: 10px" />
-				<p><b style="color: rgb(100, 100, 98);">我的爱好</b>：<a href="https://www.yuque.com/u39067637/atgf16"
-						target="_blank" onclick="trackClick('yuque-tingquan')">听泉（古钱币）</a>
-				</p>
-			</div>
-			<div class="list">
-				<img src="assets/images/logo/coin-icon.svg" style="height: 40px;width: auto;margin-right:10px" />
-				<p><b style="color: rgb(206, 169, 55);">创业项目1</b>：<a href="https://cointalk1.openeee.cn" target="_blank"
-					onclick="trackClick('古泉灵触')">古泉灵触·古钱币 NFC 智慧藏盒</a>
-				</p>
-			</div>
-			<div class="list">
-				<img src="assets/images/logo/teamlogo.jpg" style="height: 40px;width: auto;" />
-				<p><b style="color: rgb(227, 52, 43);">创业项目2</b>：<a href="http://www.sparkflare.cn" target="_blank"
-						onclick="trackClick('sparkflare-homepage')">新一代智慧数据标注平台「星火智标」，做AI时代的“火箭推进剂”。</a>
-				</p>
-			</div>
-			<div class="list">
-				<img src="assets/images/logo/qq-email-logo.png" style="height: 30px;width: auto;margin-right: 10px" />
-				<p>QQ邮箱：508936331@qq.com</p>
-			</div>
-			<!-- <div class="list">
+        <div class="list">
+          <img
+            src="assets/images/logo/tingquan.png"
+            style="height: 41px; width: 41px; margin-right: 10px"
+          />
+          <p>
+            <b style="color: rgb(100, 100, 98)">我的爱好</b>：<a
+              href="https://www.yuque.com/u39067637/atgf16"
+              target="_blank"
+              onclick="trackClick('yuque-tingquan')"
+              >古玩古钱币等</a
+            >
+          </p>
+        </div>
+        <div class="list">
+          <img
+            src="assets/images/logo/coin-icon.svg"
+            style="height: 40px; width: auto; margin-right: 10px"
+          />
+          <p>
+            <b style="color: rgb(206, 169, 55)">创业项目1</b>：<a
+              href="https://cointalk1.openeee.cn"
+              target="_blank"
+              onclick="trackClick('古泉灵触')"
+              >古泉灵触·古钱币 NFC 智慧藏盒</a
+            >
+          </p>
+        </div>
+        <div class="list">
+          <img
+            src="assets/images/logo/teamlogo.jpg"
+            style="height: 40px; width: auto"
+          />
+          <p>
+            <b style="color: rgb(227, 52, 43)">创业项目2</b>：<a
+              href="http://www.sparkflare.cn"
+              target="_blank"
+              onclick="trackClick('sparkflare-homepage')"
+              >新一代智慧数据标注平台「星火智标」，做AI时代的“火箭推进剂”。</a
+            >
+          </p>
+        </div>
+        <div class="list">
+          <img
+            src="assets/images/logo/qq-email-logo.png"
+            style="height: 30px; width: auto; margin-right: 10px"
+          />
+          <p>QQ邮箱：508936331@qq.com</p>
+        </div>
+        <!-- <div class="list">
 				<img src="assets/images/logo/beiyou.png" style="height: 40px;width:40px;margin-right: 10px" />
 				<p>北邮邮箱：sdz2016714@bupt.edu.cn</p>
 			</div> -->
-		</div>
-		<!-- 最新资讯 - 更新版本 -->
-		<div class="news-section">
-			<div class="news-header">
-				<div class="news-title-wrapper">
-					<div class="news-icon">📰</div>
-					<h2 class="news-title">最新资讯</h2>
-					<div class="news-subtitle">News & Updates</div>
-				</div>
-			</div>
-		
-			<div class="news-container">
-				<div class="news-item featured">
-					<div class="news-date">
-						<span class="day">2025</span>
-						<span class="month">6.5</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-highlight">💰 爱好收益</div>
-						<p>从2024年10月到2025年5月，主包已经靠卖古钱币挣了<strong>8511.59</strong>米了！</p>
-					</div>
-					<div class="news-arrow">→</div>
-				</div>
-		
-				<div class="news-item featured">
-					<div class="news-date">
-						<span class="day">2025</span>
-						<span class="month">6.5</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-code">💻 技术收益</div>
-						<p>从2024年10月到2025年5月，主包已经靠外包兼职写代码挣了<strong>9571.58</strong>米了！</p>
-					</div>
-					<div class="news-arrow">→</div>
-				</div>
-		
-				<div class="news-item highlight">
-					<div class="news-date special">
-						<span class="day">2025</span>
-						<span class="month">6.1</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-product">🚀 产品发布</div>
-						<p>主包的<a target="_blank" onclick="trackClick('古泉灵触')" href="https://cointalk1.openeee.cn"
-								class="product-link">古泉灵触</a>产品网页正式发布！！<br>
-							<a target="_blank" onclick="trackClick('古泉灵触产品展示')" href="./views/product-showcase.html"
-								class="demo-link">📱实物展示</a>
-						</p>
-					</div>
-					<div class="news-arrow special">✨</div>
-				</div>
+      </div>
+      <!-- 最新资讯 - 更新版本 -->
+      <div class="news-section">
+        <div class="news-header">
+          <div class="news-title-wrapper">
+            <div class="news-icon">📰</div>
+            <h2 class="news-title">最新资讯</h2>
+            <div class="news-subtitle">News & Updates</div>
+          </div>
+        </div>
 
-				<div class="news-item featured">
-					<div class="news-date">
-						<span class="day">2025</span>
-						<span class="month">5.25</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-event">📊 用户调研</div>
-						<p>团队在北京什刹海进行<strong>古泉灵触</strong>产品摆摊推广，收集了宝贵的用户反馈和建议。<br>
-							<a target="_blank" onclick="trackClick('525摆摊用户反馈页面')" href="./views/stall-feedback.html"
-								class="demo-link">📸摆摊现场</a>
-						</p>
-					</div>
-					<div class="news-arrow">→</div>
-				</div>
-		
-				<div class="news-item">
-					<div class="news-date">
-						<span class="day">2024</span>
-						<span class="month">11.21</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-event">🏛️ 学术交流</div>
-						<p>团队收到了来自<strong>北大创新学社</strong>副会长的内部路演交流会邀请。</p>
-					</div>
-					<div class="news-arrow">→</div>
-				</div>
-		
-				<div class="news-item highlight">
-					<div class="news-date special">
-						<span class="day">2024</span>
-						<span class="month">11.21</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-job">💼 职业发展</div>
-						<p>主包有幸入职中国<strong>电信</strong>人工智能研究院的实习生，<strong>智能感知与识别</strong>岗位。
-						</p>
-					</div>
-					<div class="news-arrow special">🎉</div>
-				</div>
-		
-				<div class="news-item">
-					<div class="news-date">
-						<span class="day">2024</span>
-						<span class="month">11.7</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-achievement">🏆 荣誉奖项</div>
-						<p>11月4日，团队收到了来自<strong>中国国际数字经济博览会</strong>组委会的感谢信。
-							<a target="_blank" href="https://www.yuque.com/u39067637/gwicud/odpsq00k1lr3oxqz?singleDoc"
-								onclick="trackClick('数字博览会感谢信')" class="link-btn">🔗文章链接</a>
-						</p>
-					</div>
-					<div class="news-arrow">→</div>
-				</div>
-		
-				<div class="news-item">
-					<div class="news-date">
-						<span class="day">2024</span>
-						<span class="month">10.29</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-exhibition">🏢 展会参与</div>
-						<p>10月25日，团队代表<strong>北京大学</strong>参加<strong>中国国际数字经济博览会</strong>，多家企业和金融机构表示认可和合作意向，并得到360创始人<strong>周鸿祎</strong>先生的格外关注和好评。
-							<a target="_blank" href="https://hbxw.hebnews.cn/news.html?id=485458&timestamp=1730198883883"
-								onclick="trackClick('数字博览会报导链接')">🔗河北日报报导</a>
-						</p>
-					</div>
-					<div class="news-arrow">→</div>
-				</div>
-		
-				<div class="news-item achievement">
-					<div class="news-date award">
-						<span class="day">2024</span>
-						<span class="month">10.22</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-award">🥈 国赛银奖</div>
-						<p>团队项目"数据先锋"在大学生<strong>互联网加</strong>创新创业大赛<strong>国赛</strong>中获得<span class="award-text">银奖</span>。
-						</p>
-					</div>
-					<div class="news-arrow award">🏆</div>
-				</div>
-		
-				<div class="news-item">
-					<div class="news-date">
-						<span class="day">2024</span>
-						<span class="month">10.15</span>
-					</div>
-					<div class="news-content">
-						<div class="news-tag tag-milestone">🏢 发展里程碑</div>
-						<p>团队通过资格审查，在北京邮电大学西土城校区<strong>入驻win基地</strong>的创业空间。</p>
-					</div>
-					<div class="news-arrow">→</div>
-				</div>
-			</div>
-		</div>
-		<!-- 最新资讯
+        <div class="news-container">
+          <div class="news-item featured">
+            <div class="news-date">
+              <span class="day">2025</span>
+              <span class="month">9.12</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-highlight">💰 爱好收益</div>
+              <p>
+                从2024年10月到2025年9月，主包已经靠卖古玩挣了<strong>14312</strong>米了！
+              </p>
+            </div>
+            <div class="news-arrow">→</div>
+          </div>
+
+          <div class="news-item featured">
+            <div class="news-date">
+              <span class="day">2025</span>
+              <span class="month">6.5</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-code">💻 技术收益</div>
+              <p>
+                从2024年10月到2025年5月，主包已经靠外包兼职写代码挣了<strong>9571.58</strong>米了！
+              </p>
+            </div>
+            <div class="news-arrow">→</div>
+          </div>
+
+          <div class="news-item highlight">
+            <div class="news-date special">
+              <span class="day">2025</span>
+              <span class="month">6.1</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-product">🚀 产品发布</div>
+              <p>
+                主包的<a
+                  target="_blank"
+                  onclick="trackClick('古泉灵触')"
+                  href="https://cointalk1.openeee.cn"
+                  class="product-link"
+                  >古泉灵触</a
+                >产品网页正式发布！！<br />
+                <a
+                  target="_blank"
+                  onclick="trackClick('古泉灵触产品展示')"
+                  href="./views/product-showcase.html"
+                  class="demo-link"
+                  >📱实物展示</a
+                >
+              </p>
+            </div>
+            <div class="news-arrow special">✨</div>
+          </div>
+
+          <div class="news-item featured">
+            <div class="news-date">
+              <span class="day">2025</span>
+              <span class="month">5.25</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-event">📊 用户调研</div>
+              <p>
+                团队在北京什刹海进行<strong>古泉灵触</strong>产品摆摊推广，收集了宝贵的用户反馈和建议。<br />
+                <a
+                  target="_blank"
+                  onclick="trackClick('525摆摊用户反馈页面')"
+                  href="./views/stall-feedback.html"
+                  class="demo-link"
+                  >📸摆摊现场</a
+                >
+              </p>
+            </div>
+            <div class="news-arrow">→</div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">
+              <span class="day">2024</span>
+              <span class="month">11.21</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-event">🏛️ 学术交流</div>
+              <p>
+                团队收到了来自<strong>北大创新学社</strong>副会长的内部路演交流会邀请。
+              </p>
+            </div>
+            <div class="news-arrow">→</div>
+          </div>
+
+          <div class="news-item highlight">
+            <div class="news-date special">
+              <span class="day">2024</span>
+              <span class="month">11.21</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-job">💼 职业发展</div>
+              <p>
+                主包有幸入职中国<strong>电信</strong>人工智能研究院的实习生，<strong>智能感知与识别</strong>岗位。
+              </p>
+            </div>
+            <div class="news-arrow special">🎉</div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">
+              <span class="day">2024</span>
+              <span class="month">11.7</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-achievement">🏆 荣誉奖项</div>
+              <p>
+                11月4日，团队收到了来自<strong>中国国际数字经济博览会</strong>组委会的感谢信。
+                <a
+                  target="_blank"
+                  href="https://www.yuque.com/u39067637/gwicud/odpsq00k1lr3oxqz?singleDoc"
+                  onclick="trackClick('数字博览会感谢信')"
+                  class="link-btn"
+                  >🔗文章链接</a
+                >
+              </p>
+            </div>
+            <div class="news-arrow">→</div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">
+              <span class="day">2024</span>
+              <span class="month">10.29</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-exhibition">🏢 展会参与</div>
+              <p>
+                10月25日，团队代表<strong>北京大学</strong>参加<strong>中国国际数字经济博览会</strong>，多家企业和金融机构表示认可和合作意向，并得到360创始人<strong>周鸿祎</strong>先生的格外关注和好评。
+                <a
+                  target="_blank"
+                  href="https://hbxw.hebnews.cn/news.html?id=485458&timestamp=1730198883883"
+                  onclick="trackClick('数字博览会报导链接')"
+                  >🔗河北日报报导</a
+                >
+              </p>
+            </div>
+            <div class="news-arrow">→</div>
+          </div>
+
+          <div class="news-item achievement">
+            <div class="news-date award">
+              <span class="day">2024</span>
+              <span class="month">10.22</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-award">🥈 国赛银奖</div>
+              <p>
+                团队项目"数据先锋"在大学生<strong>互联网加</strong>创新创业大赛<strong>国赛</strong>中获得<span
+                  class="award-text"
+                  >银奖</span
+                >。
+              </p>
+            </div>
+            <div class="news-arrow award">🏆</div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">
+              <span class="day">2024</span>
+              <span class="month">10.15</span>
+            </div>
+            <div class="news-content">
+              <div class="news-tag tag-milestone">🏢 发展里程碑</div>
+              <p>
+                团队通过资格审查，在北京邮电大学西土城校区<strong>入驻win基地</strong>的创业空间。
+              </p>
+            </div>
+            <div class="news-arrow">→</div>
+          </div>
+        </div>
+      </div>
+      <!-- 最新资讯
 		<div class="news">
 			<div>
 				<p class="news-title">📰 最新资讯</p>
@@ -523,88 +638,130 @@
 				</ul>
 			</div>
 		</div> -->
-		<!-- 点赞和取消点赞 -->
-		<div
-			style="display: flex; align-items: center; justify-content: center; flex-direction: column;margin-top: 10px;">
-			<img id="like-icon" src="assets/images/tubiao/like.png" style="cursor: pointer; width: 45px; height: 45px;"
-				onclick="toggleLike('homepage', 'like-icon', 'total-likes')">
-			<p style="margin-top: 0;margin-bottom: 20px;"><span id="total-likes"></span></p>
-		</div>
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				// 在页面加载时获取点赞状态和总点赞数
-				fetchLikeStatus('homepage', 'like-icon', 'total-likes');//第一个参数是item_id
-			});
-		</script>
-		<!-- 浏览量和更新时间 -->
-		<div style="display: flex;flex-direction: row;margin-bottom: 6px;">
-			<!-- 获取更新时间 -->
-			<div class="tooltip1">
-				<img src="assets/images/tubiao/time.png" class="responsive-img">
-				<p id="bottom-time" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
-				<span class="tooltiptext1"></span>
-			</div>
-			<!-- 更新时间的函数 -->
-			<script>
-				// 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
-				const updateDate = "2025-06-05 14:48:27"; // 这里替换为你想要的日期
-				const updateDateObj = new Date(updateDate);
+      <!-- 点赞和取消点赞 -->
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin-top: 10px;
+        "
+      >
+        <img
+          id="like-icon"
+          src="assets/images/tubiao/like.png"
+          style="cursor: pointer; width: 45px; height: 45px"
+          onclick="toggleLike('homepage', 'like-icon', 'total-likes')"
+        />
+        <p style="margin-top: 0; margin-bottom: 20px">
+          <span id="total-likes"></span>
+        </p>
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // 在页面加载时获取点赞状态和总点赞数
+          fetchLikeStatus("homepage", "like-icon", "total-likes"); //第一个参数是item_id
+        });
+      </script>
+      <!-- 浏览量和更新时间 -->
+      <div style="display: flex; flex-direction: row; margin-bottom: 6px">
+        <!-- 获取更新时间 -->
+        <div class="tooltip1">
+          <img src="assets/images/tubiao/time.png" class="responsive-img" />
+          <p
+            id="bottom-time"
+            style="color: #aeacac; margin: 0; font-size: 16px"
+          ></p>
+          <span class="tooltiptext1"></span>
+        </div>
+        <!-- 更新时间的函数 -->
+        <script>
+          // 人为规定的更新日期（格式：YYYY-MM-DD HH:mm:ss）
+          const updateDate = "2025-09-13 01:50:27"; // 这里替换为你想要的日期
+          const updateDateObj = new Date(updateDate);
 
-				// 获取当前日期
-				const currentDate = new Date();
+          // 获取当前日期
+          const currentDate = new Date();
 
-				// 比较日期
-				if (currentDate.toDateString() === updateDateObj.toDateString()) {
-					// 如果是今天，显示“今天”加上更新日期
-					document.getElementById("bottom-time").innerText = `今天 ${updateDateObj.getHours()}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
-				} else {
-					// 如果不是今天，显示“MM-DD HH:mm”格式
-					const formattedDate = `${String(updateDateObj.getMonth() + 1).padStart(2, '0')}-${String(updateDateObj.getDate()).padStart(2, '0')} ${String(updateDateObj.getHours()).padStart(2, '0')}:${String(updateDateObj.getMinutes()).padStart(2, '0')}`;
-					document.getElementById("bottom-time").innerText = formattedDate;
-				}
+          // 比较日期
+          if (currentDate.toDateString() === updateDateObj.toDateString()) {
+            // 如果是今天，显示“今天”加上更新日期
+            document.getElementById(
+              "bottom-time"
+            ).innerText = `今天 ${updateDateObj.getHours()}:${String(
+              updateDateObj.getMinutes()
+            ).padStart(2, "0")}`;
+          } else {
+            // 如果不是今天，显示“MM-DD HH:mm”格式
+            const formattedDate = `${String(
+              updateDateObj.getMonth() + 1
+            ).padStart(2, "0")}-${String(updateDateObj.getDate()).padStart(
+              2,
+              "0"
+            )} ${String(updateDateObj.getHours()).padStart(2, "0")}:${String(
+              updateDateObj.getMinutes()
+            ).padStart(2, "0")}`;
+            document.getElementById("bottom-time").innerText = formattedDate;
+          }
 
-				// 更新tooltip显示的时间
-				const tooltipText = document.querySelector(".tooltiptext1");
-				tooltipText.innerText = `更新于 ${updateDate}`;
-			</script>
-			<!-- 显示浏览量 -->
-			<div class="tooltip2">
-				<img src="assets/images/tubiao/view_count.png" class="responsive-img" style="height: 20px;width: 20px;">
-				<p id="view_count" style="color: #aeacac; margin: 0; font-size: 16px;"></p>
-				<span class="tooltiptext2"></span>
-			</div>
-			<script src="js/page_view/get_page_view.js"></script>
+          // 更新tooltip显示的时间
+          const tooltipText = document.querySelector(".tooltiptext1");
+          tooltipText.innerText = `更新于 ${updateDate}`;
+        </script>
+        <!-- 显示浏览量 -->
+        <div class="tooltip2">
+          <img
+            src="assets/images/tubiao/view_count.png"
+            class="responsive-img"
+            style="height: 20px; width: 20px"
+          />
+          <p
+            id="view_count"
+            style="color: #aeacac; margin: 0; font-size: 16px"
+          ></p>
+          <span class="tooltiptext2"></span>
+        </div>
+        <script src="js/page_view/get_page_view.js"></script>
 
-			<script>
-				// 调用 fetchViewCount 函数，并传入当前页面的名称
-				const pageName = "homepage"; // 根据实际页面设置
-				window.onload = () => fetchViewCount(pageName);
-			</script>
-		</div>
-	</div>
-	<!-- 底部区域 -->
-	<div class="bottom-sec">
-		<div class="tobilibili">
-			<div class="tobilibili-text">
-				<div>我的b站主页</div>
-				<div style="margin-left: 5px;"><i class="fa fa-arrow-right"></i></div>
-			</div>
-			<div class="tobilibili-href">
-				<a href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0" target="_blank"
-					style="font-size: 14px" class="a-svg" onclick="trackClick('bilibili')">
-					友情链接
-					<svg viewBox="0 0 75 50">
-						<path d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8" />
-					</svg>
-				</a>
-			</div>
-		</div>
-		<div class="updatelog">
-			<div class="updatelog-text">
-				<a href="./updatelog.html" onclick="trackClick('更新记录')">更新记录</a>
-			</div>
-		</div>
-	</div>
-</body>
-
+        <script>
+          // 调用 fetchViewCount 函数，并传入当前页面的名称
+          const pageName = "homepage"; // 根据实际页面设置
+          window.onload = () => fetchViewCount(pageName);
+        </script>
+      </div>
+    </div>
+    <!-- 底部区域 -->
+    <div class="bottom-sec">
+      <div class="tobilibili">
+        <div class="tobilibili-text">
+          <div>我的b站主页</div>
+          <div style="margin-left: 5px"><i class="fa fa-arrow-right"></i></div>
+        </div>
+        <div class="tobilibili-href">
+          <a
+            href="https://space.bilibili.com/512181208?spm_id_from=333.1007.0.0"
+            target="_blank"
+            style="font-size: 14px"
+            class="a-svg"
+            onclick="trackClick('bilibili')"
+          >
+            友情链接
+            <svg viewBox="0 0 75 50">
+              <path
+                d="M 5 50 H 70 C 66 40 85 5 30 8 C -5 10 0 45 20 45 C 112 55 65 -17 10 8"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="updatelog">
+        <div class="updatelog-text">
+          <a href="./updatelog.html" onclick="trackClick('更新记录')"
+            >更新记录</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
