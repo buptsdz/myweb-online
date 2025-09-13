@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sue的古玩收藏 - Sue的个人网站</title>
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <link rel="stylesheet" type="text/css" href="../css/p-a.css" />
+    <link rel="stylesheet" type="text/css" href="../css/a.css" />
+    <link rel="stylesheet" type="text/css" href="../css/img.css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <style>
+      .collection-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 40px 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 20px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin: 0 0 10px 0;
+        font-weight: 800;
+      }
+
+      .header p {
+        font-size: 1.2rem;
+        margin: 0;
+        opacity: 0.9;
+      }
+
+      .photo-section {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .collection-photo {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .collection-photo:hover {
+        transform: scale(1.02);
+      }
+
+      .text-section {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .text-section h2 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+      }
+
+      .text-content {
+        color: #333;
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+
+      .text-content p {
+        margin-bottom: 20px;
+      }
+
+      .back-btn {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 30px;
+      }
+
+      .back-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        color: white;
+      }
+
+      /* 全屏图片模态框样式 */
+      .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        animation: fadeIn 0.3s ease;
+      }
+
+      .image-modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 95%;
+        max-height: 95%;
+        animation: scaleIn 0.3s ease;
+      }
+
+      .modal-image {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 95vh;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        transition: background 0.3s ease;
+      }
+
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .collection-container {
+          padding: 15px;
+        }
+
+        .header h1 {
+          font-size: 2rem;
+        }
+
+        .header p {
+          font-size: 1rem;
+        }
+
+        .photo-section,
+        .text-section {
+          padding: 20px;
+        }
+
+        .text-content {
+          font-size: 1rem;
+        }
+
+        .modal-close {
+          top: 10px;
+          right: 10px;
+          font-size: 1.5rem;
+          width: 35px;
+          height: 35px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="collection-container">
+      <div class="header">
+        <h1>🏺 Sue的古玩收藏</h1>
+        <p>古钱币 · 古青铜器 · 古瓷器</p>
+      </div>
+
+      <div class="photo-section">
+        <img
+          id="collectionPhoto"
+          class="collection-photo"
+          src="../assets/images/antique/antique-total-250913.jpg"
+          alt="Sue的古玩收藏合照"
+          onclick="openImageModal()"
+        />
+        <p
+          style="
+            margin-top: 15px;
+            color: #666;
+            font-size: 1.1rem;
+            text-align: center;
+          "
+        >
+          拍摄于2025.9.13，复旦邯郸校区北苑宿舍
+        </p>
+      </div>
+      <div class="text-section">
+        <h2>🔍 藏品掠影</h2>
+        <div class="text-content">
+          <p>
+            <strong>古钱币：</strong
+            >秦始皇统一大周正半两，战国半两，战国燕中期明刀，新莽货泉饼钱，更始五铢，东汉五铢，隋五铢，天启通宝背上户，酱彩三年大头，开元筒子钱等
+          </p>
+          <p>
+            <strong>古青铜器：</strong
+            >西周青铜戈，西周双翼大箭头，春秋早期夔龙纹青铜鼎残片，春秋晚期三晋蟠螭纹车軎残件，战汉三翼箭头，西汉四乳八禽镜，东汉羽人纹铭文镜碎片（铭文大巧上有），唐代铃铛帽等
+          </p>
+          <p>
+            <strong>古硅酸盐类：</strong>战国齐软玉璧，明中期小狮子青花瓷片等
+          </p>
+        </div>
+      </div>
+      <div class="text-section">
+        <h2>💭 收藏记录</h2>
+        <div class="text-content">
+          <p>
+            我从24年开始接触古钱币，陆陆续续买了不少，后面接触了更多一些的古玩，虽然不算什么珍品，但每一件都有它自身的故事。
+            最开始接触古玩是因为对历史的兴趣，后来逐渐被这些承载着时光印记的器物所吸引。
+          </p>
+          <p>
+            最喜欢的是那几个青铜器，上面的纹饰和造型都很精美，拿在手里能感受到古人的智慧和审美。
+          </p>
+          <p>
+            收藏这些东西首先是因为喜欢，其次可能有点投资的感觉。每当学习或工作压力大的时候，
+            把玩这些古物总能让我的心静下来，仿佛能穿越时光与古人对话。
+          </p>
+          <p>
+            古玩收藏让我学会了耐心和细致，也培养了我对美的感知能力。
+            虽然现在还是个新手，但我会继续这个爱好，慢慢地、用心地收集那些打动我的器物。
+          </p>
+        </div>
+      </div>
+
+      <a href="../views/personal-introduction.html" class="back-btn"
+        >← 返回个人介绍</a
+      >
+    </div>
+
+    <!-- 全屏图片模态框 -->
+    <div id="imageModal" class="image-modal">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <img id="modalImage" class="modal-image" src="" alt="古玩收藏合照" />
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const collectionPhoto = document.getElementById("collectionPhoto");
+
+      // 打开图片模态框
+      function openImageModal() {
+        modalImage.src = collectionPhoto.src;
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      // 关闭图片模态框
+      function closeImageModal() {
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
+
+      // 键盘ESC关闭
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("show")) {
+          closeImageModal();
+        }
+      });
+
+      // 点击背景关闭
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          closeImageModal();
+        }
+      });
+    </script>
+  </body>
+</html>
