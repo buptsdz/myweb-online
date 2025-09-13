@@ -11,6 +11,46 @@
     <link rel="stylesheet" type="text/css" href="../css/img.css" />
     <link rel="icon" href="../favicon.ico" type="image/x-icon" />
     <style>
+      .tooltip2 {
+        display: flex;
+        /* 使用 flexbox 来横向排列 */
+        align-items: center;
+        /* 垂直居中对齐 */
+        position: relative;
+        width: fit-content;
+        margin-right: 25px;
+      }
+
+      .tooltip2 .responsive-img {
+        height: 22px;
+        width: 22px;
+        margin-right: 5px;
+        /* 在图片和文字之间添加一些间距 */
+      }
+
+      .tooltip2 .tooltiptext2 {
+        visibility: hidden;
+        width: fit-content;
+        white-space: nowrap;
+        background-color: #444444;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 4px 8px;
+        position: absolute;
+        z-index: 1;
+        bottom: 105%;
+
+        /* 淡入 - 1秒内从 0% 到 100% 显示: */
+        opacity: 0;
+        transition: opacity 1.2s;
+      }
+
+      .tooltip2:hover .tooltiptext2 {
+        visibility: visible;
+        opacity: 1;
+      }
+
       .collection-container {
         max-width: 900px;
         margin: 0 auto;
@@ -244,7 +284,7 @@
             text-align: center;
           "
         >
-          拍摄于2025.9.13，复旦邯郸校区北苑宿舍
+          拍摄于2025.9.13，复旦邯郸校区北苑宿舍，部分藏品
         </p>
       </div>
       <div class="text-section">
@@ -283,7 +323,27 @@
           </p>
         </div>
       </div>
-
+      <script src="../js/page_view/get_page_view.js"></script>
+      <!-- 显示浏览量 -->
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div class="tooltip2">
+          <img
+            src="../assets/images/tubiao/view_count.png"
+            class="responsive-img"
+            style="height: 20px; width: 20px"
+          />
+          <p
+            id="view_count"
+            style="color: #a2a1a1; margin: 0; font-size: 16px"
+          ></p>
+          <span class="tooltiptext2"></span>
+        </div>
+        <script>
+          // 调用 fetchViewCount 函数，并传入当前页面的名称
+          const pageName = "antique_page"; // 根据实际页面设置
+          window.onload = () => fetchViewCount(pageName);
+        </script>
+      </div>
       <a href="../views/personal-introduction.html" class="back-btn"
         >← 返回个人介绍</a
       >
