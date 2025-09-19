@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
     <title>Sue的古玩收藏 - Sue的个人网站</title>
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
     <link rel="stylesheet" type="text/css" href="../css/button.css" />
@@ -272,7 +273,7 @@
         <img
           id="collectionPhoto"
           class="collection-photo"
-          src="../assets/images/antique/antique-total-250919.jpg"
+          src="https://a1.qpic.cn/psc?/V117qdlR3wxRuw/LiySpxowE0yeWXwBdXN*SToekKr*YXaml..KAkAae5nbYgQ4v9OV07F3W0QlDCoHq0BBGzVH7ZwgLVjq8*IgWifQz.k*RXMTdrEd9iKgjlM!/b&ek=1&kp=1&pt=0&bo=VQhABlUIQAYWECA!&tl=3&vuin=508936331&tm=1758294000&dis_t=1758295031&dis_k=a3bc36ddff023f6ca38969a023e71a81&sce=60-4-3&rf=viewer_311"
           alt="Sue的古玩收藏合照"
           onclick="openImageModal()"
         />
@@ -381,9 +382,14 @@
       const modalImage = document.getElementById("modalImage");
       const collectionPhoto = document.getElementById("collectionPhoto");
 
+      // 页面加载时预设模态框图片
+      document.addEventListener("DOMContentLoaded", function () {
+        modalImage.src = collectionPhoto.src;
+      });
+
       // 打开图片模态框
       function openImageModal() {
-        modalImage.src = collectionPhoto.src;
+        // 直接显示，不重新设置src
         modal.classList.add("show");
         document.body.style.overflow = "hidden";
       }
