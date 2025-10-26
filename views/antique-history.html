@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <title>历史留影 - Sue的古玩收藏</title>
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <style>
+        .history-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            margin: 0 0 6px 0;
+            font-weight: 800;
+            font-size: 2rem;
+        }
+
+        .header p {
+            margin: 0;
+            color: #666;
+            font-size: .95rem;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 16px;
+        }
+
+        .snapshot {
+            background: #fff;
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
+
+        .snapshot h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .snapshot-photo {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .items {
+            margin: 0;
+            color: #333;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .note {
+            color: #888;
+            font-size: .85rem;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 18px;
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 650px) {
+            .history-container {
+                padding: 15px;
+            }
+
+            .snapshot {
+                padding: 14px;
+            }
+
+            .items {
+                font-size: .95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="history-container">
+        <div class="header">
+            <h1>历史留影</h1>
+            <p>按时间倒序，记录各时间点的藏品名称（标红为当时较为钟爱的藏品）</p>
+        </div>
+
+        <div class="timeline">
+            <div class="snapshot">
+                <h2>2025.09.19</h2>
+                <img class="snapshot-photo"
+                    src="https://mp-files-1311003301.cos.ap-beijing.myqcloud.com/sdz-antique/%E5%8F%A4%E7%8E%A9%E7%85%A7%E7%89%872025-9-19.jpg"
+                    alt="2025.09.19 藏品合照" loading="lazy" />
+                <p class="items">
+                    <b>古青铜器：</b>西周青铜戈，西周双翼大箭头，春秋夔龙纹青铜鼎残片，<span style="color:red">春秋晚期三晋蟠螭纹车軎残件</span>，<span
+                        style="color:red">战汉水表金玉化双翼青铜矛</span>，战汉三翼箭头，西汉四乳四神兽镜，西汉四乳八禽镜，<span
+                        style="color:red">东汉羽人纹铭文镜碎片（铭文大巧上有）</span>，唐代铃铛帽，<span style="color:red">明代苍龙教子鎏金带勾</span>等
+                </p>
+                <p class="items">
+                    <b>古钱币：</b><span
+                        style="color:red">秦始皇统一周正大半两</span>，战国半两，战国燕中期明刀，新莽货泉饼钱，更始五铢，东汉五铢，隋五铢，开元筒子钱，天启通宝背上户，PC酱彩三年大头等
+                </p>
+                <p class="items">
+                    <b>古硅酸盐类：</b>战国齐旋纹软玉璧，秦汉云纹瓦当残件，隋唐白彩陶狗，明中期狮子青花瓷片，明代龙纹龙泉窑盘底等
+                </p>
+                <!-- <p class="note">注：此为该时刻快照，后续增删请新增新的时间点。</p> -->
+            </div>
+
+            <!-- 新时间点可按相同结构追加在此，保持倒序 -->
+        </div>
+
+        <a class="back" href="./antique-collection.html">← 返回当前快照</a>
+    </div>
+</body>
+
+</html>
