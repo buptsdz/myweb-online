@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="never" />
@@ -9,128 +8,232 @@
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
     <link rel="icon" href="../favicon.ico" type="image/x-icon" />
     <style>
+      .history-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .header h1 {
+        margin: 0 0 6px 0;
+        font-weight: 800;
+        font-size: 2rem;
+      }
+
+      .header p {
+        margin: 0;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+      }
+
+      .snapshot {
+        background: #fff;
+        border-radius: 14px;
+        padding: 18px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .snapshot h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      .snapshot-photo {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .Cu-subtitle {
+        display: block;
+        font-weight: bold;
+      }
+
+      .items {
+        margin: 0;
+        color: #333;
+        line-height: 1.7;
+        font-size: 1rem;
+      }
+
+      .note {
+        color: #888;
+        font-size: 0.85rem;
+        font-style: italic;
+        margin-top: 8px;
+      }
+
+      .back {
+        display: inline-block;
+        margin-top: 18px;
+        color: #3498db;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 650px) {
         .history-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .header h1 {
-            margin: 0 0 6px 0;
-            font-weight: 800;
-            font-size: 2rem;
-        }
-
-        .header p {
-            margin: 0;
-            color: #666;
-            font-size: .95rem;
-        }
-
-        .timeline {
-            display: grid;
-            gap: 16px;
+          padding: 15px;
         }
 
         .snapshot {
-            background: #fff;
-            border-radius: 14px;
-            padding: 18px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
-            border: 1px solid rgba(0, 0, 0, .05);
-        }
-
-        .snapshot h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        .snapshot-photo {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
-            margin-bottom: 12px;
-            display: block;
+          padding: 14px;
         }
 
         .items {
-            margin: 0;
-            color: #333;
-            line-height: 1.7;
-            font-size: 1rem;
+          font-size: 0.95rem;
         }
-
-        .note {
-            color: #888;
-            font-size: .85rem;
-            font-style: italic;
-            margin-top: 8px;
-        }
-
-        .back {
-            display: inline-block;
-            margin-top: 18px;
-            color: #3498db;
-            text-decoration: underline;
-        }
-
-        @media (max-width: 650px) {
-            .history-container {
-                padding: 15px;
-            }
-
-            .snapshot {
-                padding: 14px;
-            }
-
-            .items {
-                font-size: .95rem;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="history-container">
-        <div class="header">
-            <h1>历史留影</h1>
-            <p>按时间倒序，记录各时间点的藏品名称（标红为当时较为钟爱的藏品）</p>
+      <div class="header">
+        <h1>历史留影</h1>
+        <p>按时间倒序，记录各时间点的藏品名称（标红为当时较为钟爱的藏品）</p>
+      </div>
+
+      <div class="timeline">
+        <div class="snapshot">
+          <h2>2025.11.10</h2>
+          <img
+            class="snapshot-photo"
+            src="https://mp-files-1311003301.cos.ap-beijing.myqcloud.com/sdz-antique/%E5%8F%A4%E7%8E%A9%E7%85%A7%E7%89%872025-11-10-1.jpg"
+            alt="2025.09.19 藏品合照"
+            loading="lazy"
+          />
+          <img
+            class="snapshot-photo"
+            src="https://mp-files-1311003301.cos.ap-beijing.myqcloud.com/sdz-antique/%E5%8F%A4%E7%8E%A9%E7%85%A7%E7%89%872025-11-10-2.jpg"
+            alt="2025.09.19 藏品合照"
+            loading="lazy"
+          />
+          <p class="items">
+            <b>古青铜器：</b>
+            <span class="Cu-subtitle">>高古：</span>
+            殷商旋纹礼器钺，西周簠兽耳，西周簋兽耳（一大一小），西周青铜戈，西周双翼箭头，西周阴刻铭文车马件，春秋多棱礼射箭头，春秋双翼铤式箭头，春秋蟠螭纹满工鼎片（两片），东周銎式双翼箭头，<span
+              style="color: red"
+              >战国青铜戈</span
+            >，<span style="color: red">战汉水坑金皮玉化双翼矛</span>，<span
+              style="color: red"
+              >战汉三龙追逐青铜豆</span
+            >，战汉星芒纹青铜盖，战汉立鸟阳燧带勾，汉代柿蒂纹青铜锺盖，<span
+              style="color: red"
+              >西汉水银古见日之光铭文镜</span
+            >，西汉见日之光长毋相忘铭文镜
+
+            <span class="Cu-subtitle">>唐宋：</span>
+            <span style="color: red">唐代嵌绿宝石鬼面鼎腿</span
+            >，唐代青铜瑞兽镇纸，唐代飞天童子青铜俑，唐代青铜凤鸟立件，宋仿战国三晋吉语挂饰印“宜有万金”，宋代文房青铜山，辽金满工玉化青铜蒺藜配饰，宋元玉化人面青铜鼎腿（三个），宋元青铜茶盏，元代铜权
+
+            <span class="Cu-subtitle">>明清：</span>
+            <span style="color: red">明代传世鸡首青铜瑞兽</span
+            >，明代水坑“福如东海”吉语镜，明代苍龙教子鎏金带勾，明代龙形铜带扣，清乾隆团寿纹“大清乾隆”传世铜罐，<span
+              style="color: red"
+              >清代银鎏金满工龙形挂饰</span
+            >，<span style="color: red">清代满工錾刻游龙耳香炉</span
+            >，清代鎏金满工仙人放鹿挂饰，晚清民国满工錾刻银如意等
+          </p>
+          <p class="items">
+            <b>古硅酸盐类：</b>汉代硬玉猪握，汉代硬玉管，隋唐白彩陶狗，<span
+              style="color: red"
+              >辽金高瓷度鸟型绿松石</span
+            >，宋代磨喝乐陶人，宋代童子偷油文房盏，宋元石质凤凰刻花纺轮，明代提油团寿纹龙首玉带板，明代马到成功谷纹玉璧，清嘉庆龙凤呈祥青花盘，清代和田玉扳指盒，清代和田玉人物挂饰，清代和田玉节节高升挂饰，晚清民国和田玉印“三石堂”，晚清民国满绿翡翠挂牌等
+          </p>
+          <p class="items">
+            <b>古钱币：</b>战国半两，<span style="color: red"
+              >秦始皇周正半两大样</span
+            >，更始五铢，东汉五铢，隋五铢，天启通宝背上户，崇祯奶油锈京版大样，PC40酱彩三年大头等
+          </p>
+        </div>
+        <div class="snapshot">
+          <h2>2025.10.23</h2>
+          <img
+            class="snapshot-photo"
+            src="https://mp-files-1311003301.cos.ap-beijing.myqcloud.com/sdz-antique/%E5%8F%A4%E7%8E%A9%E7%85%A7%E7%89%872025-10-23.jpg"
+            alt="2025.09.19 藏品合照"
+            loading="lazy"
+          />
+          <p class="items">
+            <b>古青铜器：</b>殷商旋纹礼器钺，<span style="color: red"
+              >西周簠兽耳</span
+            >，西周青铜戈，西周双翼大箭头，<span style="color: red"
+              >春秋水坑五彩勾云纹双翼矛</span
+            >，<span style="color: red">战汉水坑金皮玉化双翼矛</span>，<span
+              style="color: red"
+              >战汉三龙追逐青铜豆</span
+            >，战汉星芒纹青铜盖，战汉立鸟阳燧带勾，<span style="color: red"
+              >西汉水银古见日之光铭文镜</span
+            >，西汉见日之光长毋相忘铭文镜，西汉四乳四神兽镜，东汉羽人纹铭文镜碎片（铭文大巧上有），<span
+              style="color: red"
+              >唐代嵌绿宝石鬼面鼎腿</span
+            >，宋代文房青铜山，明代苍龙教子鎏金带勾，明代福如东海吉语镜等
+          </p>
+          <p class="items">
+            <b>古硅酸盐类：</b
+            >战国软玉管手串，战国齐旋纹软玉璧，隋唐白彩陶狗，明代提油团寿纹龙首玉带板，明代狮子青花瓷片，<span
+              style="color: red"
+              >清中期龙凤呈祥青花盘</span
+            >，晚清民国翡翠挂饰等
+          </p>
+          <p class="items">
+            <b>古钱币：</b>战国半两，战国燕中期明刀，<span style="color: red"
+              >秦始皇统一周正大半两</span
+            >，更始五铢，东汉五铢，隋五铢，天启通宝背上户，PC酱彩三年大头等
+          </p>
+        </div>
+        <div class="snapshot">
+          <h2>2025.09.19</h2>
+          <img
+            class="snapshot-photo"
+            src="https://mp-files-1311003301.cos.ap-beijing.myqcloud.com/sdz-antique/%E5%8F%A4%E7%8E%A9%E7%85%A7%E7%89%872025-9-19.jpg"
+            alt="2025.09.19 藏品合照"
+            loading="lazy"
+          />
+          <p class="items">
+            <b>古青铜器：</b
+            >西周青铜戈，西周双翼大箭头，春秋夔龙纹青铜鼎残片，<span
+              style="color: red"
+              >春秋晚期三晋蟠螭纹车軎残件</span
+            >，<span style="color: red">战汉水表金玉化双翼青铜矛</span
+            >，战汉三翼箭头，西汉四乳四神兽镜，西汉四乳八禽镜，<span
+              style="color: red"
+              >东汉羽人纹铭文镜碎片（铭文大巧上有）</span
+            >，唐代铃铛帽，<span style="color: red">明代苍龙教子鎏金带勾</span
+            >等
+          </p>
+          <p class="items">
+            <b>古钱币：</b
+            ><span style="color: red">秦始皇统一周正大半两</span
+            >，战国半两，战国燕中期明刀，新莽货泉饼钱，更始五铢，东汉五铢，隋五铢，开元筒子钱，天启通宝背上户，PC酱彩三年大头等
+          </p>
+          <p class="items">
+            <b>古硅酸盐类：</b
+            >战国齐旋纹软玉璧，秦汉云纹瓦当残件，隋唐白彩陶狗，明中期狮子青花瓷片，明代龙纹龙泉窑盘底等
+          </p>
         </div>
 
-        <div class="timeline">
-            <div class="snapshot">
-                <h2>2025.09.19</h2>
-                <img class="snapshot-photo"
-                    src="https://mp-files-1311003301.cos.ap-beijing.myqcloud.com/sdz-antique/%E5%8F%A4%E7%8E%A9%E7%85%A7%E7%89%872025-9-19.jpg"
-                    alt="2025.09.19 藏品合照" loading="lazy" />
-                <p class="items">
-                    <b>古青铜器：</b>西周青铜戈，西周双翼大箭头，春秋夔龙纹青铜鼎残片，<span style="color:red">春秋晚期三晋蟠螭纹车軎残件</span>，<span
-                        style="color:red">战汉水表金玉化双翼青铜矛</span>，战汉三翼箭头，西汉四乳四神兽镜，西汉四乳八禽镜，<span
-                        style="color:red">东汉羽人纹铭文镜碎片（铭文大巧上有）</span>，唐代铃铛帽，<span style="color:red">明代苍龙教子鎏金带勾</span>等
-                </p>
-                <p class="items">
-                    <b>古钱币：</b><span
-                        style="color:red">秦始皇统一周正大半两</span>，战国半两，战国燕中期明刀，新莽货泉饼钱，更始五铢，东汉五铢，隋五铢，开元筒子钱，天启通宝背上户，PC酱彩三年大头等
-                </p>
-                <p class="items">
-                    <b>古硅酸盐类：</b>战国齐旋纹软玉璧，秦汉云纹瓦当残件，隋唐白彩陶狗，明中期狮子青花瓷片，明代龙纹龙泉窑盘底等
-                </p>
-                <!-- <p class="note">注：此为该时刻快照，后续增删请新增新的时间点。</p> -->
-            </div>
+        <!-- 新时间点可按相同结构追加在此，保持倒序 -->
+      </div>
 
-            <!-- 新时间点可按相同结构追加在此，保持倒序 -->
-        </div>
-
-        <a class="back" href="./antique-collection.html">← 返回当前快照</a>
+      <a class="back" href="./antique-collection.html">← 返回当前快照</a>
     </div>
-</body>
-
+  </body>
 </html>
